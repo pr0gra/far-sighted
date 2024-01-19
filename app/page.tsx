@@ -240,7 +240,7 @@ export default function Home() {
         </p>
         <div className="overflow-x-auto flex gap-[93px]  pl-[85px]">
           {modelDesignAgentWorkingImages.map((sliderElem, id) => {
-            return <ModelDesignWorkingElement sliderElem={sliderElem} />;
+            return <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />;
           })}
         </div>
       </section>
