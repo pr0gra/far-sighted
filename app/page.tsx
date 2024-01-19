@@ -16,17 +16,17 @@ import SliderImage4 from "./assets/images/conversation-2.svg";
 import SliderCover5 from "./assets/images/result-1.svg";
 import SliderImage5 from "./assets/images/result-2.svg";
 
-
 import { useEffect, useState } from "react";
 import { ModelDesignWorkingElement } from "./components/ModelDesignWorkingElement";
 import { Carousel } from "./components/Carousel";
-
 
 interface BackgroundsList {
   img: any;
   name: string;
   test: string;
 }
+
+
 
 const modelDesignAgentWorkingImages = [
   {
@@ -94,7 +94,6 @@ export default function Home() {
 
   return (
     <main className="bg-black">
-        {/* <Carousel /> */}
       <section
         className="h-[758px] px-16 bg-cover"
         style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
@@ -229,18 +228,17 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
-      
-
 
       <section className="pb-[227px] pt-[100px]">
-        <p className="pl-[215px] mb-[115px]">
-          // Модель работы агентства <br />
-          дизайн-инициатив{" "}
+         <p className="pl-[215px] mb-[115px]">
+         <span>//</span> Модель работы агентства <br />
+          дизайн-инициатив
         </p>
         <div className="overflow-x-auto flex gap-[93px]  pl-[85px]">
           {modelDesignAgentWorkingImages.map((sliderElem, id) => {
-            return <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />;
+            return (
+              <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />
+            );
           })}
         </div>
       </section>
@@ -288,8 +286,6 @@ export default function Home() {
           />
         </svg>
       </div>
-    
     </main>
-
   );
 }

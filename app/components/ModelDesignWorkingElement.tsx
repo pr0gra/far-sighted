@@ -2,7 +2,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export function ModelDesignWorkingElement({ sliderElem }) {
+interface props {
+  sliderElem: any;
+
+}
+
+type sliderElem = {cover: any; image: any;}
+
+export function ModelDesignWorkingElement({ sliderElem }: props) {
   const [isCoverHide, setIsCoverHide] = useState(false);
 
   return (
