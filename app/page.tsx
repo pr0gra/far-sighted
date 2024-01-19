@@ -4,15 +4,52 @@ import HeroAnimatedLogo from "./assets/images/hero-animated-logo.gif";
 import Hero1 from "./assets/images/heroDaria1.jpg";
 import Hero2 from "./assets/images/heroAnna2.jpg";
 import Hero3 from "./assets/images/heroAnastasia3.jpg";
-import Hero4 from "./assets/images/heroDaria4.jpg";
-import Hero5 from "./assets/images/heroMaria5.jpg";
+import Hero4 from "./assets/images/heroMaria5.jpg";
+import SliderCover1 from "./assets/images/social-platform-1.svg";
+import SliderImage1 from "./assets/images/social-platform-2.svg";
+import SliderCover2 from "./assets/images/design-intelligence-1.svg";
+import SliderImage2 from "./assets/images/design-intelligence-2.svg";
+import SliderCover3 from "./assets/images/instruments-1.svg";
+import SliderImage3 from "./assets/images/instruments-2.svg";
+import SliderCover4 from "./assets/images/conversation-1.svg";
+import SliderImage4 from "./assets/images/conversation-2.svg";
+import SliderCover5 from "./assets/images/result-1.svg";
+import SliderImage5 from "./assets/images/result-2.svg";
+
+
 import { useEffect, useState } from "react";
+import { ModelDesignWorkingElement } from "./components/ModelDesignWorkingElement";
+import { Carousel } from "./components/Carousel";
+
 
 interface BackgroundsList {
   img: any;
   name: string;
   test: string;
 }
+
+const modelDesignAgentWorkingImages = [
+  {
+    cover: SliderCover1,
+    image: SliderImage1,
+  },
+  {
+    cover: SliderCover2,
+    image: SliderImage2,
+  },
+  {
+    cover: SliderCover3,
+    image: SliderImage3,
+  },
+  {
+    cover: SliderCover4,
+    image: SliderImage4,
+  },
+  {
+    cover: SliderCover5,
+    image: SliderImage5,
+  },
+];
 
 export default function Home() {
   const [currentHero, setCurrentHero] = useState({
@@ -40,21 +77,14 @@ export default function Home() {
         name: "Анастасия дизайн-разведчик",
         text: "// К нам можно обращаться за креативными идеями решения проблемы, где уже кажется нет способов что-то придумать",
       },
-
       {
         img: Hero4,
-        name: "Дарья менеджер проекта",
-        text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
-      },
-
-      {
-        img: Hero5,
         name: "Мария дизайнер",
         text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
       },
     ];
     setInterval(() => {
-      if (count >= 5) {
+      if (count >= 4) {
         count = 0;
       }
       count++;
@@ -63,10 +93,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="">
+    <main className="bg-black">
+        {/* <Carousel /> */}
       <section
         className="h-[758px] px-16 bg-cover"
-        style={{ backgroundImage: `url(${currentHero.img.src})` }}
+        style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
       >
         <header className="pt-11">
           <nav>
@@ -198,6 +229,67 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      
+
+
+      <section className="pb-[227px] pt-[100px]">
+        <p className="pl-[215px] mb-[115px]">
+          // Модель работы агентства <br />
+          дизайн-инициатив{" "}
+        </p>
+        <div className="overflow-x-auto flex gap-[93px]  pl-[85px]">
+          {modelDesignAgentWorkingImages.map((sliderElem, id) => {
+            return <ModelDesignWorkingElement sliderElem={sliderElem} />;
+          })}
+        </div>
+      </section>
+      <div className="flex gap-[32px] justify-center pb-[238px]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="353"
+          height="2"
+          viewBox="0 0 353 2"
+          fill="none"
+        >
+          <path
+            d="M1 1H352"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="874"
+          height="2"
+          viewBox="0 0 874 2"
+          fill="none"
+        >
+          <path
+            d="M1 1H873"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="225"
+          height="2"
+          viewBox="0 0 225 2"
+          fill="none"
+        >
+          <path
+            d="M1 1L224 0.999981"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    
     </main>
+
   );
 }
