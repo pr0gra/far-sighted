@@ -231,7 +231,7 @@ export default function Home() {
 
       <section className="pb-[227px] pt-[100px]">
          <p className="pl-[215px] mb-[115px]">
-          {`// Модель работы агентства ${<br />}
+          {`// Модель работы агентства 
           дизайн-инициатив`}
         </p>
         <div className="overflow-x-auto flex gap-[93px]  pl-[85px]">
