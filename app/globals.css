@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: BakemonoLight;
+    font-family: BakemonoMedium;
     src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf");
 }
 
+@font-face {
+    font-family: BakemonoLight;
+    src: url("./assets/fonts/Bakemono-Stereo-Light-trial.ttf");
+}
+
 body{
-    font-family: "BakemonoLight";
+    font-family: "BakemonoMedium";
     color: white;
 }
