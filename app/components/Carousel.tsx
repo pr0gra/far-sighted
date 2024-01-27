@@ -6,7 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { TweenMax, Expo, Quint } from "gsap"; // Assuming you have GSAP installed
 import ImageTest from "../assets/images/heroDaria1.jpg";
 import Image from "next/image";
-
+interface Document {
+  onmousewheel: ((this: Document, ev: Event) => any) | null;
+}
 export function Carousel() {
   const dragContainer = useRef(null);
   const spinContainer = useRef(null);
@@ -28,10 +30,13 @@ export function Carousel() {
 
     setTimeout(init, 1000);
 
-    var odrag = dragContainer.current;
-    var ospin = spinContainer.current;
-    var aImg = ospin.getElementsByTagName("img");
-    var aVid = ospin.getElementsByTagName("video");
+    var odrag: any = dragContainer.current;
+    var ospin: any = spinContainer.current;
+    if(ospin === null){
+      return
+    }
+    var aImg = ospin?.getElementsByTagName("img");
+    var aVid = ospin?.getElementsByTagName("video");
     var aEle = [...aImg, ...aVid]; // combine 2 arrays
 
     // Size of images
@@ -39,11 +44,14 @@ export function Carousel() {
     ospin.style.height = imgHeight + "px";
 
     // Size of ground - depend on radius
-    var ground = groundRef.current
+    var ground:any = groundRef.current
+    if(ground === null){
+      return
+    }
     ground.style.width = radius * 3 + "px";
     ground.style.height = radius * 3 + "px";
 
-    function init(delayTime) {
+    function init(delayTime:any) {
       for (var i = 0; i < aEle.length; i++) {
         aEle[i].style.transform =
           "rotateY(" +
@@ -57,7 +65,7 @@ export function Carousel() {
       }
     }
 
-    function applyTranform(obj) {
+    function applyTranform(obj:any) {
       // Constrain the angle of camera (between 0 and 180)
       if (tY > 180) tY = 180;
       if (tY < 0) tY = 0;
@@ -66,7 +74,7 @@ export function Carousel() {
       obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
     }
 
-    function playSpin(yes) {
+    function playSpin(yes:any) {
       ospin.style.animationPlayState = yes ? "running" : "paused";
     }
 
@@ -87,19 +95,11 @@ export function Carousel() {
       )}s infinite linear`;
     }
 
-    // add background music
-    if (bgMusicURL) {
-      musicContainer.innerHTML += `
-    <audio src="${bgMusicURL}" ${
-        bgMusicControls ? "controls" : ""
-      } autoplay loop>    
-    <p>If you are reading this, it is because your browser does not support the audio element.</p>
-    </audio>
-    `;
-    }
-
     // setup events
     document.onpointerdown = function (e) {
+      if(odrag === null){
+        return
+      }
       clearInterval(odrag.timer);
       e = e || window.event;
       var sX = e.clientX,
@@ -136,8 +136,7 @@ export function Carousel() {
 
       return false;
     };
-
-    document.onmousewheel = function (e) {
+    document.onmousewheel = function (e:any) {
       e = e || window.event;
       var d = e.wheelDelta / 20 || -e.detail;
       radius += d;
@@ -155,13 +154,6 @@ export function Carousel() {
           <Image src={ImageTest} alt="" />
           <Image src={ImageTest} alt="" />
           <Image src={ImageTest} alt="" />
-
-          <a
-            target="_blank"
-            href="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg"
-          >
-            <Image src={ImageTest} alt="" />
-          </a>
         </div>
         <div ref={groundRef} className={styles["ground"]}></div>
       </div>
