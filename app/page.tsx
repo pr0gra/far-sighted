@@ -95,7 +95,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black">
+    <main className="bg-black text-white">
       <section
         className="h-[758px] px-16 bg-cover"
         style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
@@ -230,7 +230,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>
+      <section className="h-[600px] flex">
         <Carousel />
       </section>
       <section className="pb-[227px] pt-[100px]">
@@ -298,7 +298,7 @@ export default function Home() {
           <Image className="mr-[127px] float-right" src={BrandStrategy} alt="image" />
           <p className="clear-right">ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //</p>
           <div className="clear-right flex justify-between ">
-            <div>
+            <div className="w-[576px]">
               <p>
                 Создаем собственный язык общения бренда с аудиторией, который
                 вызовет эмоции и запомнится.

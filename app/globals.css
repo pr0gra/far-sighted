@@ -12,7 +12,8 @@
     src: url("./assets/fonts/Bakemono-Stereo-Light-trial.ttf");
 }
 
-body{
-    font-family: "BakemonoMedium";
-    color: white;
-}
+@layer base {
+    html {
+      font-family: "BakemonoMedium", system-ui, sans-serif;
+    }
+  }
