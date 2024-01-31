@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: BakemonoMedium;
-    src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf");
+  font-family: bakemonoMedium;
+  src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf") format("ttf");
 }
 
 @font-face {
-    font-family: BakemonoLight;
-    src: url("./assets/fonts/Bakemono-Stereo-Light-trial.ttf");
+  font-family: bakemonoLight;
+  src: url("./assets/fonts/Bakemono-Stereo-Light-trial.ttf") format("ttf");
 }
 
-@layer base {
-    html {
-      font-family: "BakemonoMedium", system-ui, sans-serif;
-    }
-  }
+@font-face {
+  font-family: bakemono;
+  src: url("./assets/fonts/Bakemono-Stereo-Extralight-trial.woff")
+    format("woff");
+}

@@ -1,0 +1,37 @@
+.marquee {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.content1 {
+  animation: marquee1 20s infinite linear;
+  animation-delay: -20s;
+}
+
+.content2 {
+  animation: marquee2 20s infinite linear;
+  animation-delay: -20s;
+}
+
+@keyframes marquee1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.content1:after .content2:after {
+  content: "БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ";
+}
