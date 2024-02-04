@@ -60,7 +60,11 @@ const modelDesignAgentWorkingImages = [
 export default function Home() {
   const [currentHero, setCurrentHero] = useState({
     img: Hero1,
-    name: "Дарья менеджер проекта",
+    name: (
+      <>
+        Дарья <br /> менеджер проекта
+      </>
+    ),
     text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
   });
 
@@ -69,23 +73,39 @@ export default function Home() {
     const backgroundsList = [
       {
         img: Hero1,
-        name: "Дарья менеджер проекта",
+        name: (
+          <>
+            Дарья <br /> менеджер проекта
+          </>
+        ),
         text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
       },
       {
         img: Hero2,
-        name: "Анна старший дизайнер",
+        name: (
+          <>
+            Анна <br /> старший дизайнер
+          </>
+        ),
         text: "// Концепция — Привлекая внимание общественности и выявляя актуальные проектные проблемы, предлагать заказчикам готовые системы работы/дизайн-концепции",
       },
 
       {
         img: Hero3,
-        name: "Анастасия дизайн-разведчик",
+        name: (
+          <>
+            Анастасия <br /> дизайн-разведчик
+          </>
+        ),
         text: "// К нам можно обращаться за креативными идеями решения проблемы, где уже кажется нет способов что-то придумать",
       },
       {
         img: Hero4,
-        name: "Мария дизайнер",
+        name: (
+          <>
+            Мария <br /> дизайнер
+          </>
+        ),
         text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
       },
     ];
@@ -97,11 +117,11 @@ export default function Home() {
       setCurrentHero(() => backgroundsList[count - 1]);
     }, 6000);
   }, []);
-
+  let parser = new DOMParser();
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white font-[bakemonoStereoBold]">
       <section
-        className="h-[758px] px-16 bg-cover"
+        className="h-[100vh] px-16 bg-cover"
         style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
       >
         <header className="pt-11">
@@ -135,22 +155,22 @@ export default function Home() {
               </li>
               <li>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   width="30"
                   height="24"
                   viewBox="0 0 30 24"
                   fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 [3px].39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 [3px].39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
+                    d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
                     fill="white"
                   />
                   <path
-                    d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 [3px].39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 [3px].39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
+                    d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
                     fill="white"
                   />
                   <path
-                    d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 [3px].39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 [3px].8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 [3px].39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
+                    d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
                     fill="white"
                   />
                 </svg>
@@ -183,14 +203,14 @@ export default function Home() {
               </li>
               <li>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   width="11"
                   height="25"
                   viewBox="0 0 11 25"
                   fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M4.86324 8.54313C5.59922 7.87931 5.97442 7.17219 5.97442 6.42178C5.97442 5.61365 5.4982 4.96425 4.56019 4.44474C3.60774 [3px].92522 2.09249 [3px].66547 0 [3px].6366L0.173172 0C3.27583 0.014431 5.71466 0.562808 7.48967 1.6307C9.26468 2.69859 10.1594 4.18498 10.1594 6.1043C10.1594 7.3165 9.76977 8.39882 8.97606 9.35127C8.18236 10.3037 7.30207 11.083 6.30633 11.6747C5.32503 12.2663 4.12726 12.9013 2.72745 13.5507L1.50082 10.7944C3.00164 9.95737 4.11283 9.20696 4.86324 8.54313ZM1.83273 20.3044C2.2368 19.9003 2.82847 19.6983 [3px].57888 19.6983C4.286 19.6983 4.84881 19.9003 5.2673 20.3044C5.67137 20.7084 5.88784 21.2568 5.88784 21.9495C5.88784 22.6278 5.6858 23.1617 5.2673 23.5658C4.84881 23.9698 4.30043 24.1719 [3px].57888 24.1719C2.8429 24.1719 2.28009 23.9698 1.84716 23.5658C1.42867 23.1617 1.2122 22.6278 1.2122 21.9495C1.22663 21.2568 1.42867 20.7084 1.83273 20.3044Z"
+                    d="M4.86324 8.54313C5.59922 7.87931 5.97442 7.17219 5.97442 6.42178C5.97442 5.61365 5.4982 4.96425 4.56019 4.44474C3.60774 3.92522 2.09249 3.66547 0 3.6366L0.173172 0C3.27583 0.014431 5.71466 0.562808 7.48967 1.6307C9.26468 2.69859 10.1594 4.18498 10.1594 6.1043C10.1594 7.3165 9.76977 8.39882 8.97606 9.35127C8.18236 10.3037 7.30207 11.083 6.30633 11.6747C5.32503 12.2663 4.12726 12.9013 2.72745 13.5507L1.50082 10.7944C3.00164 9.95737 4.11283 9.20696 4.86324 8.54313ZM1.83273 20.3044C2.2368 19.9003 2.82847 19.6983 3.57888 19.6983C4.286 19.6983 4.84881 19.9003 5.2673 20.3044C5.67137 20.7084 5.88784 21.2568 5.88784 21.9495C5.88784 22.6278 5.6858 23.1617 5.2673 23.5658C4.84881 23.9698 4.30043 24.1719 3.57888 24.1719C2.8429 24.1719 2.28009 23.9698 1.84716 23.5658C1.42867 23.1617 1.2122 22.6278 1.2122 21.9495C1.22663 21.2568 1.42867 20.7084 1.83273 20.3044Z"
                     fill="white"
                   />
                   <path
@@ -222,24 +242,34 @@ export default function Home() {
         </header>
         <Image src={HeroAnimatedLogo} alt="Дальновидно" />
         <div className="pb-20 grid grid-cols-[auto_744px] items-center justify-between">
-          <div className="row-span-2">
-            <p>{currentHero.name}</p>
+          <div className="row-span-2 self-end font-bakemonoTextExtralight">
+            <p className="text-[24px] ">{currentHero.name}</p>
           </div>
-          <div className="flex border-t-2 border-white justify-between mb-6">
+          <div className="flex border-t-2 text-[20px] border-white font-bakemonoTextExtralight justify-between mb-6">
             <p>22/05/2022 вс</p>
             <p>дизайн-агентство инициатив</p>
           </div>
-          <div>
-            <p className="text-right">{currentHero.text}</p>
+          <div className="w-[640px] my-0 mr-0 ml-[auto]">
+            <p className="text-right text-[27px]  font-bakemonoStereoRegular">
+              {currentHero.text}
+            </p>
           </div>
         </div>
       </section>
-      <section className="h-[600px] flex">
-        <Carousel />
+      <section className="">
+        <div className="h-[600px] flex">
+          {" "}
+          <Carousel />
+        </div>
+        <p className="pl-[15px] text-[24px] text-left font-bakemonoStereoRegular">
+          Мы подбираем под каждый проект самую дальновидную <br /> команду из
+          профессионалов в своих направлениях, чтобы <br /> прийти к
+          комплексному решению засчет <br /> междисциплинарного подхода
+        </p>
       </section>
       <section className="pb-[227px] pt-[100px]">
-        <p className=" pl-[215px] mb-[115px]">
-          {`// Модель работы агентства 
+        <p className="text-[34px] pl-[215px] mb-[115px] font-bakemonoStereoRegular  ">
+          {`// Модель работы агентства
           дизайн-инициатив`}
         </p>
         <div className=" overflow-x-auto flex gap-[93px]  pl-[85px]">
@@ -294,11 +324,11 @@ export default function Home() {
           />
         </svg>
       </div>
-      <section className="text-black font-semibold  text-[28px] bg-white pt-[232px] px-[213px]">
+      <section className="text-black  text-[28px] bg-white pt-[232px] px-[213px]">
         <div className="border-t-[3px] border-b-[3px] mb-[50px] py-[53px] border-black">
-          <p>БРЕНД СТРАТЕГИЯ</p>
+          <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
         </div>
-        <div className="">
+        <div className="font-[bakemonoStereoRegular]">
           <div className={styles.marquee}>
             <div className={styles.content1}>
               БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}
@@ -318,7 +348,7 @@ export default function Home() {
             src={BrandStrategy}
             alt="image"
           />
-          <p className="clear-right mb-[44px] text-[13px] font-[300] ">
+          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
             БРЕНД СТРАТЕГИЯ //
           </p>
           <div className="clear-right flex font-[400] justify-between ">
@@ -341,17 +371,17 @@ export default function Home() {
           </div>
         </div>
         <div className="border-t-[3px]  py-[53px] border-black">
-          <p>ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
+          <p className="font-[bakemonoTextMedium]">ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
         </div>
         <Image
           className="mr-[127px] mb-[19px] float-right"
           src={VerbalIdentification}
           alt="image"
         />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] ">
+        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
           ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
         </p>
-        <div className="clear-right flex font-[400] justify-between ">
+        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
           <div className="w-[576px] text-[28px]">
             <p className=" ">
               Создаем собственный язык общения бренда с аудиторией, который
@@ -368,7 +398,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="border-t-[3px] py-[53px] border-black">
+        <div className="border-t-[3px] font-[bakemonoTextMedium] py-[53px] border-black">
           <p>ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
         </div>
         <Image
@@ -376,10 +406,10 @@ export default function Home() {
           src={VerbalIdentification}
           alt="image"
         />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] ">
+        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
           ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
         </p>
-        <div className="clear-right flex font-[400] justify-between ">
+        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
           <div className="w-[576px] text-[28px]">
             <p className=" ">
               Создаем комплексный визуальный образ бренда, транслирующий
@@ -403,7 +433,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="border-t-[3px]  py-[53px] border-black">
+        <div className="border-t-[3px] font-[bakemonoTextMedium]  py-[53px] border-black">
           <p>РАЗВИТИЕ И ПОДДЕРЖКА</p>
         </div>
         <Image
@@ -411,10 +441,10 @@ export default function Home() {
           src={VerbalIdentification}
           alt="image"
         />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] ">
+        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
           РАЗВИТИЕ И ПОДДЕРЖКА //
         </p>
-        <div className="clear-right flex font-[400] justify-between ">
+        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
           <div className="w-[576px] text-[28px]">
             <p className=" ">
               Продвигаем и поддерживаем проекты, которые создавали.
@@ -432,9 +462,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="pb-[100px] px-[213px] pt-[200px] text-black bg-white flex">
+      <section className="pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex">
         <div>
-          <p className="text-[48px]">Обсудить с нами </p>{" "}
+          <p className="text-[45px] font-[600] ">Обсудить с нами </p>{" "}
           <div className="flex mb-[140px] gap-[27px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -518,7 +548,7 @@ export default function Home() {
           </form>
         </div>
       </section>
-      <footer className="bg-black py-[107px]  px-[86px]">
+      <footer className="bg-black py-[107px] font-[bakemonoStereoRegular] px-[86px]">
         <div className="flex  items-center gap-[50px] mb-[32px]">
           <div className="flex items-center gap-[6px]">
             <svg
@@ -558,7 +588,7 @@ export default function Home() {
               СВЯЗАТЬСЯ С НАМИ
             </p>{" "}
           </div>
-          <p className="text-[15px] font-[400]">dalnovidno@gmail.com</p>{" "}
+          <p className="text-[15px] font-[400]">DALNOVIDNO@GMAIL.COM</p>{" "}
         </div>
         <div className="border-white mb-[100px] py-[17px] flex justify-between border-b-[2px] border-t-[2px]">
           <div className="flex gap-[30px]">

@@ -3,17 +3,41 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: bakemonoMedium;
+  font-family: bakemonoStereoBold;
+  src: url("./assets/fonts/Bakemono-Stereo-Bold-trial.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: bakemonoStereoMedium;
   src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: bakemonoLight;
-  src: url("./assets/fonts/Bakemono-Stereo-Light-trial.ttf") format("ttf");
+  font-family: bakemonoStereoRegular;
+  src: url("./assets/fonts/Bakemono-Stereo-Regular-trial.ttf") format("woff");
 }
 
 @font-face {
-  font-family: bakemono;
-  src: url("./assets/fonts/Bakemono-Stereo-Extralight-trial.woff")
-    format("woff");
+  font-family: bakemonoTextExtralight;
+  src: url("./assets/fonts/Bakemono-Text-Extralight-trial.ttf");
+}
+
+@font-face {
+  font-family: bakemonoTextLight;
+  src: url("./assets/fonts/Bakemono-Text-Light-trial.ttf");
+}
+
+@font-face {
+  font-family: bakemonoTextMedium;
+  src: url("./assets/fonts/Bakemono-Text-Medium-trial.ttf");
+}
+
+@font-face {
+  font-family: bakemonoTextRegular;
+  src: url("./assets/fonts/Bakemono-Text-Regular-trial.ttf");
+}
+
+@font-face {
+  font-family: bakemonoMonoRegular;
+  src: url("./assets/fonts/Bakemono-Mono-Regular-trial.ttf");
 }
