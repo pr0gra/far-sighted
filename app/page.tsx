@@ -23,7 +23,7 @@ import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gi
 
 import styles from "./page.module.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ModelDesignWorkingElement } from "./components/ModelDesignWorkingElement";
 import { Carousel } from "./components/Carousel";
 import Link from "next/link";
@@ -58,6 +58,7 @@ const modelDesignAgentWorkingImages = [
 ];
 
 export default function Home() {
+  const modelDesignWorkingScrollRef = useRef(null);
   const [currentHero, setCurrentHero] = useState({
     img: Hero1,
     name: (
@@ -117,7 +118,12 @@ export default function Home() {
       setCurrentHero(() => backgroundsList[count - 1]);
     }, 6000);
   }, []);
-  let parser = new DOMParser();
+  const scroll = (scrollOffset: number) => {
+    if (!modelDesignWorkingScrollRef) {
+      return;
+    }
+    modelDesignWorkingScrollRef.current.scrollLeft += scrollOffset;
+  };
   return (
     <main className="bg-black text-white font-[bakemonoStereoBold]">
       <section
@@ -268,16 +274,89 @@ export default function Home() {
         </p>
       </section>
       <section className="pb-[227px] pt-[100px]">
-        <p className="text-[34px] pl-[215px] mb-[115px] font-bakemonoStereoRegular  ">
+        <p className="text-[34px] pl-[215px] font-bakemonoStereoRegular  ">
           {`// Модель работы агентства
           дизайн-инициатив`}
         </p>
-        <div className=" overflow-x-auto flex gap-[93px]  pl-[85px]">
+        <div
+          ref={modelDesignWorkingScrollRef}
+          className=" flex gap-[93px] overflow-hidden scroll-smooth items-center h-[550px] pb-[70px]  px-[85px]"
+        >
           {modelDesignAgentWorkingImages.map((sliderElem, id) => {
             return (
               <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />
             );
           })}
+        </div>
+        <div className="pr-[115px] mt-[40px]  flex justify-end gap-[38px]">
+          <button onClick={() => scroll(-372)}>
+            <svg
+              width="29"
+              height="32"
+              viewBox="0 0 29 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932L10.9146 -1.86074e-06Z"
+                fill="#C62068"
+              />
+              <path
+                d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932"
+                stroke="#C62068"
+                stroke-width="5"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398L10.9146 31.233Z"
+                fill="#C62068"
+              />
+              <path
+                d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398"
+                stroke="#C62068"
+                stroke-width="5"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M28.3577 13.7227L0.0644531 13.7227L0.0644538 17.5229L28.3577 17.5229L28.3577 13.7227Z"
+                fill="#C62068"
+              />
+            </svg>
+          </button>
+          <button onClick={() => scroll(372)}>
+            <svg
+              width="29"
+              height="32"
+              viewBox="0 0 29 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392L17.6528 31.2324Z"
+                fill="#C62068"
+              />
+              <path
+                d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392"
+                stroke="#C62068"
+                stroke-width="5"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926L17.6528 -0.000598907Z"
+                fill="#C62068"
+              />
+              <path
+                d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926"
+                stroke="#C62068"
+                stroke-width="5"
+                stroke-miterlimit="10"
+              />
+              <path
+                d="M0.209723 17.5098L28.5029 17.5098V13.7096L0.209723 13.7096V17.5098Z"
+                fill="#C62068"
+              />
+            </svg>
+          </button>
         </div>
       </section>
       <div className="flex gap-[32px] justify-center pb-[238px]">

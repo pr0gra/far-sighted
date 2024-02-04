@@ -30,8 +30,27 @@ export function Carousel() {
   const spinContainer = useRef(null);
   const musicContainer = useRef(null);
   const groundRef = useRef(null);
+  const [inIntersection, setInIntersection] = useState(false);
 
   useEffect(() => {
+    if (!dragContainer) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setInIntersection(entries[0].isIntersecting);
+      },
+      {
+        threshold: 0.8,
+      }
+    );
+    console.log(dragContainer.current);
+    observer.observe(dragContainer.current);
+  }, [dragContainer]);
+  useEffect(() => {
+    if (!inIntersection) {
+      return;
+    }
     // You can change global variables here:
     var radius = 360; // how big of the radius
     var autoRotate = true; // auto rotate or not
@@ -109,8 +128,8 @@ export function Carousel() {
         rotateSpeed
       )}s infinite linear`;
     }
-    if(dragContainer.current === null){
-      return
+    if (dragContainer.current === null) {
+      return;
     }
     // setup events
     dragContainer.current.onpointerdown = function (e: any) {
@@ -153,16 +172,14 @@ export function Carousel() {
 
       return false;
     };
-   
-   
+
     //   dragContainer.current.onmousewheel = function (e: any) {
     //     e = e || window.event;
     //     var d = e.wheelDelta / 20 || -e.detail;
     //     radius += d;
     //     init(1);
     //   };
-    
-  }, []);
+  }, [inIntersection]);
 
   return (
     <>

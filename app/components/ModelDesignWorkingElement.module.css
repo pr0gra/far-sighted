@@ -1,0 +1,32 @@
+.container {
+  perspective: 1000px;
+}
+
+.card:hover {
+}
+
+.card {
+  width: 335px;
+  height: 200px;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card_front,
+.card_back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card_front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.card_back {
+  transform: rotateY(-180deg);
+  border: 0.2px solid white;
+}
