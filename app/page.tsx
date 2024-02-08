@@ -246,19 +246,21 @@ export default function Home() {
             </ul>
           </nav>
         </header>
-        <Image src={HeroAnimatedLogo} alt="Дальновидно" />
-        <div className="pb-20 grid grid-cols-[auto_744px] items-center justify-between">
-          <div className="row-span-2 self-end font-bakemonoTextExtralight">
-            <p className="text-[24px] ">{currentHero.name}</p>
-          </div>
-          <div className="flex border-t-2 text-[20px] border-white font-bakemonoTextExtralight justify-between mb-6">
-            <p>22/05/2022 вс</p>
-            <p>дизайн-агентство инициатив</p>
-          </div>
-          <div className="w-[640px] my-0 mr-0 ml-[auto]">
-            <p className="text-right text-[27px]  font-bakemonoStereoRegular">
-              {currentHero.text}
-            </p>
+        <div className="flex justify-between flex-col pb-[120px] h-[100%]">
+          <Image src={HeroAnimatedLogo} alt="Дальновидно" />
+          <div className=" grid grid-cols-[auto_744px] items-center justify-between">
+            <div className="row-span-2 self-end font-bakemonoTextExtralight">
+              <p className="text-[24px] ">{currentHero.name}</p>
+            </div>
+            <div className="flex border-t-2 text-[20px] border-white font-bakemonoTextExtralight justify-between mb-6">
+              <p>22/05/2022 вс</p>
+              <p>дизайн-агентство инициатив</p>
+            </div>
+            <div className="w-[640px] my-0 mr-0 ml-[auto]">
+              <p className="text-right text-[27px]  font-bakemonoStereoRegular">
+                {currentHero.text}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -267,7 +269,7 @@ export default function Home() {
           {" "}
           <Carousel />
         </div>
-        <p className="pl-[15px] text-[24px] text-left font-bakemonoStereoRegular">
+        <p className="pl-[50px] text-[24px] text-left font-bakemonoStereoRegular">
           Мы подбираем под каждый проект самую дальновидную <br /> команду из
           профессионалов в своих направлениях, чтобы <br /> прийти к
           комплексному решению засчет <br /> междисциплинарного подхода
@@ -404,227 +406,239 @@ export default function Home() {
         </svg>
       </div>
       <section className="text-black  text-[28px] bg-white pt-[232px] px-[213px]">
-        <div className="border-t-[3px] border-b-[3px] mb-[50px] py-[53px] border-black">
-          <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
-        </div>
-        <div className="font-[bakemonoStereoRegular]">
-          <div className={styles.marquee}>
-            <div className={styles.content1}>
-              БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ
+        
+        <div className="w-[1225px] my-0 mx-auto">
+        <div className={styles.marquee}>
+              <div className={styles.content1}>
+                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                {"<->"}
+                БРЕНД СТРАТЕГИЯ{"<->"}
+                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                {"<->"}
+                БРЕНД СТРАТЕГИЯ
+              </div>
+              <div className={styles.content2}>
+                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                {"<->"}
+                БРЕНД СТРАТЕГИЯ{"<->"}
+                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                {"<->"}
+                БРЕНД СТРАТЕГИЯ
+              </div>
             </div>
-            <div className={styles.content2}>
-              БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}
-              БРЕНД СТРАТЕГИЯ
+          <div className="border-t-[3px] border-b-[3px] mb-[50px] py-[53px] border-black">
+            <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
+          </div>
+          <div className="font-[bakemonoStereoRegular]">
+           
+            <Image
+              className="mr-[127px] mb-[19px] float-right"
+              src={BrandStrategy}
+              alt="image"
+            />
+            <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+              БРЕНД СТРАТЕГИЯ //
+            </p>
+            <div className="clear-right flex font-[400] justify-between ">
+              <div className="w-[576px] text-[28px]">
+                <p className=" ">
+                  Создаем целостное видение по развитию вашего бренда с учетом
+                  сильных сторон компании/продукта, рыночной ситуации,
+                  потребительских инсайтов и конкурентной среды.
+                </p>
+              </div>
+              <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
+                <p>Анализ конкурентов и рынка</p>
+                <p>Исследования</p>
+                <p>Платформа бренда</p>
+                <p>Позиционирование бренда</p>
+                <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
+                  Обсудить задачу
+                </button>
+              </div>
             </div>
+          </div>
+          <div className="border-t-[3px]  py-[53px] border-black">
+            <p className="font-[bakemonoTextMedium]">
+              ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ
+            </p>
           </div>
           <Image
             className="mr-[127px] mb-[19px] float-right"
-            src={BrandStrategy}
+            src={VerbalIdentification}
             alt="image"
           />
           <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
-            БРЕНД СТРАТЕГИЯ //
+            ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
           </p>
-          <div className="clear-right flex font-[400] justify-between ">
+          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
             <div className="w-[576px] text-[28px]">
               <p className=" ">
-                Создаем целостное видение по развитию вашего бренда с учетом
-                сильных сторон компании/продукта, рыночной ситуации,
-                потребительских инсайтов и конкурентной среды.
+                Создаем собственный язык общения бренда с аудиторией, который
+                вызовет эмоции и запомнится.
               </p>
             </div>
-            <div className="flex text-[28px] w-[365px] flex-col gap-[57px]">
-              <p>Анализ конкурентов и рынка</p>
-              <p>Исследования</p>
-              <p>Платформа бренда</p>
-              <p>Позиционирование бренда</p>
+            <div className="flex font-bold text-[28px] w-[365px] flex-col gap-[57px]">
+              <p>Нейминг</p>
+              <p>Дескриптор</p>
+              <p>Слоган</p>
+              <p>Речевой портрет</p>
+              <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
+                Обсудить задачу
+              </button>
+            </div>
+          </div>
+          <div className="border-t-[3px] font-[bakemonoTextMedium] py-[53px] border-black">
+            <p>ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
+          </div>
+          <Image
+            className="mr-[127px] mb-[19px] float-right"
+            src={VisualIdentification}
+            alt="image"
+          />
+          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+            ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
+          </p>
+          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
+            <div className="w-[576px] text-[28px]">
+              <p className=" ">
+                Создаем комплексный визуальный образ бренда, транслирующий
+                эмоциональные и рациональные ценности.
+              </p>
+              <p>
+                Даем подробное руководство по использованию во всех ситуациях и
+                прорабатываем все элементы стиля
+              </p>
+            </div>
+            <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
+              <p>Логотип</p>
+              <p>Цветовая гамма</p>
+              <p>Шрифты и основа типографики </p>
+              <p>Фон, паттерн, орнамент</p>
+              <p>Графические элементы</p>
+              <p>Инфографика, условные обозначения</p>
+              <p>Стилистика иллюстраций/фотографий</p>
+              <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
+                Обсудить задачу
+              </button>
+            </div>
+          </div>
+          <div className="border-t-[3px] font-[bakemonoTextMedium]  py-[53px] border-black">
+            <p>РАЗВИТИЕ И ПОДДЕРЖКА</p>
+          </div>
+          <Image
+            className="mr-[127px] mb-[19px] float-right"
+            src={EvlolutionAndSupport}
+            alt="image"
+          />
+          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+            РАЗВИТИЕ И ПОДДЕРЖКА //
+          </p>
+          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
+            <div className="w-[576px] text-[28px]">
+              <p className=" ">
+                Продвигаем и поддерживаем проекты, которые создавали.
+              </p>
+            </div>
+            <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
+              <p>Коммуникационная стратегия</p>
+              <p>Рекламная компания</p>
+              <p>Разработка сайта</p>
+              <p>Имеджевое, рекламное, презентационное видео</p>
+              <p>Оформление презентаций</p>
               <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
                 Обсудить задачу
               </button>
             </div>
           </div>
         </div>
-        <div className="border-t-[3px]  py-[53px] border-black">
-          <p className="font-[bakemonoTextMedium]">ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
-        </div>
-        <Image
-          className="mr-[127px] mb-[19px] float-right"
-          src={VerbalIdentification}
-          alt="image"
-        />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
-          ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
-        </p>
-        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-          <div className="w-[576px] text-[28px]">
-            <p className=" ">
-              Создаем собственный язык общения бренда с аудиторией, который
-              вызовет эмоции и запомнится.
-            </p>
-          </div>
-          <div className="flex text-[28px] w-[365px] flex-col gap-[57px]">
-            <p>Нейминг</p>
-            <p>Дескриптор</p>
-            <p>Слоган</p>
-            <p>Речевой портрет</p>
-            <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-              Обсудить задачу
-            </button>
-          </div>
-        </div>
-        <div className="border-t-[3px] font-[bakemonoTextMedium] py-[53px] border-black">
-          <p>ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
-        </div>
-        <Image
-          className="mr-[127px] mb-[19px] float-right"
-          src={VerbalIdentification}
-          alt="image"
-        />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
-          ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
-        </p>
-        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-          <div className="w-[576px] text-[28px]">
-            <p className=" ">
-              Создаем комплексный визуальный образ бренда, транслирующий
-              эмоциональные и рациональные ценности.
-            </p>
-            <p>
-              Даем подробное руководство по использованию во всех ситуациях и
-              прорабатываем все элементы стиля
-            </p>
-          </div>
-          <div className="flex text-[28px] w-[365px] flex-col gap-[57px]">
-            <p>Логотип</p>
-            <p>Цветовая гамма</p>
-            <p>Шрифты и основа типографики </p>
-            <p>Фон, паттерн, орнамент</p>
-            <p>Графические элементы</p>
-            <p>Инфографика, условные обозначения</p>
-            <p>Стилистика иллюстраций/фотографий</p>
-            <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-              Обсудить задачу
-            </button>
-          </div>
-        </div>
-        <div className="border-t-[3px] font-[bakemonoTextMedium]  py-[53px] border-black">
-          <p>РАЗВИТИЕ И ПОДДЕРЖКА</p>
-        </div>
-        <Image
-          className="mr-[127px] mb-[19px] float-right"
-          src={VerbalIdentification}
-          alt="image"
-        />
-        <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
-          РАЗВИТИЕ И ПОДДЕРЖКА //
-        </p>
-        <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-          <div className="w-[576px] text-[28px]">
-            <p className=" ">
-              Продвигаем и поддерживаем проекты, которые создавали.
-            </p>
-          </div>
-          <div className="flex text-[28px] w-[365px] flex-col gap-[57px]">
-            <p>Коммуникационная стратегия</p>
-            <p>Рекламная компания</p>
-            <p>Разработка сайта</p>
-            <p>Имеджевое, рекламное, презентационное видео</p>
-            <p>Оформление презентаций</p>
-            <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-              Обсудить задачу
-            </button>
-          </div>
-        </div>
       </section>
       <section className="pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex">
-        <div>
-          <p className="text-[45px] font-[600] ">Обсудить с нами </p>{" "}
-          <div className="flex mb-[140px] gap-[27px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="39"
-              height="43"
-              viewBox="0 0 39 43"
-              fill="none"
-            >
-              <path
-                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                stroke="#1155CC"
-                stroke-width="5"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                stroke="#1155CC"
-                stroke-width="5"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                fill="#1155CC"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="39"
-              height="43"
-              viewBox="0 0 39 43"
-              fill="none"
-            >
-              <path
-                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                stroke="#1155CC"
-                stroke-width="5"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                stroke="#1155CC"
-                stroke-width="5"
-                stroke-miterlimit="10"
-              />
-              <path
-                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                fill="#1155CC"
-              />
-            </svg>
+        <div className="w-[1225px] my-0 mx-auto flex">
+          <div>
+            <p className="text-[45px] font-[600] ">Обсудить с нами </p>{" "}
+            <div className="flex mb-[140px] gap-[27px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="39"
+                height="43"
+                viewBox="0 0 39 43"
+                fill="none"
+              >
+                <path
+                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                  stroke="#1155CC"
+                  stroke-width="5"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                  stroke="#1155CC"
+                  stroke-width="5"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                  fill="#1155CC"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="39"
+                height="43"
+                viewBox="0 0 39 43"
+                fill="none"
+              >
+                <path
+                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                  stroke="#1155CC"
+                  stroke-width="5"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                  stroke="#1155CC"
+                  stroke-width="5"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                  fill="#1155CC"
+                />
+              </svg>
+            </div>
+            <Image src={SpinningStaerEmailBlock} alt="" />
           </div>
-          <Image src={SpinningStaerEmailBlock} alt="" />
-        </div>
-        <div className="bg-black p-[100px] text-white">
-          <form className="flex flex-col text-[28px] gap-[64px]" action="">
-            <input
-              className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
-              placeholder="/как к вам обращаться?"
-              type="text"
-            />
-            <input
-              className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
-              placeholder="/тема разговора"
-              type="text"
-            />
-            <input
-              className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
-              placeholder="/телефон"
-              type="text"
-            />
-            <input
-              className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
-              placeholder="/почта"
-              type="text"
-            />
-            <textarea
-              className="py-[10px] px-[19px] h-[221px] bg-black placeholder-white border-[2px] border-white rounded-[13px]"
-              placeholder="/расскажите о вашей задаче"
-              name=""
-              id=""
-            ></textarea>
-          </form>
+          <div className="bg-black p-[100px] text-white">
+            <form className="flex flex-col text-[28px] gap-[64px]" action="">
+              <input
+                className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
+                placeholder="/как к вам обращаться?"
+                type="text"
+              />
+              <input
+                className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
+                placeholder="/тема разговора"
+                type="text"
+              />
+              <input
+                className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
+                placeholder="/телефон"
+                type="text"
+              />
+              <input
+                className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
+                placeholder="/почта"
+                type="text"
+              />
+              <textarea
+                className="py-[10px] px-[19px] h-[221px] bg-black placeholder-white border-[2px] border-white rounded-[13px]"
+                placeholder="/расскажите о вашей задаче"
+                name=""
+                id=""
+              ></textarea>
+            </form>
+          </div>
         </div>
       </section>
       <footer className="bg-black py-[107px] font-[bakemonoStereoRegular] px-[86px]">
