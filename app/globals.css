@@ -4,17 +4,17 @@
 
 @font-face {
   font-family: bakemonoStereoBold;
-  src: url("./assets/fonts/Bakemono-Stereo-Bold-trial.ttf") format("ttf");
+  src: url("./assets/fonts/Bakemono-Stereo-Bold-trial.ttf");
 }
 
 @font-face {
   font-family: bakemonoStereoMedium;
-  src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf") format("ttf");
+  src: url("./assets/fonts/Bakemono-Stereo-Medium-trial.ttf");
 }
 
 @font-face {
   font-family: bakemonoStereoRegular;
-  src: url("./assets/fonts/Bakemono-Stereo-Regular-trial.ttf") format("woff");
+  src: url("./assets/fonts/Bakemono-Stereo-Regular-trial.ttf");
 }
 
 @font-face {

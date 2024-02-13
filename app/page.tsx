@@ -21,6 +21,8 @@ import VerbalIdentification from "./assets/images/verbal-identification.svg";
 import EvlolutionAndSupport from "./assets/images/evolution-and-support.svg";
 import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gif";
 
+import girlWalking from "./assets/videos/girlWalking.mp4";
+
 import styles from "./page.module.css";
 
 import { useEffect, useRef, useState } from "react";
@@ -59,6 +61,7 @@ const modelDesignAgentWorkingImages = [
 
 export default function Home() {
   const modelDesignWorkingScrollRef = useRef(null);
+  const [isBrandStrategyOpen, setIsBrandStrategyOpen] = useState(false);
   const [currentHero, setCurrentHero] = useState({
     img: Hero1,
     name: (
@@ -275,6 +278,8 @@ export default function Home() {
           комплексному решению засчет <br /> междисциплинарного подхода
         </p>
       </section>
+
+      <section></section>
       <section className="pb-[227px] pt-[100px]">
         <p className="text-[34px] pl-[215px] font-bakemonoStereoRegular  ">
           {`// Модель работы агентства
@@ -406,59 +411,77 @@ export default function Home() {
         </svg>
       </div>
       <section className="text-black  text-[28px] bg-white pt-[232px] px-[213px]">
-        
         <div className="w-[1225px] my-0 mx-auto">
-        <div className={styles.marquee}>
-              <div className={styles.content1}>
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ
+          <div className="relative">
+            <button
+              className="w-[100%]"
+              onClick={() => {
+                setIsBrandStrategyOpen((prev) => !prev);
+              }}
+            >
+              <div
+                className={`${
+                  isBrandStrategyOpen && styles.animateTest
+                } absolute w-[100%] border-t-[3px] text-left  border-b-[3px] mb-[50px] py-[53px] border-black`}
+              >
+                <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
+              </div>{" "}
+              <div
+              style={{visibility: !isBrandStrategyOpen && "hidden"}}
+                className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
+              >
+                <div className={styles.content1}>
+                  БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                  {"<->"}
+                  БРЕНД СТРАТЕГИЯ{"<->"}
+                  БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                  {"<->"}
+                  БРЕНД СТРАТЕГИЯ
+                </div>
+                <div className={styles.content2}>
+                  БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                  {"<->"}
+                  БРЕНД СТРАТЕГИЯ{"<->"}
+                  БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
+                  {"<->"}
+                  БРЕНД СТРАТЕГИЯ
+                </div>
               </div>
-              <div className={styles.content2}>
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ
-              </div>
-            </div>
-          <div className="border-t-[3px] border-b-[3px] mb-[50px] py-[53px] border-black">
-            <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
-          </div>
-          <div className="font-[bakemonoStereoRegular]">
-           
-            <Image
-              className="mr-[127px] mb-[19px] float-right"
-              src={BrandStrategy}
-              alt="image"
-            />
-            <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
-              БРЕНД СТРАТЕГИЯ //
-            </p>
-            <div className="clear-right flex font-[400] justify-between ">
-              <div className="w-[576px] text-[28px]">
-                <p className=" ">
-                  Создаем целостное видение по развитию вашего бренда с учетом
-                  сильных сторон компании/продукта, рыночной ситуации,
-                  потребительских инсайтов и конкурентной среды.
+            </button>
+
+            {isBrandStrategyOpen && (
+              <div className="font-[bakemonoStereoRegular]">
+                <Image
+                  className="mr-[127px] mb-[19px] float-right"
+                  src={BrandStrategy}
+                  alt="image"
+                />
+                <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
+                  БРЕНД СТРАТЕГИЯ //
                 </p>
+                <div className="clear-right flex font-[400] justify-between ">
+                  <div className="w-[576px] text-[28px]">
+                    <p className=" ">
+                      Создаем целостное видение по развитию вашего бренда с
+                      учетом сильных сторон компании/продукта, рыночной
+                      ситуации, потребительских инсайтов и конкурентной среды.
+                    </p>
+                  </div>
+                  <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
+                    <p>Анализ конкурентов и рынка</p>
+                    <p>Исследования</p>
+                    <p>Платформа бренда</p>
+                    <p>Позиционирование бренда</p>
+                    <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
+                      Обсудить задачу
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
-                <p>Анализ конкурентов и рынка</p>
-                <p>Исследования</p>
-                <p>Платформа бренда</p>
-                <p>Позиционирование бренда</p>
-                <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-                  Обсудить задачу
-                </button>
-              </div>
-            </div>
+            )}
           </div>
-          <div className="border-t-[3px]  py-[53px] border-black">
+
+          {/* <div className="border-t-[3px]  py-[53px] border-black">
             <p className="font-[bakemonoTextMedium]">
               ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ
             </p>
@@ -468,7 +491,7 @@ export default function Home() {
             src={VerbalIdentification}
             alt="image"
           />
-          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
             ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
           </p>
           <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
@@ -496,7 +519,7 @@ export default function Home() {
             src={VisualIdentification}
             alt="image"
           />
-          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
             ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
           </p>
           <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
@@ -507,7 +530,7 @@ export default function Home() {
               </p>
               <p>
                 Даем подробное руководство по использованию во всех ситуациях и
-                прорабатываем все элементы стиля
+                прорабатываем все элементы стиля.
               </p>
             </div>
             <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
@@ -531,7 +554,7 @@ export default function Home() {
             src={EvlolutionAndSupport}
             alt="image"
           />
-          <p className="clear-right mb-[44px] text-[13px] font-[300] font-[bakemonoTextLight]">
+          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
             РАЗВИТИЕ И ПОДДЕРЖКА //
           </p>
           <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
@@ -550,7 +573,7 @@ export default function Home() {
                 Обсудить задачу
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       <section className="pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex">
@@ -683,19 +706,19 @@ export default function Home() {
           </div>
           <p className="text-[15px] font-[400]">DALNOVIDNO@GMAIL.COM</p>{" "}
         </div>
-        <div className="border-white mb-[100px] py-[17px] flex justify-between border-b-[2px] border-t-[2px]">
+        <div className="border-white mb-[100px] py-[17px] flex items-center justify-between border-b-[2px] border-t-[2px]">
           <div className="flex gap-[30px]">
             <Link href="">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</Link>
             <p>{`//`}</p> <Link href="">ХОЧУ В КОМАНДУ</Link> <p>{`//`}</p>{" "}
             <Link href="">ОДНОВРЕМЕННО ВЕЗДЕ</Link>
           </div>
-          <div className="flex gap-[91px]">
+          <div className="flex items-center gap-[91px]">
             <p>Следить</p>{" "}
-            <div className="flex items-center">
+            <div className="flex gap-[20px] items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
+                width="40"
+                height="40"
                 viewBox="0 0 17 17"
                 fill="none"
               >
@@ -710,8 +733,8 @@ export default function Home() {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
+                width="40"
+                height="40"
                 viewBox="0 0 17 17"
                 fill="none"
               >
@@ -725,29 +748,21 @@ export default function Home() {
                 />
               </svg>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                fill="none"
-              >
-                <path
-                  d="M8.875 4.43684C8.875 5.31848 8.56641 6.12434 8.00664 6.70676C7.48398 7.24934 6.77539 7.56184 6.0625 7.56184C5.36406 7.56184 4.89766 7.33293 4.60039 7.09309L4.1793 8.88332C4.16318 8.95192 4.12435 9.01306 4.06911 9.05681C4.01387 9.10056 3.94547 9.12436 3.875 9.12434C3.85081 9.12431 3.8267 9.12156 3.80313 9.11614C3.76302 9.10693 3.72512 9.0899 3.69162 9.06601C3.65811 9.04212 3.62965 9.01185 3.60788 8.97693C3.5861 8.94202 3.57143 8.90314 3.56472 8.86255C3.558 8.82195 3.55937 8.78042 3.56875 8.74035L4.81875 3.42785C4.83771 3.34715 4.88795 3.27728 4.95842 3.23362C5.0289 3.18996 5.11383 3.17608 5.19453 3.19504C5.27524 3.214 5.3451 3.26424 5.38876 3.33472C5.43243 3.40519 5.4463 3.49012 5.42734 3.57082L4.76719 6.37551C4.89062 6.54621 5.25391 6.93684 6.0625 6.93684C7.13789 6.93684 8.25 6.00168 8.25 4.43684C8.24983 4.00554 8.15047 3.58005 7.9596 3.19328C7.76873 2.80651 7.49147 2.46882 7.14924 2.20632C6.80702 1.94382 6.40901 1.76355 5.98599 1.67943C5.56296 1.59532 5.12626 1.60963 4.70965 1.72125C4.29304 1.83286 3.90769 2.0388 3.58338 2.32313C3.25907 2.60747 3.0045 2.96258 2.83935 3.36101C2.6742 3.75945 2.6029 4.19052 2.63096 4.62091C2.65902 5.0513 2.78569 5.46947 3.00117 5.84309C3.04004 5.91467 3.04943 5.9986 3.02733 6.077C3.00523 6.1554 2.95339 6.22207 2.88285 6.26282C2.81232 6.30356 2.72866 6.31515 2.64971 6.29512C2.57076 6.27509 2.50274 6.22503 2.46016 6.15559C2.19665 5.69895 2.04171 5.18783 2.00732 4.66174C1.97293 4.13565 2.06001 3.6087 2.26182 3.12165C2.46363 2.63459 2.77477 2.20049 3.17117 1.8529C3.56757 1.50531 4.03861 1.25356 4.54786 1.11712C5.05711 0.980672 5.59092 0.963191 6.108 1.06603C6.62508 1.16886 7.11158 1.38925 7.52988 1.71016C7.94817 2.03107 8.28704 2.44389 8.52029 2.9167C8.75353 3.38951 8.8749 3.90963 8.875 4.43684Z"
-                  fill="black"
-                  stroke="black"
-                  stroke-width="0.5"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
+                width="40"
+                height="41"
                 viewBox="0 0 17 17"
                 fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M8.5 17C13.1944 17 17 13.1944 17 8.5C17 3.80558 13.1944 0 8.5 0C3.80558 0 0 3.80558 0 8.5C0 13.1944 3.80558 17 8.5 17Z"
                   fill="white"
+                />
+                <path
+                  d="M11.875 7.43684C11.875 8.31848 11.5664 9.12434 11.0066 9.70676C10.484 10.2493 9.77539 10.5618 9.0625 10.5618C8.36406 10.5618 7.89766 10.3329 7.60039 10.0931L7.1793 11.8833C7.16318 11.9519 7.12435 12.0131 7.06911 12.0568C7.01387 12.1006 6.94547 12.1244 6.875 12.1243C6.85081 12.1243 6.8267 12.1216 6.80313 12.1161C6.76302 12.1069 6.72512 12.0899 6.69162 12.066C6.65811 12.0421 6.62965 12.0118 6.60788 11.9769C6.5861 11.942 6.57143 11.9031 6.56472 11.8625C6.558 11.8219 6.55937 11.7804 6.56875 11.7404L7.81875 6.42785C7.83771 6.34715 7.88795 6.27728 7.95842 6.23362C8.0289 6.18996 8.11383 6.17608 8.19453 6.19504C8.27524 6.214 8.3451 6.26424 8.38876 6.33472C8.43243 6.40519 8.4463 6.49012 8.42734 6.57082L7.76719 9.37551C7.89062 9.54621 8.25391 9.93684 9.0625 9.93684C10.1379 9.93684 11.25 9.00168 11.25 7.43684C11.2498 7.00554 11.1505 6.58005 10.9596 6.19328C10.7687 5.80651 10.4915 5.46882 10.1492 5.20632C9.80702 4.94382 9.40901 4.76355 8.98599 4.67943C8.56296 4.59532 8.12626 4.60963 7.70965 4.72125C7.29304 4.83286 6.90769 5.0388 6.58338 5.32313C6.25907 5.60747 6.0045 5.96258 5.83935 6.36101C5.6742 6.75945 5.6029 7.19052 5.63096 7.62091C5.65902 8.0513 5.78569 8.46947 6.00117 8.84309C6.04004 8.91467 6.04943 8.9986 6.02733 9.077C6.00523 9.1554 5.95339 9.22207 5.88285 9.26282C5.81232 9.30356 5.72866 9.31515 5.64971 9.29512C5.57076 9.27509 5.50274 9.22503 5.46016 9.15559C5.19665 8.69895 5.04171 8.18783 5.00732 7.66174C4.97293 7.13565 5.06001 6.6087 5.26182 6.12165C5.46363 5.63459 5.77477 5.20049 6.17117 4.8529C6.56757 4.50531 7.03861 4.25356 7.54786 4.11712C8.05711 3.98067 8.59092 3.96319 9.108 4.06603C9.62508 4.16886 10.1116 4.38925 10.5299 4.71016C10.9482 5.03107 11.287 5.44389 11.5203 5.9167C11.7535 6.38951 11.8749 6.90963 11.875 7.43684Z"
+                  fill="black"
+                  stroke="black"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
