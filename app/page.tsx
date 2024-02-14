@@ -311,8 +311,8 @@ export default function Home() {
               <path
                 d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932"
                 stroke="#C62068"
-                stroke-width="5"
-                stroke-miterlimit="10"
+                strokeWidth="5"
+                strokeMiterlimit="10"
               />
               <path
                 d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398L10.9146 31.233Z"
@@ -321,8 +321,8 @@ export default function Home() {
               <path
                 d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398"
                 stroke="#C62068"
-                stroke-width="5"
-                stroke-miterlimit="10"
+                strokeWidth="5"
+                strokeMiterlimit="10"
               />
               <path
                 d="M28.3577 13.7227L0.0644531 13.7227L0.0644538 17.5229L28.3577 17.5229L28.3577 13.7227Z"
@@ -345,8 +345,8 @@ export default function Home() {
               <path
                 d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392"
                 stroke="#C62068"
-                stroke-width="5"
-                stroke-miterlimit="10"
+                strokeWidth="5"
+                strokeMiterlimit="10"
               />
               <path
                 d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926L17.6528 -0.000598907Z"
@@ -355,8 +355,8 @@ export default function Home() {
               <path
                 d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926"
                 stroke="#C62068"
-                stroke-width="5"
-                stroke-miterlimit="10"
+                strokeWidth="5"
+                strokeMiterlimit="10"
               />
               <path
                 d="M0.209723 17.5098L28.5029 17.5098V13.7096L0.209723 13.7096V17.5098Z"
@@ -377,8 +377,8 @@ export default function Home() {
           <path
             d="M1 1H352"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
         <svg
@@ -391,8 +391,8 @@ export default function Home() {
           <path
             d="M1 1H873"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
         <svg
@@ -405,8 +405,8 @@ export default function Home() {
           <path
             d="M1 1L224 0.999981"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
       </div>
@@ -427,7 +427,7 @@ export default function Home() {
                 <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
               </div>{" "}
               <div
-              style={{visibility: !isBrandStrategyOpen && "hidden"}}
+                style={{ visibility: !isBrandStrategyOpen && "hidden" }}
                 className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
               >
                 <div className={styles.content1}>
@@ -591,14 +591,14 @@ export default function Home() {
                 <path
                   d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
                   stroke="#1155CC"
-                  stroke-width="5"
-                  stroke-miterlimit="10"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
                 />
                 <path
                   d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
                   stroke="#1155CC"
-                  stroke-width="5"
-                  stroke-miterlimit="10"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
                 />
                 <path
                   d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
@@ -615,14 +615,14 @@ export default function Home() {
                 <path
                   d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
                   stroke="#1155CC"
-                  stroke-width="5"
-                  stroke-miterlimit="10"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
                 />
                 <path
                   d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
                   stroke="#1155CC"
-                  stroke-width="5"
-                  stroke-miterlimit="10"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
                 />
                 <path
                   d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
@@ -762,7 +762,7 @@ export default function Home() {
                   d="M11.875 7.43684C11.875 8.31848 11.5664 9.12434 11.0066 9.70676C10.484 10.2493 9.77539 10.5618 9.0625 10.5618C8.36406 10.5618 7.89766 10.3329 7.60039 10.0931L7.1793 11.8833C7.16318 11.9519 7.12435 12.0131 7.06911 12.0568C7.01387 12.1006 6.94547 12.1244 6.875 12.1243C6.85081 12.1243 6.8267 12.1216 6.80313 12.1161C6.76302 12.1069 6.72512 12.0899 6.69162 12.066C6.65811 12.0421 6.62965 12.0118 6.60788 11.9769C6.5861 11.942 6.57143 11.9031 6.56472 11.8625C6.558 11.8219 6.55937 11.7804 6.56875 11.7404L7.81875 6.42785C7.83771 6.34715 7.88795 6.27728 7.95842 6.23362C8.0289 6.18996 8.11383 6.17608 8.19453 6.19504C8.27524 6.214 8.3451 6.26424 8.38876 6.33472C8.43243 6.40519 8.4463 6.49012 8.42734 6.57082L7.76719 9.37551C7.89062 9.54621 8.25391 9.93684 9.0625 9.93684C10.1379 9.93684 11.25 9.00168 11.25 7.43684C11.2498 7.00554 11.1505 6.58005 10.9596 6.19328C10.7687 5.80651 10.4915 5.46882 10.1492 5.20632C9.80702 4.94382 9.40901 4.76355 8.98599 4.67943C8.56296 4.59532 8.12626 4.60963 7.70965 4.72125C7.29304 4.83286 6.90769 5.0388 6.58338 5.32313C6.25907 5.60747 6.0045 5.96258 5.83935 6.36101C5.6742 6.75945 5.6029 7.19052 5.63096 7.62091C5.65902 8.0513 5.78569 8.46947 6.00117 8.84309C6.04004 8.91467 6.04943 8.9986 6.02733 9.077C6.00523 9.1554 5.95339 9.22207 5.88285 9.26282C5.81232 9.30356 5.72866 9.31515 5.64971 9.29512C5.57076 9.27509 5.50274 9.22503 5.46016 9.15559C5.19665 8.69895 5.04171 8.18783 5.00732 7.66174C4.97293 7.13565 5.06001 6.6087 5.26182 6.12165C5.46363 5.63459 5.77477 5.20049 6.17117 4.8529C6.56757 4.50531 7.03861 4.25356 7.54786 4.11712C8.05711 3.98067 8.59092 3.96319 9.108 4.06603C9.62508 4.16886 10.1116 4.38925 10.5299 4.71016C10.9482 5.03107 11.287 5.44389 11.5203 5.9167C11.7535 6.38951 11.8749 6.90963 11.875 7.43684Z"
                   fill="black"
                   stroke="black"
-                  stroke-width="0.5"
+                  strokeWidth="0.5"
                 />
               </svg>
             </div>
