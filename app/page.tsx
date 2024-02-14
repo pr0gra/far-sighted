@@ -21,7 +21,7 @@ import VerbalIdentification from "./assets/images/verbal-identification.svg";
 import EvlolutionAndSupport from "./assets/images/evolution-and-support.svg";
 import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gif";
 
-import girlWalking from "./assets/videos/girlWalking.mp4";
+// import girlWalking from "./assets/videos/girlWalking.mp4";
 
 import styles from "./page.module.css";
 
@@ -122,10 +122,11 @@ export default function Home() {
     }, 6000);
   }, []);
   const scroll = (scrollOffset: number) => {
-    if (!modelDesignWorkingScrollRef) {
+    if (!modelDesignWorkingScrollRef || !modelDesignWorkingScrollRef.current) {
       return;
     }
-    modelDesignWorkingScrollRef.current.scrollLeft += scrollOffset;
+    const scrollRef = modelDesignWorkingScrollRef.current as HTMLElement;
+    scrollRef.scrollLeft += scrollOffset;
   };
   return (
     <main className="bg-black text-white font-[bakemonoStereoBold]">
@@ -425,9 +426,11 @@ export default function Home() {
                 } absolute w-[100%] border-t-[3px] text-left  border-b-[3px] mb-[50px] py-[53px] border-black`}
               >
                 <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
-              </div>{" "}
+              </div>
               <div
-                style={{ visibility: !isBrandStrategyOpen && "hidden" }}
+                style={{
+                  visibility: isBrandStrategyOpen ? "visible" : "hidden",
+                }}
                 className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
               >
                 <div className={styles.content1}>
