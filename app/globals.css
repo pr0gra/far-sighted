@@ -41,3 +41,12 @@
   font-family: bakemonoMonoRegular;
   src: url("./assets/fonts/Bakemono-Mono-Regular-trial.ttf");
 }
+
+.dark {
+  --adaptive-white-to-black: white;
+  --adaptive-black-to-white: black;
+}
+.light {
+  --adaptive-white-to-black: black;
+  --adaptive-black-to-white: white;
+}
