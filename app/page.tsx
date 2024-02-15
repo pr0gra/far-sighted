@@ -252,12 +252,18 @@ export default function Home() {
         </header>
         <div className="flex justify-between flex-col pb-[120px] h-[100%]">
           <Image src={HeroAnimatedLogo} alt="Дальновидно" />
-          <div className=" grid grid-cols-[auto_744px] items-center justify-between">
+          <div
+            className={`grid grid-cols-[auto_744px] items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
+          >
             <div className="row-span-2 self-end font-bakemonoTextExtralight">
               <p className="text-[24px] ">{currentHero.name}</p>
             </div>
-            <div className="flex border-t-2 text-[20px] border-white font-bakemonoTextExtralight justify-between mb-6">
-              <p>22/05/2022 вс</p>
+            <div className="flex border-t-2 text-[20px] border-white font-bakemonoTextExtralight justify-between mb-6 flex-wrap">
+              <p
+                className={`${styles["hero__text-block--margin-right-mobile"]}`}
+              >
+                22/05/2022 вс
+              </p>
               <p>дизайн-агентство инициатив</p>
             </div>
             <div className="w-[640px] my-0 mr-0 ml-[auto]">
@@ -273,16 +279,20 @@ export default function Home() {
           {" "}
           <Carousel />
         </div>
-        <p className="pl-[50px] text-[24px] text-left font-bakemonoStereoRegular">
+        <p
+          className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular ${styles["padding-h-mobile-25"]}`}
+        >
           Мы подбираем под каждый проект самую дальновидную <br /> команду из
           профессионалов в своих направлениях, чтобы <br /> прийти к
           комплексному решению засчет <br /> междисциплинарного подхода
         </p>
       </section>
 
-      <section></section>
+      {/* <section></section> */}
       <section className="pb-[227px] pt-[100px]">
-        <p className="text-[34px] pl-[215px] font-bakemonoStereoRegular  ">
+        <p
+          className={`text-[34px] pl-[215px] font-bakemonoStereoRegular ${styles["padding-left-50-mobile"]}`}
+        >
           {`// Модель работы агентства
           дизайн-инициатив`}
         </p>
@@ -411,8 +421,10 @@ export default function Home() {
           />
         </svg>
       </div>
-      <section className="text-black  text-[28px] bg-white pt-[232px] px-[213px]">
-        <div className="w-[1225px] my-0 mx-auto">
+      <section
+        className={`text-black text-[28px] bg-white pt-[106px] px-[213px] pb-[106px] ${styles["padding-h-mobile-25"]}`}
+      >
+        <div className="w-[100%] my-0 mx-auto">
           <div className="relative">
             <button
               className="w-[100%]"
@@ -421,11 +433,15 @@ export default function Home() {
               }}
             >
               <div
-                className={`${
-                  isBrandStrategyOpen && styles.animateTest
-                } absolute w-[100%] border-t-[3px] text-left  border-b-[3px] mb-[50px] py-[53px] border-black`}
+                className={`${isBrandStrategyOpen && styles.animateTest} 
+                
+                 w-[100%] border-t-[3px] text-left  border-b-[3px] py-[53px] border-black`}
               >
-                <p className="font-[bakemonoTextMedium]">БРЕНД СТРАТЕГИЯ</p>
+                <p
+                  className={`font-[bakemonoTextMedium] ${styles["text-align-center-mobile"]}`}
+                >
+                  БРЕНД СТРАТЕГИЯ
+                </p>
               </div>
               <div
                 style={{
@@ -455,22 +471,28 @@ export default function Home() {
             {isBrandStrategyOpen && (
               <div className="font-[bakemonoStereoRegular]">
                 <Image
-                  className="mr-[127px] mb-[19px] float-right"
+                  className={`mr-[127px] mb-[19px] float-right ${styles["margin-0-mobile"]}`}
                   src={BrandStrategy}
                   alt="image"
                 />
                 <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
                   БРЕНД СТРАТЕГИЯ //
                 </p>
-                <div className="clear-right flex font-[400] justify-between ">
-                  <div className="w-[576px] text-[28px]">
+                <div
+                  className={`clear-right flex font-[400] justify-between ${styles["direction-column-mobile"]}`}
+                >
+                  <div
+                    className={`w-[576px] text-[28px] ${styles["width-100-mobile"]}`}
+                  >
                     <p className=" ">
                       Создаем целостное видение по развитию вашего бренда с
                       учетом сильных сторон компании/продукта, рыночной
                       ситуации, потребительских инсайтов и конкурентной среды.
                     </p>
                   </div>
-                  <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
+                  <div
+                    className={`flex text-[28px] font-bold w-[365px] flex-col gap-[57px] ${styles["width-100-mobile"]} ${styles["gap-20-mobile"]}`}
+                  >
                     <p>Анализ конкурентов и рынка</p>
                     <p>Исследования</p>
                     <p>Платформа бренда</p>
@@ -483,107 +505,23 @@ export default function Home() {
               </div>
             )}
           </div>
-
-          {/* <div className="border-t-[3px]  py-[53px] border-black">
-            <p className="font-[bakemonoTextMedium]">
-              ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ
-            </p>
-          </div>
-          <Image
-            className="mr-[127px] mb-[19px] float-right"
-            src={VerbalIdentification}
-            alt="image"
-          />
-          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
-            ВЕРБАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
-          </p>
-          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-            <div className="w-[576px] text-[28px]">
-              <p className=" ">
-                Создаем собственный язык общения бренда с аудиторией, который
-                вызовет эмоции и запомнится.
-              </p>
-            </div>
-            <div className="flex font-bold text-[28px] w-[365px] flex-col gap-[57px]">
-              <p>Нейминг</p>
-              <p>Дескриптор</p>
-              <p>Слоган</p>
-              <p>Речевой портрет</p>
-              <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-                Обсудить задачу
-              </button>
-            </div>
-          </div>
-          <div className="border-t-[3px] font-[bakemonoTextMedium] py-[53px] border-black">
-            <p>ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ</p>
-          </div>
-          <Image
-            className="mr-[127px] mb-[19px] float-right"
-            src={VisualIdentification}
-            alt="image"
-          />
-          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
-            ВИЗУАЛЬНАЯ ИДЕНТИФИКАЦИЯ //
-          </p>
-          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-            <div className="w-[576px] text-[28px]">
-              <p className=" ">
-                Создаем комплексный визуальный образ бренда, транслирующий
-                эмоциональные и рациональные ценности.
-              </p>
-              <p>
-                Даем подробное руководство по использованию во всех ситуациях и
-                прорабатываем все элементы стиля.
-              </p>
-            </div>
-            <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
-              <p>Логотип</p>
-              <p>Цветовая гамма</p>
-              <p>Шрифты и основа типографики </p>
-              <p>Фон, паттерн, орнамент</p>
-              <p>Графические элементы</p>
-              <p>Инфографика, условные обозначения</p>
-              <p>Стилистика иллюстраций/фотографий</p>
-              <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-                Обсудить задачу
-              </button>
-            </div>
-          </div>
-          <div className="border-t-[3px] font-[bakemonoTextMedium]  py-[53px] border-black">
-            <p>РАЗВИТИЕ И ПОДДЕРЖКА</p>
-          </div>
-          <Image
-            className="mr-[127px] mb-[19px] float-right"
-            src={EvlolutionAndSupport}
-            alt="image"
-          />
-          <p className="clear-right mb-[44px] text-[15px] font-[300] font-[bakemonoTextLight]">
-            РАЗВИТИЕ И ПОДДЕРЖКА //
-          </p>
-          <div className="clear-right font-[bakemonoStereoRegular] flex font-[400] justify-between ">
-            <div className="w-[576px] text-[28px]">
-              <p className=" ">
-                Продвигаем и поддерживаем проекты, которые создавали.
-              </p>
-            </div>
-            <div className="flex text-[28px] font-bold w-[365px] flex-col gap-[57px]">
-              <p>Коммуникационная стратегия</p>
-              <p>Рекламная компания</p>
-              <p>Разработка сайта</p>
-              <p>Имеджевое, рекламное, презентационное видео</p>
-              <p>Оформление презентаций</p>
-              <button className="mt-[19px] px-[40px] text-white bg-black py-[19px]">
-                Обсудить задачу
-              </button>
-            </div>
-          </div> */}
         </div>
       </section>
-      <section className="pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex">
-        <div className="w-[1225px] my-0 mx-auto flex">
+      <section
+        className={`pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex ${styles["padding-mobile-0"]} ${styles["form-margin-mobile"]}`}
+      >
+        <div
+          className={`w-[1225px] my-0 mx-auto flex ${styles["mobile-form"]} ${styles["width-100-mobile"]}`}
+        >
           <div>
-            <p className="text-[45px] font-[600] ">Обсудить с нами </p>{" "}
-            <div className="flex mb-[140px] gap-[27px]">
+            <p
+              className={`text-[45px] font-[600] ${styles["text-align-center-mobile"]}`}
+            >
+              Обсудить с нами{" "}
+            </p>{" "}
+            <div
+              className={`flex mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="39"
@@ -635,8 +573,10 @@ export default function Home() {
             </div>
             <Image src={SpinningStaerEmailBlock} alt="" />
           </div>
-          <div className="bg-black p-[100px] text-white">
-            <form className="flex flex-col text-[28px] gap-[64px]" action="">
+          <div
+            className={`bg-black p-[100px] text-white  ${styles["padding-h-mobile-25"]}`}
+          >
+            <form className={`flex flex-col text-[28px] gap-[64px]`} action="">
               <input
                 className="py-[10px] bg-black placeholder-white px-[19px] border-[2px] border-white rounded-[13px]"
                 placeholder="/как к вам обращаться?"
@@ -667,9 +607,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <footer className="bg-black py-[107px] font-[bakemonoStereoRegular] px-[86px]">
-        <div className="flex  items-center gap-[50px] mb-[32px]">
-          <div className="flex items-center gap-[6px]">
+      <footer
+        className={`bg-black py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-25"]} ${styles["padding-v-mobile-25"]}`}
+      >
+        <div
+          className={`flex items-center gap-[50px] mb-[32px] ${styles["hero__text-block--wrap-mobile"]} ${styles["gap-20-mobile"]}`}
+        >
+          <div
+            className={`flex items-center gap-[6px] ${styles["justify-center-mobile"]}`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="17"
@@ -709,8 +655,12 @@ export default function Home() {
           </div>
           <p className="text-[15px] font-[400]">DALNOVIDNO@GMAIL.COM</p>{" "}
         </div>
-        <div className="border-white mb-[100px] py-[17px] flex items-center justify-between border-b-[2px] border-t-[2px]">
-          <div className="flex gap-[30px]">
+        <div
+          className={`border-white mb-[100px] py-[17px] flex items-center justify-between border-b-[2px] border-t-[2px] ${styles["footer-mobile"]} ${styles["margin-bottom-20-mobile"]}`}
+        >
+          <div
+            className={`flex gap-[30px] ${styles["block-flex-wrap-mobile"]}`}
+          >
             <Link href="">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</Link>
             <p>{`//`}</p> <Link href="">ХОЧУ В КОМАНДУ</Link> <p>{`//`}</p>{" "}
             <Link href="">ОДНОВРЕМЕННО ВЕЗДЕ</Link>
