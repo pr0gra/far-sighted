@@ -41,3 +41,18 @@
   font-family: bakemonoMonoRegular;
   src: url("./assets/fonts/Bakemono-Mono-Regular-trial.ttf");
 }
+@font-face {
+  font-family: plexSansLight;
+  src: url("./assets/fonts/IBMPlexSans-Light.ttf");
+}
+
+@font-face {
+  font-family: plexSansMedium;
+  src: url("./assets/fonts/IBMPlexSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: plexSansBold;
+  src: url("./assets/fonts/IBMPlexSans-Bold.ttf");
+}
+

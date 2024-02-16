@@ -1,0 +1,60 @@
+.marquee {
+    display: flex;
+    overflow-x: hidden;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    top: 220px;
+    right: 0;
+  }
+  .accordeonBody{
+    transition: all 0.5s;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  .content0 {
+    animation: marquee0 20s infinite linear;
+    /* animation-delay: -10s; */
+  }
+  
+  .content1 {
+    animation: marquee1 20s infinite linear;
+    /* animation-delay: -10s; */
+  }
+  
+  .content2 {
+    animation: marquee2 20s infinite linear;
+    /* animation-delay: -10s; */
+  }
+  @keyframes marquee0 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  
+  @keyframes marquee1 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+  
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(-400%);
+    }
+  }
+  
+  .content0:after  .content1:after .content2:after {
+    content: "БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ";
+  }
