@@ -41,6 +41,7 @@
   font-family: bakemonoMonoRegular;
   src: url("./assets/fonts/Bakemono-Mono-Regular-trial.ttf");
 }
+<<<<<<< HEAD
 @font-face {
   font-family: plexSansLight;
   src: url("./assets/fonts/IBMPlexSans-Light.ttf");
@@ -56,3 +57,14 @@
   src: url("./assets/fonts/IBMPlexSans-Bold.ttf");
 }
 
+=======
+
+.dark {
+  --adaptive-white-to-black: white;
+  --adaptive-black-to-white: black;
+}
+.light {
+  --adaptive-white-to-black: black;
+  --adaptive-black-to-white: white;
+}
+>>>>>>> e64623decd32c15cec6a35567e538038b40dfe30

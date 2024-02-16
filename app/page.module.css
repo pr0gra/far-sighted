@@ -1,0 +1,127 @@
+<<<<<<< HEAD
+=======
+.marquee {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  top: 85px;
+  right: 0;
+}
+
+.content1 {
+  animation: marquee1 20s infinite linear;
+  /* animation-delay: -10s; */
+}
+
+.content2 {
+  animation: marquee2 20s infinite linear;
+  /* animation-delay: -10s; */
+}
+
+@keyframes marquee1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.content1:after .content2:after {
+  content: "БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ{'<->'}БРЕНД СТРАТЕГИЯ";
+}
+
+.animateTest {
+  animation: fadeInFromNone 1s forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+@media (max-width: 1440px) {
+  .hero__text-block--margin-right-mobile {
+    margin-right: 10px;
+  }
+  .margin-bottom-20-mobile {
+    margin-bottom: 20px;
+  }
+  .margin-0-mobile {
+    margin: 0;
+  }
+  .direction-column-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  .width-100-mobile {
+    width: 100% !important;
+  }
+  .hero__text-block--wrap-mobile {
+    display: flex;
+
+    flex-wrap: wrap;
+  }
+  .gap-20-mobile {
+    gap: 20px;
+  }
+  .padding-left-50-mobile {
+    padding-left: 50px;
+  }
+  .form-margin-mobile {
+    margin-top: 154px;
+  }
+  .padding-mobile-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .padding-h-mobile-25 {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .padding-v-mobile-25 {
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+  .mobile-form {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .text-align-center-mobile {
+    text-align: center;
+  }
+  .justify-center-mobile {
+    justify-content: center;
+  }
+  .block-flex-wrap-mobile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+>>>>>>> e64623decd32c15cec6a35567e538038b40dfe30

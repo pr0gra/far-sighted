@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.0.4",
     "classnames": "^2.5.1",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
