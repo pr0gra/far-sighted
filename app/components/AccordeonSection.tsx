@@ -67,7 +67,7 @@ export function AccordeonSection() {
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
             <div
-              style={{ display: isBrandStrategyOpen ? "" : "none" }}
+              style={{ visibility: isBrandStrategyOpen ? "visible" : "hidden" }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content0}>
@@ -147,7 +147,7 @@ export function AccordeonSection() {
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
             <div
-              style={{ visibility: isVerbalIdentificationOpen ? "" : "hidden" }}
+              style={{ visibility: isVerbalIdentificationOpen ? "visible" : "hidden" }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content3}>
@@ -232,7 +232,7 @@ export function AccordeonSection() {
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
             <div
-              style={{ visibility: isVisualIdentificationOpen ? "" : "hidden" }}
+              style={{ visibility: isVisualIdentificationOpen ? "visible" : "hidden" }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content6}>
@@ -325,7 +325,7 @@ export function AccordeonSection() {
           >
             <div
               style={{
-                visibility: isEvlolutionAndSupportOpen ? "" : "hidden",
+                visibility: isEvlolutionAndSupportOpen ? "visible" : "hidden",
               }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
