@@ -9,19 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.1.0",
     "classnames": "^2.5.1",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
     "next": "14.0.4",
     "next-video": "^0.14.2",
+    "next-videos": "^1.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-transition-group": "^4.4.5",
+    "scrolly-video": "^0.0.17"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.29",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-transition-group": "^4.4.10",
     "@xpd/tailwind-3dtransforms": "^1.0.3",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",

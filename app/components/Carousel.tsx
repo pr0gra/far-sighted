@@ -44,7 +44,6 @@ export function Carousel() {
         threshold: 0.8,
       }
     );
-    console.log(dragContainer.current);
     observer.observe(dragContainer.current);
   }, [dragContainer]);
   useEffect(() => {

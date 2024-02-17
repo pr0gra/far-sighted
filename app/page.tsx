@@ -17,9 +17,16 @@ import SliderCover5 from "./assets/images/result-1.svg";
 import SliderImage5 from "./assets/images/result-2.svg";
 import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gif";
 
+import emailjs from "@emailjs/browser";
+
 import styles from "./page.module.css";
 
+// import ScrollyVideo from "scrolly-video/dist/ScrollyVideo.esm.jsx";
+
 import Video from "next-video";
+import girlWalking from "./assets/videos/girlWalking.mp4";
+// import { VideoScroll } from 'react-video-scroll'
+
 import { useEffect, useRef, useState } from "react";
 import { ModelDesignWorkingElement } from "./components/ModelDesignWorkingElement";
 import { Carousel } from "./components/Carousel";
@@ -70,8 +77,24 @@ function getCurrentDate() {
 }
 
 export default function Home() {
+  const setStyles = (wrapperEl:any, videoEl:any, playbackRate:any) => {
+    wrapperEl.style.marginTop = `calc(180% - ${
+      Math.floor(videoEl.duration) * playbackRate + "px"
+    })`;
+    wrapperEl.style.marginBottom = `calc(180% - ${
+      Math.floor(videoEl.duration) * playbackRate + "px"
+    })`;
+  };
+  const girlWalkingRef = useRef(null);
   const [isLight, setIsLight] = useState(false);
   const modelDesignWorkingScrollRef = useRef(null);
+  const [girlInIntersection, setGirlInIntersection] = useState(false);
+
+  const [name, setName] = useState("");
+  const [theme, setTheme] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
 
   const [currentHero, setCurrentHero] = useState({
     img: Hero1,
@@ -82,6 +105,30 @@ export default function Home() {
     ),
     text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
   });
+
+  // useEffect(() => {
+  //   if (girlWalkingRef === null || !girlWalkingRef.current) {
+  //     return;
+  //   }
+  //   window.addEventListener("scroll", function () {
+  //     girlWalkingRef.current.currentTime = window.pageYOffset % 1000;
+  //   });
+  // }, [girlWalkingRef]);
+  // useEffect(() => {
+  //   if (girlWalkingRef === null) {
+  //     return;
+  //   }
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       setGirlInIntersection(entries[0].isIntersecting);
+  //     },
+  //     {
+  //       threshold: 0.2,
+  //     }
+  //   );
+  //   observer.observe(girlWalkingRef.current);
+  // }, [girlWalkingRef]);
+
   useEffect(() => {
     const operatingSystemThemeDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -171,6 +218,34 @@ export default function Home() {
     const scrollRef = modelDesignWorkingScrollRef.current as HTMLElement;
     scrollRef.scrollLeft += scrollOffset;
   };
+
+  function handleSubmitForm(e:any) {
+    e.preventDefault();
+    const serviceId = "service_gvxf5xq";
+    const templateId = "template_5lx2vn6";
+    const publicKey = "m1AHA8wE_ngCDOw9q";
+
+    const templateParams = {
+      name,
+      theme,
+      phoneNumber,
+      email,
+      text,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log("ok", response);
+        setName("");
+        setTheme("");
+        setPhoneNumber("");
+        setEmail("");
+        setText("");
+      })
+      .catch((e) => console.log(e));
+  }
+
   return (
     <main className="bg-[var(--adaptive-white-to-black)] text-white font-[bakemonoStereoBold]">
       <section
@@ -376,10 +451,30 @@ export default function Home() {
       </section>
 
       <section>
-      <video controls width="250">
-  {/* <source src={girlWalking} type="video/webm" /> */}
-
-</video>
+        {/* <VideoScroll
+      onLoad={props =>
+        setStyles(props.wrapperEl, props.videoEl, props.playbackRate)
+      }
+      playbackRate={15}
+      style={{ position: 'sticky' }}
+    >
+      <video
+        tabIndex="0"
+        autobuffer="autobuffer"
+        preload="preload"
+        style={{ width: '100%', objectFit: 'contain' }}
+        playsInline
+      >
+        <source type="video/mp4" src={require("../public/girlWalking.mp4")} />
+      </video>
+    </VideoScroll> */}
+        <video
+          ref={girlWalkingRef}
+          className="my-0 mx-[auto]"
+          autoPlay={true}
+          controls
+          src={require("../public/girlWalking.mp4")}
+        />
       </section>
       <section className="pb-[227px] pt-[100px]">
         <p
@@ -584,8 +679,15 @@ export default function Home() {
           <div
             className={`bg-[var(--adaptive-white-to-black)] p-[100px] text-[var(--adaptive-black-to-white)]  ${styles["padding-h-mobile-25"]}`}
           >
-            <form className={`flex flex-col text-[28px] gap-[64px]`} action="">
+            <form
+              onSubmit={handleSubmitForm}
+              className={`flex flex-col text-[28px] gap-[64px]`}
+              action=""
+            >
               <input
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
                 placeholder="/как к вам обращаться?"
                 type="text"
@@ -594,29 +696,44 @@ export default function Home() {
                 className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
                 placeholder="/тема разговора"
                 type="text"
+                onChange={(e) => {
+                  setTheme(e.target.value);
+                }}
               />
               <input
                 className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
                 placeholder="/телефон"
                 type="text"
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
               />
               <input
                 className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
                 placeholder="/почта"
                 type="text"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
               <textarea
                 className="py-[10px] px-[19px] h-[221px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
                 placeholder="/расскажите о вашей задаче"
                 name=""
                 id=""
+                onChange={(e) => {
+                  setText(e.target.value);
+                }}
               ></textarea>
+              <button type="submit" className="py-[10px] font-[bakemonoStereoMedium] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]">
+                отправить
+              </button>
             </form>
           </div>
         </div>
       </section>
       <footer
-        className={`bg-[var(--adaptive-black-to-white)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-25"]} ${styles["padding-v-mobile-25"]}`}
+        className={`bg-[var(--adaptive-white-to-black)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-25"]} ${styles["padding-v-mobile-25"]}`}
       >
         <div
           className={`flex items-center gap-[50px] mb-[32px] ${styles["hero__text-block--wrap-mobile"]} ${styles["gap-20-mobile"]}`}
@@ -661,30 +778,30 @@ export default function Home() {
               СВЯЗАТЬСЯ С НАМИ
             </p>{" "}
           </div>
-          <p className="text-[15px] font-[400] text-[var(--adaptive-white-to-black)]">
+          <p className="text-[15px] font-[400] text-[var(--adaptive-black-to-white)]">
             DALNOVIDNO@GMAIL.COM
           </p>{" "}
         </div>
         <div
-          className={`border-[var(--adaptive-white-to-black)] mb-[100px] py-[17px] flex items-center justify-between border-b-[2px] border-t-[2px] ${styles["footer-mobile"]} ${styles["margin-bottom-20-mobile"]}`}
+          className={`border-[var(--adaptive-black-to-white)] mb-[100px] py-[17px] flex items-center justify-between border-b-[2px] border-t-[2px] ${styles["footer-mobile"]} ${styles["margin-bottom-20-mobile"]}`}
         >
           <div
             className={`flex gap-[30px] ${styles["block-flex-wrap-mobile"]}`}
           >
-            <Link href="" className="text-[var(--adaptive-white-to-black)]">
+            <Link href="" className="text-[var(--adaptive-black-to-white)]">
               ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
             </Link>
-            <p className="text-[var(--adaptive-white-to-black)]">{`//`}</p>{" "}
-            <Link href="" className="text-[var(--adaptive-white-to-black)]">
+            <p className="text-[var(--adaptive-black-to-white)]">{`//`}</p>{" "}
+            <Link href="" className="text-[var(--adaptive-black-to-white)]">
               ХОЧУ В КОМАНДУ
             </Link>{" "}
-            <p className="text-[var(--adaptive-white-to-black)]">{`//`}</p>{" "}
-            <Link href="" className="text-[var(--adaptive-white-to-black)]">
+            <p className="text-[var(--adaptive-black-to-white)]">{`//`}</p>{" "}
+            <Link href="" className="text-[var(--adaptive-black-to-white)]">
               ОДНОВРЕМЕННО ВЕЗДЕ
             </Link>
           </div>
           <div className="flex items-center gap-[91px]">
-            <p className="text-[var(--adaptive-white-to-black)]">Следить</p>{" "}
+            <p className="text-[var(--adaptive-black-to-white)]">Следить</p>{" "}
             <div className="flex gap-[20px] items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -695,11 +812,11 @@ export default function Home() {
               >
                 <path
                   d="M17 8.3246C17 12.9259 13.1983 16.6492 8.5 16.6492C3.80174 16.6492 0 12.9259 0 8.3246C0 3.72329 3.80174 0 8.5 0C13.1983 0 17 3.7344 17 8.3246Z"
-                  fill="var(--adaptive-white-to-black)"
+                  fill="var(--adaptive-black-to-white)"
                 />
                 <path
                   d="M4.50473 8.75765H6.29779C6.69499 8.75765 7.37589 8.92436 7.37589 9.66902C7.37589 10.058 7.05814 10.5137 6.66094 10.5137H4.50473V8.75765ZM10.2471 5.25665H13.47V6.31251H10.2471V5.25665ZM13.0388 8.75765H10.6669C10.7464 8.13525 11.223 7.71291 11.8585 7.71291C12.4714 7.71291 12.9366 8.14636 13.0388 8.75765ZM10.5989 9.46896H14.5368C14.5368 9.41339 14.5368 9.34671 14.5368 9.29114C14.5368 7.83517 13.47 6.66816 11.8585 6.66816C10.2357 6.66816 9.16895 7.84628 9.16895 9.29114C9.16895 10.7582 10.2357 11.9252 11.8585 11.9252C13.47 11.9252 14.2417 11.025 14.4914 9.8135H13.0388C12.9026 10.4248 12.5281 10.8694 11.8585 10.8694C11.1776 10.8694 10.6443 10.2581 10.5989 9.46896ZM8.8058 9.8135C8.8058 9.04662 8.28377 8.39088 7.59152 8.15748C8.1022 7.84628 8.44265 7.29056 8.44265 6.66816C8.44265 5.69011 7.63691 4.91211 6.6496 4.91211H3.06348V11.9363H6.6496C7.82984 11.9252 8.8058 10.9805 8.8058 9.8135ZM6.28644 7.71291H4.49339V6.30139H6.28644C6.68364 6.30139 7.01274 6.62371 7.01274 7.00159C7.01274 7.37948 6.68364 7.71291 6.28644 7.71291Z"
-                  fill="var(--adaptive-black-to-white)"
+                  fill="var(--adaptive-white-to-black)"
                 />
               </svg>
               <svg
@@ -711,14 +828,15 @@ export default function Home() {
               >
                 <path
                   d="M8.5 16.6492C13.1944 16.6492 17 12.9221 17 8.3246C17 3.72705 13.1944 0 8.5 0C3.80558 0 0 3.72705 0 8.3246C0 12.9221 3.80558 16.6492 8.5 16.6492Z"
-                  fill="var(--adaptive-white-to-black)"
+                  fill="var(--adaptive-black-to-white)"
                 />
                 <path
                   d="M11.5858 3.38965H5.41227C4.33416 3.38965 3.47168 4.24545 3.47168 5.29019V7.30188V8.04653V11.3475C3.47168 12.4033 4.34551 13.248 5.41227 13.248H11.5858C12.6639 13.248 13.5378 12.3922 13.5378 11.3475V8.05765V7.31299V5.30131C13.5378 4.24545 12.6639 3.38965 11.5858 3.38965ZM12.1533 4.53442H12.3802V4.7567V6.21267H10.678L10.6666 4.54553L12.1533 4.53442ZM7.06914 7.31299C7.3869 6.87953 7.92028 6.59056 8.5104 6.59056C9.10052 6.59056 9.62255 6.87953 9.95165 7.31299C9.9857 7.36856 10.0197 7.42413 10.0538 7.4797C10.2013 7.73533 10.2808 8.0243 10.2808 8.32439C10.2808 9.28022 9.48636 10.0582 8.5104 10.0582C7.53443 10.0582 6.74004 9.28022 6.74004 8.32439C6.74004 8.01319 6.81948 7.72422 6.96701 7.4797C6.9897 7.42413 7.02375 7.36856 7.06914 7.31299ZM12.5618 11.3475C12.5618 11.8698 12.1306 12.2922 11.5972 12.2922H5.42361C4.89024 12.2922 4.45899 11.8698 4.45899 11.3475V7.82425V7.31299H5.95699C5.92295 7.4019 5.8889 7.49082 5.85486 7.59085C5.78677 7.82424 5.75272 8.06876 5.75272 8.32439C5.75272 9.8137 6.9897 11.0252 8.5104 11.0252C10.0311 11.0252 11.2681 9.8137 11.2681 8.32439C11.2681 8.06876 11.234 7.82424 11.1659 7.59085C11.1432 7.49082 11.1092 7.4019 11.0638 7.31299H12.5731V7.82425V11.3475H12.5618Z"
-                  fill="var(--adaptive-black-to-white)"
+                  fill="var(--adaptive-white-to-black)"
                 />
               </svg>
               <svg
+                className="rounded-[100%]"
                 width="40"
                 height="41"
                 viewBox="0 0 17 17"
@@ -726,14 +844,16 @@ export default function Home() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  fill="var(--adaptive-black-to-white)"
                   d="M8.5 17C13.1944 17 17 13.1944 17 8.5C17 3.80558 13.1944 0 8.5 0C3.80558 0 0 3.80558 0 8.5C0 13.1944 3.80558 17 8.5 17Z"
-                  fill="var(--adaptive-white-to-black)"
+                  stroke-width="0.5"
+                  stroke="white"
                 />
                 <path
-                  d="M11.875 7.43684C11.875 8.31848 11.5664 9.12434 11.0066 9.70676C10.484 10.2493 9.77539 10.5618 9.0625 10.5618C8.36406 10.5618 7.89766 10.3329 7.60039 10.0931L7.1793 11.8833C7.16318 11.9519 7.12435 12.0131 7.06911 12.0568C7.01387 12.1006 6.94547 12.1244 6.875 12.1243C6.85081 12.1243 6.8267 12.1216 6.80313 12.1161C6.76302 12.1069 6.72512 12.0899 6.69162 12.066C6.65811 12.0421 6.62965 12.0118 6.60788 11.9769C6.5861 11.942 6.57143 11.9031 6.56472 11.8625C6.558 11.8219 6.55937 11.7804 6.56875 11.7404L7.81875 6.42785C7.83771 6.34715 7.88795 6.27728 7.95842 6.23362C8.0289 6.18996 8.11383 6.17608 8.19453 6.19504C8.27524 6.214 8.3451 6.26424 8.38876 6.33472C8.43243 6.40519 8.4463 6.49012 8.42734 6.57082L7.76719 9.37551C7.89062 9.54621 8.25391 9.93684 9.0625 9.93684C10.1379 9.93684 11.25 9.00168 11.25 7.43684C11.2498 7.00554 11.1505 6.58005 10.9596 6.19328C10.7687 5.80651 10.4915 5.46882 10.1492 5.20632C9.80702 4.94382 9.40901 4.76355 8.98599 4.67943C8.56296 4.59532 8.12626 4.60963 7.70965 4.72125C7.29304 4.83286 6.90769 5.0388 6.58338 5.32313C6.25907 5.60747 6.0045 5.96258 5.83935 6.36101C5.6742 6.75945 5.6029 7.19052 5.63096 7.62091C5.65902 8.0513 5.78569 8.46947 6.00117 8.84309C6.04004 8.91467 6.04943 8.9986 6.02733 9.077C6.00523 9.1554 5.95339 9.22207 5.88285 9.26282C5.81232 9.30356 5.72866 9.31515 5.64971 9.29512C5.57076 9.27509 5.50274 9.22503 5.46016 9.15559C5.19665 8.69895 5.04171 8.18783 5.00732 7.66174C4.97293 7.13565 5.06001 6.6087 5.26182 6.12165C5.46363 5.63459 5.77477 5.20049 6.17117 4.8529C6.56757 4.50531 7.03861 4.25356 7.54786 4.11712C8.05711 3.98067 8.59092 3.96319 9.108 4.06603C9.62508 4.16886 10.1116 4.38925 10.5299 4.71016C10.9482 5.03107 11.287 5.44389 11.5203 5.9167C11.7535 6.38951 11.8749 6.90963 11.875 7.43684Z"
                   fill="var(--adaptive-white-to-black)"
-                  stroke="var(--adaptive-black-to-white)"
-                  strokeWidth="0.5"
+                  d="M11.875 7.43684C11.875 8.31848 11.5664 9.12434 11.0066 9.70676C10.484 10.2493 9.77539 10.5618 9.0625 10.5618C8.36406 10.5618 7.89766 10.3329 7.60039 10.0931L7.1793 11.8833C7.16318 11.9519 7.12435 12.0131 7.06911 12.0568C7.01387 12.1006 6.94547 12.1244 6.875 12.1243C6.85081 12.1243 6.8267 12.1216 6.80313 12.1161C6.76302 12.1069 6.72512 12.0899 6.69162 12.066C6.65811 12.0421 6.62965 12.0118 6.60788 11.9769C6.5861 11.942 6.57143 11.9031 6.56472 11.8625C6.558 11.8219 6.55937 11.7804 6.56875 11.7404L7.81875 6.42785C7.83771 6.34715 7.88795 6.27728 7.95842 6.23362C8.0289 6.18996 8.11383 6.17608 8.19453 6.19504C8.27524 6.214 8.3451 6.26424 8.38876 6.33472C8.43243 6.40519 8.4463 6.49012 8.42734 6.57082L7.76719 9.37551C7.89062 9.54621 8.25391 9.93684 9.0625 9.93684C10.1379 9.93684 11.25 9.00168 11.25 7.43684C11.2498 7.00554 11.1505 6.58005 10.9596 6.19328C10.7687 5.80651 10.4915 5.46882 10.1492 5.20632C9.80702 4.94382 9.40901 4.76355 8.98599 4.67943C8.56296 4.59532 8.12626 4.60963 7.70965 4.72125C7.29304 4.83286 6.90769 5.0388 6.58338 5.32313C6.25907 5.60747 6.0045 5.96258 5.83935 6.36101C5.6742 6.75945 5.6029 7.19052 5.63096 7.62091C5.65902 8.0513 5.78569 8.46947 6.00117 8.84309C6.04004 8.91467 6.04943 8.9986 6.02733 9.077C6.00523 9.1554 5.95339 9.22207 5.88285 9.26282C5.81232 9.30356 5.72866 9.31515 5.64971 9.29512C5.57076 9.27509 5.50274 9.22503 5.46016 9.15559C5.19665 8.69895 5.04171 8.18783 5.00732 7.66174C4.97293 7.13565 5.06001 6.6087 5.26182 6.12165C5.46363 5.63459 5.77477 5.20049 6.17117 4.8529C6.56757 4.50531 7.03861 4.25356 7.54786 4.11712C8.05711 3.98067 8.59092 3.96319 9.108 4.06603C9.62508 4.16886 10.1116 4.38925 10.5299 4.71016C10.9482 5.03107 11.287 5.44389 11.5203 5.9167C11.7535 6.38951 11.8749 6.90963 11.875 7.43684Z"
+                  stroke="black"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
@@ -749,55 +869,55 @@ export default function Home() {
         >
           <path
             d="M61.9842 3.40423C62.9242 3.40423 63.6862 2.64217 63.6862 1.70211C63.6862 0.762061 62.9242 0 61.9842 0C61.0442 0 60.2822 0.762061 60.2822 1.70211C60.2822 2.64217 61.0442 3.40423 61.9842 3.40423Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M48.9246 22.8476C49.8646 22.8476 50.6266 22.0855 50.6266 21.1455C50.6266 20.2054 49.8646 19.4434 48.9246 19.4434C47.9847 19.4434 47.2227 20.2054 47.2227 21.1455C47.2227 22.0855 47.9847 22.8476 48.9246 22.8476Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M46.2229 7.84325H42.8015V11.7859H40.127V1.89453H42.8015V5.39429H46.2229V1.89453H48.8974V11.7859H46.2229V7.84325Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M1.23308 9.11932C1.47622 8.85879 1.6412 8.22484 1.74541 7.21747C1.84961 6.21009 1.90171 4.49929 1.91908 2.09375H9.59541V9.52748H10.6201V14.4341H8.1713L8.35366 11.9851H2.26643L2.44879 14.4341H0V9.52748H0.0173683C0.590488 9.51879 0.998619 9.37985 1.23308 9.11932ZM6.94691 9.52748V4.54271H4.3505C4.33313 5.80193 4.28971 6.81799 4.22024 7.59958C4.15077 8.38116 4.01184 9.02379 3.82948 9.52748H6.94691Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M30.3135 4.54271H27.4392C27.4131 6.49667 27.2655 8.00774 27.005 9.0759C26.7445 10.1441 26.3016 10.9083 25.6677 11.3772C25.0338 11.8462 24.122 12.0893 22.915 12.098L22.75 9.64906C23.4447 9.59695 23.9223 9.43195 24.1915 9.14537C24.452 8.86747 24.6257 8.2422 24.7125 7.28693C24.7993 6.33167 24.8514 4.59482 24.8601 2.09375H32.9793V11.9851H30.3048V4.54271H30.3135Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M30.2803 2.11914H32.9548V4.88942H35.1431C36.4283 4.88942 37.4182 5.18469 38.1216 5.78391C38.8163 6.38312 39.1636 7.26891 39.1636 8.44997C39.1636 9.55287 38.8423 10.4126 38.1997 11.0553C37.5572 11.6892 36.5499 12.0105 35.1865 12.0105H30.2803V2.11914ZM34.9868 9.83945C35.4731 9.83945 35.8465 9.72656 36.1157 9.4834C36.3849 9.24893 36.5151 8.90155 36.5151 8.44997C36.5151 7.96365 36.3849 7.61628 36.1157 7.40786C35.8465 7.19075 35.4557 7.08655 34.9521 7.08655H32.9635V9.83945H34.9868Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M16.5163 11.8022C15.891 12.0887 15.3006 12.2277 14.7274 12.2277C13.8938 12.2277 13.2252 11.9758 12.7302 11.4635C12.2352 10.9511 11.9834 10.2129 11.9834 9.24899C11.9834 8.19819 12.2613 7.29503 12.817 6.53081C13.5725 6.4266 14.5451 6.37449 15.7347 6.37449C16.5163 6.37449 17.2631 6.39186 17.9838 6.43529V6.07923C17.9838 5.44528 17.8796 4.98501 17.6625 4.70712C17.4541 4.42922 17.0546 4.29027 16.4728 4.29027C16.0387 4.29027 15.4916 4.35106 14.8403 4.45527C14.189 4.56817 13.5725 4.73317 12.9733 4.95896L12.4957 2.87474C14.1022 2.26684 15.5437 1.96289 16.8289 1.96289C17.6625 1.96289 18.3485 2.05842 18.8869 2.25816C19.4253 2.4579 19.8421 2.82263 20.1373 3.35237C20.4326 3.88211 20.5802 4.62027 20.5802 5.57554V9.66583L21.6309 9.54425C21.657 10.0479 21.6743 10.4474 21.6743 10.734C21.6743 11.0119 21.657 11.4027 21.6309 11.9064C21.1012 11.9845 20.5107 12.028 19.8595 12.028C19.3037 12.028 18.8174 12.0019 18.4093 11.9498L18.1141 10.76C17.6712 11.1682 17.1328 11.5156 16.5163 11.8022ZM15.6218 10.1348C15.9779 10.1348 16.3773 10.074 16.8028 9.94373C17.237 9.82215 17.6278 9.63977 17.9838 9.41398V8.00714C17.2978 7.96371 16.6639 7.94635 16.0994 7.94635C15.6132 7.94635 15.1442 7.96371 14.7101 8.00714C14.5538 8.25898 14.4756 8.59766 14.4756 9.02319C14.4669 9.77004 14.849 10.1348 15.6218 10.1348Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M52.6573 6.89627C52.6573 5.48074 53.8035 4.34311 55.2103 4.34311C56.287 4.34311 57.2075 5.0118 57.5809 5.9497L59.1439 3.63967C58.2061 2.51072 56.7907 1.78125 55.2016 1.78125C52.3794 1.78125 50.0869 4.07389 50.0869 6.89627C50.0869 9.17155 51.5718 11.0995 53.6298 11.7595L55.1929 9.44945C53.7948 9.44945 52.6573 8.31181 52.6573 6.89627Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M69.0002 20.7468V14.7981L64.8581 20.7468H62.5049V10.8555H65.1013V16.8302L69.2434 10.8555H71.5966V20.7468H69.0002Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M73.9069 17.881C74.1501 17.6205 74.315 16.9866 74.4192 15.9792C74.5234 14.9718 74.5755 13.261 74.5929 10.8555H82.2692V18.2892H83.2939V23.1958H80.8451L81.0275 20.7468H74.9403L75.1226 23.1958H72.6738V18.2892H72.6912C73.2556 18.2805 73.6638 18.1416 73.9069 17.881ZM79.6121 18.2892V13.3044H77.0156C76.9983 14.5636 76.9549 15.5797 76.8854 16.3613C76.8159 17.1429 76.677 17.7855 76.4946 18.2892H79.6121Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M86.8543 16.8042H82.2781V20.7468H79.6035V10.8555H82.2781V14.3552H86.8543V10.8555H89.5289V20.7468H86.8543V16.8042Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M101.001 15.8318C101.001 18.6542 98.7083 20.9469 95.8861 20.9469C93.064 20.9469 90.7715 18.6542 90.7715 15.8318C90.7715 13.0094 93.064 10.7168 95.8861 10.7168C98.7083 10.7168 101.001 13.0094 101.001 15.8318ZM98.4478 15.8318C98.4478 14.4163 97.3016 13.2787 95.8948 13.2787C94.4794 13.2787 93.3418 14.425 93.3418 15.8318C93.3418 17.2474 94.4881 18.385 95.8948 18.385C97.3016 18.385 98.4478 17.2387 98.4478 15.8318Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
           <path
             d="M59.6406 15.1368C60.2745 14.5636 60.5872 13.9036 60.5872 13.1655C60.5872 12.4447 60.3093 11.8715 59.7622 11.4634C59.2325 11.0726 58.4336 10.8642 57.3655 10.8555L56.0022 12.8615H56.8619C57.2787 12.8615 57.5913 12.9397 57.8171 13.096C58.0342 13.2523 58.1471 13.4781 58.1471 13.7907C58.1471 14.1121 57.9907 14.4421 57.6868 14.7721H57.4871H55.0557V14.2597L52.5635 17.9331V20.7382H57.4089C58.7896 20.7382 59.7969 20.4603 60.4482 19.9131C61.0908 19.366 61.4121 18.6366 61.4121 17.7421C61.4121 17.1081 61.2645 16.5784 60.9605 16.1355C60.6566 15.7013 60.2138 15.3626 59.6406 15.1368ZM58.4076 18.4455C58.1905 18.6366 57.8518 18.7408 57.3916 18.7408H55.0557V16.6305H57.3482C58.2686 16.6305 58.7375 16.9692 58.7375 17.6552C58.7375 17.9852 58.6247 18.2458 58.4076 18.4455Z"
-            fill="var(--adaptive-white-to-black)"
+            fill="var(--adaptive-black-to-white)"
           />
         </svg>
       </footer>
