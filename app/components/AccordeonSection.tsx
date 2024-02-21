@@ -39,7 +39,7 @@ export function AccordeonSection() {
   };
 
   return (
-    <section className="text-black  text-[28px] bg-white pt-[232px] px-[213px]">
+    <section className="text-black li   text-[28px] leading-[32px] bg-white pt-[232px] ">
       <div className="w-[1225px] my-0 mx-auto">
         <div className=" border-black border-t-[3px] relative">
           <button
@@ -49,9 +49,40 @@ export function AccordeonSection() {
                 isBrandStrategyOpen ? (
                   <p className="">БРЕНД СТРАТЕГИЯ</p>
                 ) : (
-                  <p className="font-[bakemonoTextLight] text-[20px]">
-                    БРЕНД СТРАТЕГИЯ //
-                  </p>
+                  <div
+                    // style={{
+                    //   visibility: isBrandStrategyOpen ? "visible" : "hidden",
+                    // }}
+                    className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
+                  >
+                    <div className={styles.content0}>
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                    </div>
+                    <div className={styles.content1}>
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                    </div>
+                    <div className={styles.content2}>
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}
+                      БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД
+                      СТРАТЕГИЯ
+                      {"<->"}
+                    </div>
+                  </div>
                 )
               );
             }}
@@ -66,32 +97,6 @@ export function AccordeonSection() {
             }}
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
-            <div
-              style={{ visibility: isBrandStrategyOpen ? "visible" : "hidden" }}
-              className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
-            >
-              <div className={styles.content0}>
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-              </div>
-              <div className={styles.content1}>
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-              </div>
-              <div className={styles.content2}>
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}
-                БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ{"<->"}БРЕНД СТРАТЕГИЯ
-                {"<->"}
-              </div>
-            </div>
             <Image
               className="mr-[127px] mb-[83px] float-right"
               src={BrandStrategy}
@@ -112,7 +117,7 @@ export function AccordeonSection() {
                 <p>Позиционирование бренда</p>
                 <button
                   onClick={scrollToElement}
-                  className="mt-[19px] pb-[53px] px-[40px] text-white bg-black py-[19px]"
+                  className="mt-[19px] pb-[24px] px-[40px] text-white bg-black py-[19px]"
                 >
                   Обсудить задачу
                 </button>
@@ -147,7 +152,9 @@ export function AccordeonSection() {
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
             <div
-              style={{ visibility: isVerbalIdentificationOpen ? "visible" : "hidden" }}
+              style={{
+                visibility: isVerbalIdentificationOpen ? "visible" : "hidden",
+              }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content3}>
@@ -186,19 +193,22 @@ export function AccordeonSection() {
             <div className="clear-right flex font-[400] justify-between ">
               <div className="w-[576px] text-[28px]">
                 <p className=" ">
-                  Создаем целостное видение по развитию вашего бренда с учетом
-                  сильных сторон компании/продукта, рыночной ситуации,
-                  потребительских инсайтов и конкурентной среды.
+                  Создаем собственный язык общения бренда с аудиторией, который
+                  вызовет эмоции и запомнится.
                 </p>
               </div>
               <div className="flex text-[28px] w-[365px] flex-col gap-[57px]">
-                <p>Анализ конкурентов и рынка</p>
-                <p>Исследования</p>
-                <p>Платформа бренда</p>
-                <p>Позиционирование бренда</p>
+                <p>Нейминг</p>
+
+                <p>Дескриптор</p>
+
+                <p>Слоган</p>
+
+                <p>Речевой портрет</p>
+
                 <button
                   onClick={scrollToElement}
-                  className="mt-[19px] pb-[53px] px-[40px] text-white bg-black py-[19px]"
+                  className="mt-[19px] pb-[24px] px-[40px] text-white bg-black py-[19px]"
                 >
                   Обсудить задачу
                 </button>
@@ -232,7 +242,9 @@ export function AccordeonSection() {
             className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
           >
             <div
-              style={{ visibility: isVisualIdentificationOpen ? "visible" : "hidden" }}
+              style={{
+                visibility: isVisualIdentificationOpen ? "visible" : "hidden",
+              }}
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content6}>
@@ -330,7 +342,7 @@ export function AccordeonSection() {
               className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
             >
               <div className={styles.content6}>
-              РАЗВИТИЕ И ПОДДЕРЖКА{"<->"}РАЗВИТИЕ И ПОДДЕРЖКА{"<->"}
+                РАЗВИТИЕ И ПОДДЕРЖКА{"<->"}РАЗВИТИЕ И ПОДДЕРЖКА{"<->"}
                 РАЗВИТИЕ И ПОДДЕРЖКА
                 {"<->"}
                 РАЗВИТИЕ И ПОДДЕРЖКА{"<->"}

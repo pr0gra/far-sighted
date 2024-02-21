@@ -77,7 +77,7 @@ function getCurrentDate() {
 }
 
 export default function Home() {
-  const setStyles = (wrapperEl:any, videoEl:any, playbackRate:any) => {
+  const setStyles = (wrapperEl: any, videoEl: any, playbackRate: any) => {
     wrapperEl.style.marginTop = `calc(180% - ${
       Math.floor(videoEl.duration) * playbackRate + "px"
     })`;
@@ -219,7 +219,7 @@ export default function Home() {
     scrollRef.scrollLeft += scrollOffset;
   };
 
-  function handleSubmitForm(e:any) {
+  function handleSubmitForm(e: any) {
     e.preventDefault();
     const serviceId = "service_gvxf5xq";
     const templateId = "template_5lx2vn6";
@@ -429,7 +429,7 @@ export default function Home() {
               <p>дизайн-агентство инициатив</p>
             </div>
             <div className="w-[640px] my-0 mr-0 ml-[auto]">
-              <p className="text-right text-[27px]  font-bakemonoStereoRegular">
+              <p className="text-right text-[27px] leading-[32px] font-bakemonoStereoRegular">
                 {currentHero.text}
               </p>
             </div>
@@ -437,9 +437,34 @@ export default function Home() {
         </div>
       </section>
       <section className="">
-        <div className="h-[600px] flex">
+        <div className="h-[600px] flex items-start">
           {" "}
           <Carousel />
+          <div className="relative right-[172px] top-[94px]">
+            <div className="rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+              <svg
+                className="h-[30px] w-[24px]  "
+                width="30"
+                height="24"
+                viewBox="0 0 30 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
+                  fill="black"
+                />
+                <path
+                  d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
+                  fill="black"
+                />
+                <path
+                  d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
         <p
           className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
@@ -469,10 +494,11 @@ export default function Home() {
       </video>
     </VideoScroll> */}
         <video
+          muted
+          autoPlay
+          loop
           ref={girlWalkingRef}
           className="my-0 mx-[auto]"
-          autoPlay={true}
-          controls
           src={require("../public/girlWalking.mp4")}
         />
       </section>
@@ -611,124 +637,126 @@ export default function Home() {
 
       <AccordeonSection />
 
-      <section
-        id="email"
-        className="pb-[100px] font-[bakemonoStereoRegular] px-[213px] pt-[200px] text-black bg-white flex"
-      >
-        <div className="w-[1225px] my-0 mx-auto flex">
-          <div>
-            <p
-              className={`text-[45px] font-[600] ${styles["text-align-center-mobile"]} text-[var(--adaptive-white-to-black)]`}
-            >
-              Обсудить с нами{" "}
-            </p>{" "}
-            <div
-              className={`flex mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="43"
-                viewBox="0 0 39 43"
-                fill="none"
+      <section className="pb-[100px] font-[bakemonoStereoRegular]  pt-[200px] text-black bg-white flex">
+        <div className="w-[1225px] my-0 mx-auto ">
+          <div className="grid grid-cols-[auto_745px]">
+            <div id="email">
+              <p
+                className={`text-[45px] font-[600] ${styles["text-align-center-mobile"]} text-[var(--adaptive-white-to-black)]`}
               >
-                <path
-                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                  fill="#1155CC"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="43"
-                viewBox="0 0 39 43"
-                fill="none"
+                Обсудить с нами{" "}
+              </p>{" "}
+              <div
+                className={`flex mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
               >
-                <path
-                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                  fill="#1155CC"
-                />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="39"
+                  height="43"
+                  viewBox="0 0 39 43"
+                  fill="none"
+                >
+                  <path
+                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                    fill="#1155CC"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="39"
+                  height="43"
+                  viewBox="0 0 39 43"
+                  fill="none"
+                >
+                  <path
+                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                    fill="#1155CC"
+                  />
+                </svg>
+              </div>
+              <Image src={SpinningStaerEmailBlock} alt="" />
             </div>
-            <Image src={SpinningStaerEmailBlock} alt="" />
-          </div>
-          <div
-            className={`bg-[var(--adaptive-white-to-black)] p-[100px] text-[var(--adaptive-black-to-white)]  ${styles["padding-h-mobile-25"]}`}
-          >
-            <form
-              onSubmit={handleSubmitForm}
-              className={`flex flex-col text-[28px] gap-[64px]`}
-              action=""
+            <div
+              className={`bg-[var(--adaptive-white-to-black)] p-[100px] text-[var(--adaptive-black-to-white)]  ${styles["padding-h-mobile-25"]}`}
             >
-              <input
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                placeholder="/как к вам обращаться?"
-                type="text"
-              />
-              <input
-                className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                placeholder="/тема разговора"
-                type="text"
-                onChange={(e) => {
-                  setTheme(e.target.value);
-                }}
-              />
-              <input
-                className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                placeholder="/телефон"
-                type="text"
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-              />
-              <input
-                className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                placeholder="/почта"
-                type="text"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <textarea
-                className="py-[10px] px-[19px] h-[221px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                placeholder="/расскажите о вашей задаче"
-                name=""
-                id=""
-                onChange={(e) => {
-                  setText(e.target.value);
-                }}
-              ></textarea>
-              <button type="submit" className="py-[10px] font-[bakemonoStereoMedium] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]">
-                отправить
-              </button>
-            </form>
+              <form
+                onSubmit={handleSubmitForm}
+                className={`flex flex-col text-[28px] gap-[64px]`}
+                action=""
+              >
+                <input
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                  placeholder="/как к вам обращаться?"
+                  type="text"
+                />
+                <input
+                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                  placeholder="/тема разговора"
+                  type="text"
+                  onChange={(e) => {
+                    setTheme(e.target.value);
+                  }}
+                />
+                <input
+                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                  placeholder="/телефон"
+                  type="text"
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                />
+                <input
+                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                  placeholder="/почта"
+                  type="text"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <textarea
+                  className="py-[10px] px-[19px] h-[221px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                  placeholder="/расскажите о вашей задаче"
+                  name=""
+                  id=""
+                  onChange={(e) => {
+                    setText(e.target.value);
+                  }}
+                ></textarea>
+                <button
+                  type="submit"
+                  className="py-[10px] font-[bakemonoStereoMedium] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
+                >
+                  отправить
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -847,12 +875,12 @@ export default function Home() {
                   fill="var(--adaptive-black-to-white)"
                   d="M8.5 17C13.1944 17 17 13.1944 17 8.5C17 3.80558 13.1944 0 8.5 0C3.80558 0 0 3.80558 0 8.5C0 13.1944 3.80558 17 8.5 17Z"
                   stroke-width="0.5"
-                  stroke="white"
+                  stroke="var(--adaptive-white-to-black)"
                 />
                 <path
                   fill="var(--adaptive-white-to-black)"
                   d="M11.875 7.43684C11.875 8.31848 11.5664 9.12434 11.0066 9.70676C10.484 10.2493 9.77539 10.5618 9.0625 10.5618C8.36406 10.5618 7.89766 10.3329 7.60039 10.0931L7.1793 11.8833C7.16318 11.9519 7.12435 12.0131 7.06911 12.0568C7.01387 12.1006 6.94547 12.1244 6.875 12.1243C6.85081 12.1243 6.8267 12.1216 6.80313 12.1161C6.76302 12.1069 6.72512 12.0899 6.69162 12.066C6.65811 12.0421 6.62965 12.0118 6.60788 11.9769C6.5861 11.942 6.57143 11.9031 6.56472 11.8625C6.558 11.8219 6.55937 11.7804 6.56875 11.7404L7.81875 6.42785C7.83771 6.34715 7.88795 6.27728 7.95842 6.23362C8.0289 6.18996 8.11383 6.17608 8.19453 6.19504C8.27524 6.214 8.3451 6.26424 8.38876 6.33472C8.43243 6.40519 8.4463 6.49012 8.42734 6.57082L7.76719 9.37551C7.89062 9.54621 8.25391 9.93684 9.0625 9.93684C10.1379 9.93684 11.25 9.00168 11.25 7.43684C11.2498 7.00554 11.1505 6.58005 10.9596 6.19328C10.7687 5.80651 10.4915 5.46882 10.1492 5.20632C9.80702 4.94382 9.40901 4.76355 8.98599 4.67943C8.56296 4.59532 8.12626 4.60963 7.70965 4.72125C7.29304 4.83286 6.90769 5.0388 6.58338 5.32313C6.25907 5.60747 6.0045 5.96258 5.83935 6.36101C5.6742 6.75945 5.6029 7.19052 5.63096 7.62091C5.65902 8.0513 5.78569 8.46947 6.00117 8.84309C6.04004 8.91467 6.04943 8.9986 6.02733 9.077C6.00523 9.1554 5.95339 9.22207 5.88285 9.26282C5.81232 9.30356 5.72866 9.31515 5.64971 9.29512C5.57076 9.27509 5.50274 9.22503 5.46016 9.15559C5.19665 8.69895 5.04171 8.18783 5.00732 7.66174C4.97293 7.13565 5.06001 6.6087 5.26182 6.12165C5.46363 5.63459 5.77477 5.20049 6.17117 4.8529C6.56757 4.50531 7.03861 4.25356 7.54786 4.11712C8.05711 3.98067 8.59092 3.96319 9.108 4.06603C9.62508 4.16886 10.1116 4.38925 10.5299 4.71016C10.9482 5.03107 11.287 5.44389 11.5203 5.9167C11.7535 6.38951 11.8749 6.90963 11.875 7.43684Z"
-                  stroke="black"
+                  stroke="var(--adaptive-white-to-black)"
                   stroke-width="0.5"
                 />
               </svg>

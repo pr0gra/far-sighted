@@ -23,11 +23,11 @@
     white-space: nowrap;
     position: absolute;
     left: 0;
-    top: 220px;
+    top: 57px;
     right: 0;
   }
   .accordeonBody{
-    transition: all 0.7s;
+    transition: all 1.6s;
     overflow: hidden;
     max-height: 0;
   }
