@@ -17,6 +17,12 @@ import SliderCover5 from "./assets/images/result-1.svg";
 import SliderImage5 from "./assets/images/result-2.svg";
 import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gif";
 
+import sphere5 from "./assets/images/spheres5.svg";
+import sphere4 from "./assets/images/spheres4.svg";
+import sphere3 from "./assets/images/spheres3.svg";
+import sphere2 from "./assets/images/spheres2.svg";
+import sphere1 from "./assets/images/spheres1.svg";
+
 import emailjs from "@emailjs/browser";
 
 import styles from "./page.module.css";
@@ -89,6 +95,12 @@ export default function Home() {
   const [isLight, setIsLight] = useState(false);
   const modelDesignWorkingScrollRef = useRef(null);
   const [girlInIntersection, setGirlInIntersection] = useState(false);
+
+  const [showSphere5, setShowSphere5] = useState(false);
+  const [showSphere4, setShowSphere4] = useState(false);
+  const [showSphere3, setShowSphere3] = useState(false);
+  const [showSphere2, setShowSphere2] = useState(false);
+  const [showSphere1, setShowSphere1] = useState(false);
 
   const [name, setName] = useState("");
   const [theme, setTheme] = useState("");
@@ -476,23 +488,6 @@ export default function Home() {
       </section>
 
       <section>
-        {/* <VideoScroll
-      onLoad={props =>
-        setStyles(props.wrapperEl, props.videoEl, props.playbackRate)
-      }
-      playbackRate={15}
-      style={{ position: 'sticky' }}
-    >
-      <video
-        tabIndex="0"
-        autobuffer="autobuffer"
-        preload="preload"
-        style={{ width: '100%', objectFit: 'contain' }}
-        playsInline
-      >
-        <source type="video/mp4" src={require("../public/girlWalking.mp4")} />
-      </video>
-    </VideoScroll> */}
         <video
           muted
           autoPlay
@@ -501,6 +496,134 @@ export default function Home() {
           className="my-0 mx-[auto]"
           src={require("../public/girlWalking.mp4")}
         />
+      </section>
+
+      <section className="flex">
+        <div className="w-[324px] ml-[77px] ">
+          <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
+            <p className="font-[bakemonoStereoMedium] text-[40px]">
+              Модель работы поэтапно
+            </p>
+          </div>
+          <div className="flex gap-[20px]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="39"
+              height="43"
+              viewBox="0 0 39 43"
+              fill="none"
+            >
+              <path
+                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                stroke="#1155CC"
+                strokeWidth="5"
+                strokeMiterlimit="10"
+              />
+              <path
+                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                stroke="#1155CC"
+                strokeWidth="5"
+                strokeMiterlimit="10"
+              />
+              <path
+                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                fill="#1155CC"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="39"
+              height="43"
+              viewBox="0 0 39 43"
+              fill="none"
+            >
+              <path
+                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                stroke="#1155CC"
+                strokeWidth="5"
+                strokeMiterlimit="10"
+              />
+              <path
+                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                stroke="#1155CC"
+                strokeWidth="5"
+                strokeMiterlimit="10"
+              />
+              <path
+                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                fill="#1155CC"
+              />
+            </svg>
+          </div>
+        </div>{" "}
+        <div className="w-[750px] relative">
+          <video
+            muted
+            autoPlay
+            className="w-[100%]"
+            src={require("../public/spheres.mp4")}
+          />
+          <div className="top-[425px] left-[315px] flex absolute">
+            <div
+              onMouseEnter={() => {
+                setShowSphere5(true);
+              }}
+              onMouseLeave={() => {
+                setShowSphere5(false);
+              }}
+              className="w-[15px] h-[15px] cursor-pointer"
+            ></div>
+            {showSphere5 && <Image src={sphere5} alt="" />}
+          </div>
+          <div className="top-[475px] left-[280px] flex absolute">
+            <div
+              onMouseEnter={() => {
+                setShowSphere4(true);
+              }}
+              onMouseLeave={() => {
+                setShowSphere4(false);
+              }}
+              className="w-[15px] h-[15px] cursor-pointer"
+            ></div>
+            {showSphere4 && <Image src={sphere4} alt="" />}
+          </div>
+          <div className="top-[529px] left-[245px] flex absolute">
+            <div
+              onMouseEnter={() => {
+                setShowSphere3(true);
+              }}
+              onMouseLeave={() => {
+                setShowSphere3(false);
+              }}
+              className="w-[15px]  h-[15px] cursor-pointer"
+            ></div>
+            {showSphere3 && <Image src={sphere3} alt="" />}
+          </div>
+          <div className="top-[590px] left-[208px] flex absolute">
+            <div
+              onMouseEnter={() => {
+                setShowSphere2(true);
+              }}
+              onMouseLeave={() => {
+                setShowSphere2(false);
+              }}
+              className="w-[15px] h-[15px] cursor-pointer"
+            ></div>
+            {showSphere2 && <Image src={sphere2} alt="" />}
+          </div>
+          <div className="top-[665px] left-[158px] flex absolute">
+            <div
+              onMouseEnter={() => {
+                setShowSphere1(true);
+              }}
+              onMouseLeave={() => {
+                setShowSphere1(false);
+              }}
+              className="w-[15px] h-[15px] cursor-pointer"
+            ></div>
+            {showSphere1 && <Image src={sphere1} alt="" />}
+          </div>
+        </div>
       </section>
       <section className="pb-[227px] pt-[100px]">
         <p
