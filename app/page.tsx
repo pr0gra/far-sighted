@@ -145,7 +145,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!spheresVideoRef) {
+    if (!spheresVideoRef || !spheresVideoRef.current) {
       return;
     }
 
