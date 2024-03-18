@@ -56,6 +56,7 @@ export function FormSection() {
       text: "",
       phoneNumber: "",
     },
+    onSubmit() {},
     validationSchema: basicSchema,
   });
   const handleSubmit = (e: any) => {
