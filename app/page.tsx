@@ -15,15 +15,12 @@ import SliderCover4 from "./assets/images/conversation-1.svg";
 import SliderImage4 from "./assets/images/conversation-2.svg";
 import SliderCover5 from "./assets/images/result-1.svg";
 import SliderImage5 from "./assets/images/result-2.svg";
-import SpinningStaerEmailBlock from "./assets/images/spinnig-star-email-block.gif";
 
 import sphere5 from "./assets/images/spheres5.svg";
 import sphere4 from "./assets/images/spheres4.svg";
 import sphere3 from "./assets/images/spheres3.svg";
 import sphere2 from "./assets/images/spheres2.svg";
 import sphere1 from "./assets/images/spheres1.svg";
-
-import emailjs from "@emailjs/browser";
 
 import styles from "./page.module.css";
 
@@ -38,6 +35,7 @@ import { ModelDesignWorkingElement } from "./components/ModelDesignWorkingElemen
 import { Carousel } from "./components/Carousel";
 import Link from "next/link";
 import { AccordeonSection } from "./components/AccordeonSection";
+import { FormSection } from "./components/FormSection";
 
 interface BackgroundsList {
   img: any;
@@ -94,19 +92,14 @@ export default function Home() {
   const girlWalkingRef = useRef(null);
   const [isLight, setIsLight] = useState(false);
   const modelDesignWorkingScrollRef = useRef(null);
-  const [girlInIntersection, setGirlInIntersection] = useState(false);
-
+  const spheresVideoRef = useRef(null);
+  const [spheresVideoInIntersection, setSpheresVideoInIntersection] =
+    useState(false);
   const [showSphere5, setShowSphere5] = useState(false);
   const [showSphere4, setShowSphere4] = useState(false);
   const [showSphere3, setShowSphere3] = useState(false);
   const [showSphere2, setShowSphere2] = useState(false);
   const [showSphere1, setShowSphere1] = useState(false);
-
-  const [name, setName] = useState("");
-  const [theme, setTheme] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
 
   const [currentHero, setCurrentHero] = useState({
     img: Hero1,
@@ -117,29 +110,6 @@ export default function Home() {
     ),
     text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
   });
-
-  // useEffect(() => {
-  //   if (girlWalkingRef === null || !girlWalkingRef.current) {
-  //     return;
-  //   }
-  //   window.addEventListener("scroll", function () {
-  //     girlWalkingRef.current.currentTime = window.pageYOffset % 1000;
-  //   });
-  // }, [girlWalkingRef]);
-  // useEffect(() => {
-  //   if (girlWalkingRef === null) {
-  //     return;
-  //   }
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       setGirlInIntersection(entries[0].isIntersecting);
-  //     },
-  //     {
-  //       threshold: 0.2,
-  //     }
-  //   );
-  //   observer.observe(girlWalkingRef.current);
-  // }, [girlWalkingRef]);
 
   useEffect(() => {
     const operatingSystemThemeDark = window.matchMedia(
@@ -173,6 +143,23 @@ export default function Home() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!spheresVideoRef) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setSpheresVideoInIntersection(true);
+      },
+      {
+        threshold: 0.8,
+      }
+    );
+
+    observer.observe(spheresVideoRef.current);
+  }, [spheresVideoRef]);
 
   useEffect(() => {
     let count = 1;
@@ -230,33 +217,6 @@ export default function Home() {
     const scrollRef = modelDesignWorkingScrollRef.current as HTMLElement;
     scrollRef.scrollLeft += scrollOffset;
   };
-
-  function handleSubmitForm(e: any) {
-    e.preventDefault();
-    const serviceId = "service_gvxf5xq";
-    const templateId = "template_5lx2vn6";
-    const publicKey = "m1AHA8wE_ngCDOw9q";
-
-    const templateParams = {
-      name,
-      theme,
-      phoneNumber,
-      email,
-      text,
-    };
-
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("ok", response);
-        setName("");
-        setTheme("");
-        setPhoneNumber("");
-        setEmail("");
-        setText("");
-      })
-      .catch((e) => console.log(e));
-  }
 
   return (
     <main className="bg-[var(--adaptive-white-to-black)] text-white font-[bakemonoStereoBold]">
@@ -448,271 +408,309 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="">
-        <div className="h-[600px] flex items-start">
-          {" "}
-          <Carousel />
-          <div className="relative right-[172px] top-[94px]">
-            <div className="rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+      <div>
+        <div className="sticky w-[95px] my-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+          <svg
+            className="h-[30px] mx-[auto] my-0 "
+            width="30"
+            height="24"
+            viewBox="0 0 30 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
+              fill="black"
+            />
+            <path
+              d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
+              fill="black"
+            />
+            <path
+              d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+        <section className="">
+          <div className="h-[600px] flex items-start">
+            {" "}
+            <Carousel />
+          </div>
+          <p
+            className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
+          >
+            Мы подбираем под каждый проект самую дальновидную <br /> команду из
+            профессионалов в своих направлениях, чтобы <br /> прийти к
+            комплексному решению засчет <br /> междисциплинарного подхода
+          </p>
+        </section>
+
+        <section className="relative ">
+          <video
+            muted
+            autoPlay
+            loop
+            ref={girlWalkingRef}
+            className="my-0 mx-[auto]"
+            src={require("../public/girlWalking.mp4")}
+          />
+
+          <div className="absolute index-2 bottom-[440px] right-[220px]">
+            <p className="font-[bakemonoStereoRegular] leading-[35px] text-[28px]">
+              Дальновидный человек — <br /> это тот, которого издалека <br />{" "}
+              видно.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <div className="bg-white sticky index-[2]  w-[95px] my-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
+          <svg
+            className="  "
+            width="55"
+            height="26"
+            viewBox="0 0 55 26"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0.162109H9.34744V3.22854H3.5701V20.8865H9.34744V23.9529H0V0.162109Z"
+              fill="black"
+            />
+            <path
+              d="M11.2441 23.5834L23.7765 0L26.7837 1.45174L14.2661 25.0351L11.2441 23.5834Z"
+              fill="black"
+            />
+            <path
+              d="M28.1318 23.5834L40.6642 0L43.6714 1.45174L31.139 25.0351L28.1318 23.5834Z"
+              fill="black"
+            />
+            <path
+              d="M45.4629 23.9677V20.9013H51.2402V3.24336H45.4629V0.162109H54.8103V23.9677H45.4629Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+        <section className="flex relative">
+          <div className="w-[324px] ml-[77px] ">
+            <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
+              <p className="font-[bakemonoStereoMedium] text-[40px]">
+                Модель работы поэтапно
+              </p>
+            </div>
+            <div className="flex gap-[20px]">
               <svg
-                className="h-[30px] w-[24px]  "
-                width="30"
-                height="24"
-                viewBox="0 0 30 24"
+                xmlns="http://www.w3.org/2000/svg"
+                width="39"
+                height="43"
+                viewBox="0 0 39 43"
+                fill="none"
+              >
+                <path
+                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                  stroke="#1155CC"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                  stroke="#1155CC"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                  fill="#1155CC"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="39"
+                height="43"
+                viewBox="0 0 39 43"
+                fill="none"
+              >
+                <path
+                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                  stroke="#1155CC"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                  stroke="#1155CC"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                  fill="#1155CC"
+                />
+              </svg>
+            </div>
+          </div>{" "}
+          <div ref={spheresVideoRef} className="w-[750px] relative">
+            {spheresVideoInIntersection && (
+              <video
+                muted
+                autoPlay
+                className="w-[100%]"
+                src={require("../public/spheres.mp4")}
+              />
+            )}
+            <div className="top-[420px] left-[330px] flex absolute">
+              <div
+                onMouseEnter={() => {
+                  setShowSphere5(true);
+                }}
+                onMouseLeave={() => {
+                  setShowSphere5(false);
+                }}
+                className="w-[15px] h-[15px] cursor-pointer"
+              ></div>
+              {showSphere5 && <Image src={sphere5} alt="" />}
+            </div>
+            <div className="top-[466px] left-[301px] flex absolute">
+              <div
+                onMouseEnter={() => {
+                  setShowSphere4(true);
+                }}
+                onMouseLeave={() => {
+                  setShowSphere4(false);
+                }}
+                className="w-[15px] h-[15px] cursor-pointer"
+              ></div>
+              {showSphere4 && <Image src={sphere4} alt="" />}
+            </div>
+            <div className="top-[513px] left-[270px] flex absolute">
+              <div
+                onMouseEnter={() => {
+                  setShowSphere3(true);
+                }}
+                onMouseLeave={() => {
+                  setShowSphere3(false);
+                }}
+                className="w-[15px]  h-[15px] cursor-pointer"
+              ></div>
+              {showSphere3 && <Image src={sphere3} alt="" />}
+            </div>
+            <div className="top-[567px] left-[235px] flex absolute">
+              <div
+                onMouseEnter={() => {
+                  setShowSphere2(true);
+                }}
+                onMouseLeave={() => {
+                  setShowSphere2(false);
+                }}
+                className="w-[15px] h-[15px] cursor-pointer"
+              ></div>
+              {showSphere2 && <Image src={sphere2} alt="" />}
+            </div>
+            <div className="top-[636px] left-[192px] flex absolute">
+              <div
+                onMouseEnter={() => {
+                  setShowSphere1(true);
+                }}
+                onMouseLeave={() => {
+                  setShowSphere1(false);
+                }}
+                className="w-[15px] h-[15px] cursor-pointer"
+              ></div>
+              {showSphere1 && <Image src={sphere1} alt="" />}
+            </div>
+          </div>
+        </section>
+        <section className="pb-[227px] pt-[100px]">
+          <p
+            className={`text-[34px] pl-[215px] font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-left-50-mobile"]}`}
+          >
+            {`// Модель работы агентства
+            дизайн-инициатив`}
+          </p>
+          <div
+            ref={modelDesignWorkingScrollRef}
+            className=" flex gap-[93px] overflow-hidden scroll-smooth items-center h-[550px] pb-[70px]  px-[85px]"
+          >
+            {modelDesignAgentWorkingImages.map((sliderElem, id) => {
+              return (
+                <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />
+              );
+            })}
+          </div>
+          <div className="pr-[115px] mt-[40px]  flex justify-end gap-[38px]">
+            <button onClick={() => scroll(-372)}>
+              <svg
+                width="29"
+                height="32"
+                viewBox="0 0 29 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
-                  fill="black"
+                  d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932L10.9146 -1.86074e-06Z"
+                  fill="#C62068"
                 />
                 <path
-                  d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
-                  fill="black"
+                  d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932"
+                  stroke="#C62068"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
                 />
                 <path
-                  d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
-                  fill="black"
+                  d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398L10.9146 31.233Z"
+                  fill="#C62068"
+                />
+                <path
+                  d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398"
+                  stroke="#C62068"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M28.3577 13.7227L0.0644531 13.7227L0.0644538 17.5229L28.3577 17.5229L28.3577 13.7227Z"
+                  fill="#C62068"
                 />
               </svg>
-            </div>
+            </button>
+            <button onClick={() => scroll(372)}>
+              <svg
+                width="29"
+                height="32"
+                viewBox="0 0 29 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392L17.6528 31.2324Z"
+                  fill="#C62068"
+                />
+                <path
+                  d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392"
+                  stroke="#C62068"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926L17.6528 -0.000598907Z"
+                  fill="#C62068"
+                />
+                <path
+                  d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926"
+                  stroke="#C62068"
+                  strokeWidth="5"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M0.209723 17.5098L28.5029 17.5098V13.7096L0.209723 13.7096V17.5098Z"
+                  fill="#C62068"
+                />
+              </svg>
+            </button>
           </div>
-        </div>
-        <p
-          className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
-        >
-          Мы подбираем под каждый проект самую дальновидную <br /> команду из
-          профессионалов в своих направлениях, чтобы <br /> прийти к
-          комплексному решению засчет <br /> междисциплинарного подхода
-        </p>
-      </section>
-
-      <section>
-        <video
-          muted
-          autoPlay
-          loop
-          ref={girlWalkingRef}
-          className="my-0 mx-[auto]"
-          src={require("../public/girlWalking.mp4")}
-        />
-      </section>
-
-      <section className="flex">
-        <div className="w-[324px] ml-[77px] ">
-          <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
-            <p className="font-[bakemonoStereoMedium] text-[40px]">
-              Модель работы поэтапно
-            </p>
-          </div>
-          <div className="flex gap-[20px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="39"
-              height="43"
-              viewBox="0 0 39 43"
-              fill="none"
-            >
-              <path
-                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                stroke="#1155CC"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                stroke="#1155CC"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                fill="#1155CC"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="39"
-              height="43"
-              viewBox="0 0 39 43"
-              fill="none"
-            >
-              <path
-                d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                stroke="#1155CC"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                stroke="#1155CC"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                fill="#1155CC"
-              />
-            </svg>
-          </div>
-        </div>{" "}
-        <div className="w-[750px] relative">
-          <video
-            muted
-            autoPlay
-            className="w-[100%]"
-            src={require("../public/spheres.mp4")}
-          />
-          <div className="top-[425px] left-[315px] flex absolute">
-            <div
-              onMouseEnter={() => {
-                setShowSphere5(true);
-              }}
-              onMouseLeave={() => {
-                setShowSphere5(false);
-              }}
-              className="w-[15px] h-[15px] cursor-pointer"
-            ></div>
-            {showSphere5 && <Image src={sphere5} alt="" />}
-          </div>
-          <div className="top-[475px] left-[280px] flex absolute">
-            <div
-              onMouseEnter={() => {
-                setShowSphere4(true);
-              }}
-              onMouseLeave={() => {
-                setShowSphere4(false);
-              }}
-              className="w-[15px] h-[15px] cursor-pointer"
-            ></div>
-            {showSphere4 && <Image src={sphere4} alt="" />}
-          </div>
-          <div className="top-[529px] left-[245px] flex absolute">
-            <div
-              onMouseEnter={() => {
-                setShowSphere3(true);
-              }}
-              onMouseLeave={() => {
-                setShowSphere3(false);
-              }}
-              className="w-[15px]  h-[15px] cursor-pointer"
-            ></div>
-            {showSphere3 && <Image src={sphere3} alt="" />}
-          </div>
-          <div className="top-[590px] left-[208px] flex absolute">
-            <div
-              onMouseEnter={() => {
-                setShowSphere2(true);
-              }}
-              onMouseLeave={() => {
-                setShowSphere2(false);
-              }}
-              className="w-[15px] h-[15px] cursor-pointer"
-            ></div>
-            {showSphere2 && <Image src={sphere2} alt="" />}
-          </div>
-          <div className="top-[665px] left-[158px] flex absolute">
-            <div
-              onMouseEnter={() => {
-                setShowSphere1(true);
-              }}
-              onMouseLeave={() => {
-                setShowSphere1(false);
-              }}
-              className="w-[15px] h-[15px] cursor-pointer"
-            ></div>
-            {showSphere1 && <Image src={sphere1} alt="" />}
-          </div>
-        </div>
-      </section>
-      <section className="pb-[227px] pt-[100px]">
-        <p
-          className={`text-[34px] pl-[215px] font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-left-50-mobile"]}`}
-        >
-          {`// Модель работы агентства
-          дизайн-инициатив`}
-        </p>
-        <div
-          ref={modelDesignWorkingScrollRef}
-          className=" flex gap-[93px] overflow-hidden scroll-smooth items-center h-[550px] pb-[70px]  px-[85px]"
-        >
-          {modelDesignAgentWorkingImages.map((sliderElem, id) => {
-            return (
-              <ModelDesignWorkingElement key={id} sliderElem={sliderElem} />
-            );
-          })}
-        </div>
-        <div className="pr-[115px] mt-[40px]  flex justify-end gap-[38px]">
-          <button onClick={() => scroll(-372)}>
-            <svg
-              width="29"
-              height="32"
-              viewBox="0 0 29 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932L10.9146 -1.86074e-06Z"
-                fill="#C62068"
-              />
-              <path
-                d="M10.9146 -1.86074e-06C10.9146 6.02529 6.02008 10.8932 1.95337e-06 10.8932"
-                stroke="#C62068"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398L10.9146 31.233Z"
-                fill="#C62068"
-              />
-              <path
-                d="M10.9146 31.233C10.9146 25.2077 6.02008 20.3398 0 20.3398"
-                stroke="#C62068"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M28.3577 13.7227L0.0644531 13.7227L0.0644538 17.5229L28.3577 17.5229L28.3577 13.7227Z"
-                fill="#C62068"
-              />
-            </svg>
-          </button>
-          <button onClick={() => scroll(372)}>
-            <svg
-              width="29"
-              height="32"
-              viewBox="0 0 29 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392L17.6528 31.2324Z"
-                fill="#C62068"
-              />
-              <path
-                d="M17.6528 31.2324C17.6528 25.2071 22.5473 20.3392 28.5674 20.3392"
-                stroke="#C62068"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926L17.6528 -0.000598907Z"
-                fill="#C62068"
-              />
-              <path
-                d="M17.6528 -0.000598907C17.6528 6.02469 22.5473 10.8926 28.5674 10.8926"
-                stroke="#C62068"
-                strokeWidth="5"
-                strokeMiterlimit="10"
-              />
-              <path
-                d="M0.209723 17.5098L28.5029 17.5098V13.7096L0.209723 13.7096V17.5098Z"
-                fill="#C62068"
-              />
-            </svg>
-          </button>
-        </div>
-      </section>
+        </section>
+      </div>
       <div className="flex gap-[32px] justify-center pb-[238px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -760,129 +758,8 @@ export default function Home() {
 
       <AccordeonSection />
 
-      <section className="pb-[100px] font-[bakemonoStereoRegular]  pt-[200px] text-black bg-white flex">
-        <div className="w-[1225px] my-0 mx-auto ">
-          <div className="grid grid-cols-[auto_745px]">
-            <div id="email">
-              <p
-                className={`text-[45px] font-[600] ${styles["text-align-center-mobile"]} text-[var(--adaptive-white-to-black)]`}
-              >
-                Обсудить с нами{" "}
-              </p>{" "}
-              <div
-                className={`flex mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="39"
-                  height="43"
-                  viewBox="0 0 39 43"
-                  fill="none"
-                >
-                  <path
-                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                    stroke="#1155CC"
-                    strokeWidth="5"
-                    strokeMiterlimit="10"
-                  />
-                  <path
-                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                    stroke="#1155CC"
-                    strokeWidth="5"
-                    strokeMiterlimit="10"
-                  />
-                  <path
-                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                    fill="#1155CC"
-                  />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="39"
-                  height="43"
-                  viewBox="0 0 39 43"
-                  fill="none"
-                >
-                  <path
-                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                    stroke="#1155CC"
-                    strokeWidth="5"
-                    strokeMiterlimit="10"
-                  />
-                  <path
-                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                    stroke="#1155CC"
-                    strokeWidth="5"
-                    strokeMiterlimit="10"
-                  />
-                  <path
-                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                    fill="#1155CC"
-                  />
-                </svg>
-              </div>
-              <Image src={SpinningStaerEmailBlock} alt="" />
-            </div>
-            <div
-              className={`bg-[var(--adaptive-white-to-black)] p-[100px] text-[var(--adaptive-black-to-white)]  ${styles["padding-h-mobile-25"]}`}
-            >
-              <form
-                onSubmit={handleSubmitForm}
-                className={`flex flex-col text-[28px] gap-[64px]`}
-                action=""
-              >
-                <input
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                  placeholder="/как к вам обращаться?"
-                  type="text"
-                />
-                <input
-                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                  placeholder="/тема разговора"
-                  type="text"
-                  onChange={(e) => {
-                    setTheme(e.target.value);
-                  }}
-                />
-                <input
-                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                  placeholder="/телефон"
-                  type="text"
-                  onChange={(e) => {
-                    setPhoneNumber(e.target.value);
-                  }}
-                />
-                <input
-                  className="py-[10px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                  placeholder="/почта"
-                  type="text"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <textarea
-                  className="py-[10px] px-[19px] h-[221px] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                  placeholder="/расскажите о вашей задаче"
-                  name=""
-                  id=""
-                  onChange={(e) => {
-                    setText(e.target.value);
-                  }}
-                ></textarea>
-                <button
-                  type="submit"
-                  className="py-[10px] font-[bakemonoStereoMedium] bg-[var(--adaptive-white-to-black)] placeholder-[var(--adaptive-black-to-white)] text-[var(--adaptive-black-to-white)] px-[19px] border-[2px] border-[var(--adaptive-black-to-white)] rounded-[13px]"
-                >
-                  отправить
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FormSection />
+
       <footer
         className={`bg-[var(--adaptive-white-to-black)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-25"]} ${styles["padding-v-mobile-25"]}`}
       >

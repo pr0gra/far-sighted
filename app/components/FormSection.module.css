@@ -1,0 +1,38 @@
+@media (max-width: 1440px) {
+
+.gap-20-mobile {
+    gap: 20px;
+  }
+  .padding-left-50-mobile {
+    padding-left: 50px;
+  }
+  .form-margin-mobile {
+    margin-top: 154px;
+  }
+  .padding-mobile-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .padding-h-mobile-25 {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .padding-v-mobile-25 {
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+  .mobile-form {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .text-align-center-mobile {
+    text-align: center;
+  }
+  .justify-center-mobile {
+    justify-content: center;
+  }
+  .block-flex-wrap-mobile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
