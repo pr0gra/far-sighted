@@ -409,7 +409,7 @@ export default function Home() {
         </div>
       </section>
       <div>
-        <div className="sticky w-[95px] my-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+        <div className="sticky w-[90px] h-[90px] flex items-center my-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
           <svg
             className="h-[30px] mx-[auto] my-0 "
             width="30"
@@ -466,7 +466,7 @@ export default function Home() {
       </div>
 
       <div>
-        <div className="bg-white sticky index-[2]  w-[95px] my-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
+        <div className="bg-white sticky z-[2]  w-[90px] h-[90px] flex items-center my-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
           <svg
             className="  "
             width="55"
@@ -710,51 +710,7 @@ export default function Home() {
             </button>
           </div>
         </section>
-      </div>
-      <div className="flex gap-[32px] justify-center pb-[238px]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="353"
-          height="2"
-          viewBox="0 0 353 2"
-          fill="none"
-        >
-          <path
-            d="M1 1H352"
-            stroke="var(--adaptive-black-to-white)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="874"
-          height="2"
-          viewBox="0 0 874 2"
-          fill="none"
-        >
-          <path
-            d="M1 1H873"
-            stroke="var(--adaptive-black-to-white)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="225"
-          height="2"
-          viewBox="0 0 225 2"
-          fill="none"
-        >
-          <path
-            d="M1 1L224 0.999981"
-            stroke="var(--adaptive-black-to-white)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-      </div>
+      </div>f
 
       <AccordeonSection />
 

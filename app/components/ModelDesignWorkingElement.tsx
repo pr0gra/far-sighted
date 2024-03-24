@@ -1,6 +1,7 @@
 "useclient";
 import Image from "next/image";
 import { useState } from "react";
+import plus from "../assets/images/+.svg";
 
 import styles from "./ModelDesignWorkingElement.module.css";
 
