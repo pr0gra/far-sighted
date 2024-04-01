@@ -219,9 +219,9 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-[var(--adaptive-white-to-black)] text-white font-[bakemonoStereoBold]">
+    <main className=" text-white font-[bakemonoStereoBold]">
       <section
-        className="h-[100vh] px-16 bg-cover"
+        className="h-[100vh] flex flex-col  justify-between px-16 bg-cover "
         style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
       >
         <header className="pt-11 flex justify-between items-center">
@@ -383,33 +383,37 @@ export default function Home() {
             </ul>
           </nav>
         </header>
-        <div className="flex justify-between flex-col pb-[120px] h-[100%]">
-          <Image src={HeroAnimatedLogo} alt="Дальновидно" />
-          <div
-            className={`grid grid-cols-[auto_744px] items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
-          >
-            <div className="row-span-2 self-end font-bakemonoTextExtralight">
-              <p className="text-[24px] ">{currentHero.name}</p>
-            </div>
-            <div className="flex border-t-2 text-[20px]  border-white font-[plexSansLight]  justify-between mb-6">
-              <div className="flex gap-2">
-                <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
-                <p className="font-bakemonoTextExtralight">
-                  {getCurrentDate().currentDay}
-                </p>
-              </div>
-              <p>дизайн-агентство инициатив</p>
-            </div>
-            <div className="w-[640px] my-0 mr-0 ml-[auto]">
-              <p className="text-right text-[27px] leading-[32px] font-bakemonoStereoRegular">
-                {currentHero.text}
+
+        <Image
+          className="my-0 mx-[auto]"
+          width={700}
+          src={HeroAnimatedLogo}
+          alt="Дальновидно"
+        />
+        <div
+          className={`grid grid-cols-[auto_744px] pb-11 items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
+        >
+          <div className="row-span-2 self-end font-bakemonoTextExtralight">
+            <p className="text-[24px] ">{currentHero.name}</p>
+          </div>
+          <div className="flex border-t-2 text-[20px]  border-white font-[plexSansLight]  justify-between mb-6">
+            <div className="flex gap-2">
+              <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
+              <p className="font-bakemonoTextExtralight">
+                {getCurrentDate().currentDay}
               </p>
             </div>
+            <p>дизайн-агентство инициатив</p>
+          </div>
+          <div className="w-[640px] my-0 mr-0 ml-[auto]">
+            <p className="text-right text-[27px] leading-[32px] font-bakemonoStereoRegular">
+              {currentHero.text}
+            </p>
           </div>
         </div>
       </section>
-      <div>
-        <div className="sticky w-[95px] my-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+      <div className="bg-[var(--adaptive-white-to-black)] pt-[100px]">
+        <div className="sticky  w-[95px] mt-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
           <svg
             className="h-[30px] mx-[auto] my-0 "
             width="30"
@@ -432,27 +436,29 @@ export default function Home() {
             />
           </svg>
         </div>
-        <section className="">
-          <div className="h-[600px] flex items-start">
-            {" "}
-            <Carousel />
+        <section className="flex justify-center  bg-[var(--adaptive-white-to-black)] ">
+          <div className="w-[1440px]">
+            <div className="h-[600px] flex items-start">
+              {" "}
+              <Carousel />
+            </div>
+            <p
+              className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
+            >
+              Мы подбираем под каждый проект самую дальновидную <br /> команду
+              из профессионалов в своих направлениях, чтобы <br /> прийти к
+              комплексному решению засчет <br /> междисциплинарного подхода
+            </p>
           </div>
-          <p
-            className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
-          >
-            Мы подбираем под каждый проект самую дальновидную <br /> команду из
-            профессионалов в своих направлениях, чтобы <br /> прийти к
-            комплексному решению засчет <br /> междисциплинарного подхода
-          </p>
         </section>
 
-        <section className="relative ">
+        <section className="relative  w-[1440px] mx-auto my-0">
           <video
             muted
             autoPlay
             loop
             ref={girlWalkingRef}
-            className="my-0 mx-[auto]"
+            className="mx-[auto]"
             src={require("../public/girlWalking.mp4")}
           />
 
@@ -465,8 +471,8 @@ export default function Home() {
         </section>
       </div>
 
-      <div>
-        <div className="bg-white sticky index-[2]  w-[95px] my-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
+      <div className="bg-black">
+        <div className="bg-white sticky index-[2]  w-[95px] mb-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
           <svg
             className="  "
             width="55"
@@ -493,136 +499,138 @@ export default function Home() {
             />
           </svg>
         </div>
-        <section className="flex relative">
-          <div className="w-[324px] ml-[77px] ">
-            <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
-              <p className="font-[bakemonoStereoMedium] text-[40px]">
-                Модель работы поэтапно
-              </p>
-            </div>
-            <div className="flex gap-[20px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="43"
-                viewBox="0 0 39 43"
-                fill="none"
-              >
-                <path
-                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
+        <section className="flex h-[100vh]  justify-center relative">
+          <div className="w-[1440px] flex ">
+            <div className="w-[324px] ml-[77px] ">
+              <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
+                <p className="font-[bakemonoStereoMedium] text-[40px]">
+                  Модель работы поэтапно
+                </p>
+              </div>
+              <div className="flex gap-[20px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="39"
+                  height="43"
+                  viewBox="0 0 39 43"
+                  fill="none"
+                >
+                  <path
+                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                    fill="#1155CC"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="39"
+                  height="43"
+                  viewBox="0 0 39 43"
+                  fill="none"
+                >
+                  <path
+                    d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
+                    stroke="#1155CC"
+                    strokeWidth="5"
+                    strokeMiterlimit="10"
+                  />
+                  <path
+                    d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
+                    fill="#1155CC"
+                  />
+                </svg>
+              </div>
+            </div>{" "}
+            <div ref={spheresVideoRef} className="w-[750px] relative">
+              {spheresVideoInIntersection && (
+                <video
+                  muted
+                  autoPlay
+                  className="w-[100%]"
+                  src={require("../public/spheres.mp4")}
                 />
-                <path
-                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                  fill="#1155CC"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="43"
-                viewBox="0 0 39 43"
-                fill="none"
-              >
-                <path
-                  d="M23.673 42.2461C23.673 34.096 30.2935 27.5115 38.4365 27.5115"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M23.673 -0.000182152C23.673 8.14987 30.2935 14.7344 38.4365 14.7344"
-                  stroke="#1155CC"
-                  strokeWidth="5"
-                  strokeMiterlimit="10"
-                />
-                <path
-                  d="M0.0790634 23.6836L38.3496 23.6836V18.5433L0.0790634 18.5433V23.6836Z"
-                  fill="#1155CC"
-                />
-              </svg>
-            </div>
-          </div>{" "}
-          <div ref={spheresVideoRef} className="w-[750px] relative">
-            {spheresVideoInIntersection && (
-              <video
-                muted
-                autoPlay
-                className="w-[100%]"
-                src={require("../public/spheres.mp4")}
-              />
-            )}
-            <div className="top-[420px] left-[330px] flex absolute">
-              <div
-                onMouseEnter={() => {
-                  setShowSphere5(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSphere5(false);
-                }}
-                className="w-[15px] h-[15px] cursor-pointer"
-              ></div>
-              {showSphere5 && <Image src={sphere5} alt="" />}
-            </div>
-            <div className="top-[466px] left-[301px] flex absolute">
-              <div
-                onMouseEnter={() => {
-                  setShowSphere4(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSphere4(false);
-                }}
-                className="w-[15px] h-[15px] cursor-pointer"
-              ></div>
-              {showSphere4 && <Image src={sphere4} alt="" />}
-            </div>
-            <div className="top-[513px] left-[270px] flex absolute">
-              <div
-                onMouseEnter={() => {
-                  setShowSphere3(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSphere3(false);
-                }}
-                className="w-[15px]  h-[15px] cursor-pointer"
-              ></div>
-              {showSphere3 && <Image src={sphere3} alt="" />}
-            </div>
-            <div className="top-[567px] left-[235px] flex absolute">
-              <div
-                onMouseEnter={() => {
-                  setShowSphere2(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSphere2(false);
-                }}
-                className="w-[15px] h-[15px] cursor-pointer"
-              ></div>
-              {showSphere2 && <Image src={sphere2} alt="" />}
-            </div>
-            <div className="top-[636px] left-[192px] flex absolute">
-              <div
-                onMouseEnter={() => {
-                  setShowSphere1(true);
-                }}
-                onMouseLeave={() => {
-                  setShowSphere1(false);
-                }}
-                className="w-[15px] h-[15px] cursor-pointer"
-              ></div>
-              {showSphere1 && <Image src={sphere1} alt="" />}
+              )}
+              <div className="top-[420px] left-[330px] flex absolute">
+                <div
+                  onMouseEnter={() => {
+                    setShowSphere5(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowSphere5(false);
+                  }}
+                  className="w-[15px] h-[15px] cursor-pointer"
+                ></div>
+                {showSphere5 && <Image src={sphere5} alt="" />}
+              </div>
+              <div className="top-[466px] left-[301px] flex absolute">
+                <div
+                  onMouseEnter={() => {
+                    setShowSphere4(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowSphere4(false);
+                  }}
+                  className="w-[15px] h-[15px] cursor-pointer"
+                ></div>
+                {showSphere4 && <Image src={sphere4} alt="" />}
+              </div>
+              <div className="top-[513px] left-[270px] flex absolute">
+                <div
+                  onMouseEnter={() => {
+                    setShowSphere3(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowSphere3(false);
+                  }}
+                  className="w-[15px]  h-[15px] cursor-pointer"
+                ></div>
+                {showSphere3 && <Image src={sphere3} alt="" />}
+              </div>
+              <div className="top-[567px] left-[235px] flex absolute">
+                <div
+                  onMouseEnter={() => {
+                    setShowSphere2(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowSphere2(false);
+                  }}
+                  className="w-[15px] h-[15px] cursor-pointer"
+                ></div>
+                {showSphere2 && <Image src={sphere2} alt="" />}
+              </div>
+              <div className="top-[636px] left-[192px] flex absolute">
+                <div
+                  onMouseEnter={() => {
+                    setShowSphere1(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowSphere1(false);
+                  }}
+                  className="w-[15px] h-[15px] cursor-pointer"
+                ></div>
+                {showSphere1 && <Image src={sphere1} alt="" />}
+              </div>
             </div>
           </div>
         </section>
-        <section className="pb-[227px] pt-[100px]">
+        <section className="w-[1440px] mx-[auto] pb-[227px] pt-[100px]">
           <p
             className={`text-[34px] pl-[215px] font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-left-50-mobile"]}`}
           >
@@ -711,7 +719,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div className="flex gap-[32px] justify-center pb-[238px]">
+      <div className="flex gap-[32px] justify-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="353"
@@ -831,38 +839,42 @@ export default function Home() {
           <div className="flex items-center gap-[91px]">
             <p className="text-[var(--adaptive-black-to-white)]">Следить</p>{" "}
             <div className="flex gap-[20px] items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M17 8.3246C17 12.9259 13.1983 16.6492 8.5 16.6492C3.80174 16.6492 0 12.9259 0 8.3246C0 3.72329 3.80174 0 8.5 0C13.1983 0 17 3.7344 17 8.3246Z"
-                  fill="var(--adaptive-black-to-white)"
-                />
-                <path
-                  d="M4.50473 8.75765H6.29779C6.69499 8.75765 7.37589 8.92436 7.37589 9.66902C7.37589 10.058 7.05814 10.5137 6.66094 10.5137H4.50473V8.75765ZM10.2471 5.25665H13.47V6.31251H10.2471V5.25665ZM13.0388 8.75765H10.6669C10.7464 8.13525 11.223 7.71291 11.8585 7.71291C12.4714 7.71291 12.9366 8.14636 13.0388 8.75765ZM10.5989 9.46896H14.5368C14.5368 9.41339 14.5368 9.34671 14.5368 9.29114C14.5368 7.83517 13.47 6.66816 11.8585 6.66816C10.2357 6.66816 9.16895 7.84628 9.16895 9.29114C9.16895 10.7582 10.2357 11.9252 11.8585 11.9252C13.47 11.9252 14.2417 11.025 14.4914 9.8135H13.0388C12.9026 10.4248 12.5281 10.8694 11.8585 10.8694C11.1776 10.8694 10.6443 10.2581 10.5989 9.46896ZM8.8058 9.8135C8.8058 9.04662 8.28377 8.39088 7.59152 8.15748C8.1022 7.84628 8.44265 7.29056 8.44265 6.66816C8.44265 5.69011 7.63691 4.91211 6.6496 4.91211H3.06348V11.9363H6.6496C7.82984 11.9252 8.8058 10.9805 8.8058 9.8135ZM6.28644 7.71291H4.49339V6.30139H6.28644C6.68364 6.30139 7.01274 6.62371 7.01274 7.00159C7.01274 7.37948 6.68364 7.71291 6.28644 7.71291Z"
-                  fill="var(--adaptive-white-to-black)"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M8.5 16.6492C13.1944 16.6492 17 12.9221 17 8.3246C17 3.72705 13.1944 0 8.5 0C3.80558 0 0 3.72705 0 8.3246C0 12.9221 3.80558 16.6492 8.5 16.6492Z"
-                  fill="var(--adaptive-black-to-white)"
-                />
-                <path
-                  d="M11.5858 3.38965H5.41227C4.33416 3.38965 3.47168 4.24545 3.47168 5.29019V7.30188V8.04653V11.3475C3.47168 12.4033 4.34551 13.248 5.41227 13.248H11.5858C12.6639 13.248 13.5378 12.3922 13.5378 11.3475V8.05765V7.31299V5.30131C13.5378 4.24545 12.6639 3.38965 11.5858 3.38965ZM12.1533 4.53442H12.3802V4.7567V6.21267H10.678L10.6666 4.54553L12.1533 4.53442ZM7.06914 7.31299C7.3869 6.87953 7.92028 6.59056 8.5104 6.59056C9.10052 6.59056 9.62255 6.87953 9.95165 7.31299C9.9857 7.36856 10.0197 7.42413 10.0538 7.4797C10.2013 7.73533 10.2808 8.0243 10.2808 8.32439C10.2808 9.28022 9.48636 10.0582 8.5104 10.0582C7.53443 10.0582 6.74004 9.28022 6.74004 8.32439C6.74004 8.01319 6.81948 7.72422 6.96701 7.4797C6.9897 7.42413 7.02375 7.36856 7.06914 7.31299ZM12.5618 11.3475C12.5618 11.8698 12.1306 12.2922 11.5972 12.2922H5.42361C4.89024 12.2922 4.45899 11.8698 4.45899 11.3475V7.82425V7.31299H5.95699C5.92295 7.4019 5.8889 7.49082 5.85486 7.59085C5.78677 7.82424 5.75272 8.06876 5.75272 8.32439C5.75272 9.8137 6.9897 11.0252 8.5104 11.0252C10.0311 11.0252 11.2681 9.8137 11.2681 8.32439C11.2681 8.06876 11.234 7.82424 11.1659 7.59085C11.1432 7.49082 11.1092 7.4019 11.0638 7.31299H12.5731V7.82425V11.3475H12.5618Z"
-                  fill="var(--adaptive-white-to-black)"
-                />
-              </svg>
+              <Link href="https://ru.pinterest.com/dalnovidno/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                >
+                  <path
+                    d="M17 8.3246C17 12.9259 13.1983 16.6492 8.5 16.6492C3.80174 16.6492 0 12.9259 0 8.3246C0 3.72329 3.80174 0 8.5 0C13.1983 0 17 3.7344 17 8.3246Z"
+                    fill="var(--adaptive-black-to-white)"
+                  />
+                  <path
+                    d="M4.50473 8.75765H6.29779C6.69499 8.75765 7.37589 8.92436 7.37589 9.66902C7.37589 10.058 7.05814 10.5137 6.66094 10.5137H4.50473V8.75765ZM10.2471 5.25665H13.47V6.31251H10.2471V5.25665ZM13.0388 8.75765H10.6669C10.7464 8.13525 11.223 7.71291 11.8585 7.71291C12.4714 7.71291 12.9366 8.14636 13.0388 8.75765ZM10.5989 9.46896H14.5368C14.5368 9.41339 14.5368 9.34671 14.5368 9.29114C14.5368 7.83517 13.47 6.66816 11.8585 6.66816C10.2357 6.66816 9.16895 7.84628 9.16895 9.29114C9.16895 10.7582 10.2357 11.9252 11.8585 11.9252C13.47 11.9252 14.2417 11.025 14.4914 9.8135H13.0388C12.9026 10.4248 12.5281 10.8694 11.8585 10.8694C11.1776 10.8694 10.6443 10.2581 10.5989 9.46896ZM8.8058 9.8135C8.8058 9.04662 8.28377 8.39088 7.59152 8.15748C8.1022 7.84628 8.44265 7.29056 8.44265 6.66816C8.44265 5.69011 7.63691 4.91211 6.6496 4.91211H3.06348V11.9363H6.6496C7.82984 11.9252 8.8058 10.9805 8.8058 9.8135ZM6.28644 7.71291H4.49339V6.30139H6.28644C6.68364 6.30139 7.01274 6.62371 7.01274 7.00159C7.01274 7.37948 6.68364 7.71291 6.28644 7.71291Z"
+                    fill="var(--adaptive-white-to-black)"
+                  />
+                </svg>
+              </Link>
+              <Link href="https://www.instagram.com/dalnovidno_?igsh=dnFuc3BuZWU5aDFx">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                >
+                  <path
+                    d="M8.5 16.6492C13.1944 16.6492 17 12.9221 17 8.3246C17 3.72705 13.1944 0 8.5 0C3.80558 0 0 3.72705 0 8.3246C0 12.9221 3.80558 16.6492 8.5 16.6492Z"
+                    fill="var(--adaptive-black-to-white)"
+                  />
+                  <path
+                    d="M11.5858 3.38965H5.41227C4.33416 3.38965 3.47168 4.24545 3.47168 5.29019V7.30188V8.04653V11.3475C3.47168 12.4033 4.34551 13.248 5.41227 13.248H11.5858C12.6639 13.248 13.5378 12.3922 13.5378 11.3475V8.05765V7.31299V5.30131C13.5378 4.24545 12.6639 3.38965 11.5858 3.38965ZM12.1533 4.53442H12.3802V4.7567V6.21267H10.678L10.6666 4.54553L12.1533 4.53442ZM7.06914 7.31299C7.3869 6.87953 7.92028 6.59056 8.5104 6.59056C9.10052 6.59056 9.62255 6.87953 9.95165 7.31299C9.9857 7.36856 10.0197 7.42413 10.0538 7.4797C10.2013 7.73533 10.2808 8.0243 10.2808 8.32439C10.2808 9.28022 9.48636 10.0582 8.5104 10.0582C7.53443 10.0582 6.74004 9.28022 6.74004 8.32439C6.74004 8.01319 6.81948 7.72422 6.96701 7.4797C6.9897 7.42413 7.02375 7.36856 7.06914 7.31299ZM12.5618 11.3475C12.5618 11.8698 12.1306 12.2922 11.5972 12.2922H5.42361C4.89024 12.2922 4.45899 11.8698 4.45899 11.3475V7.82425V7.31299H5.95699C5.92295 7.4019 5.8889 7.49082 5.85486 7.59085C5.78677 7.82424 5.75272 8.06876 5.75272 8.32439C5.75272 9.8137 6.9897 11.0252 8.5104 11.0252C10.0311 11.0252 11.2681 9.8137 11.2681 8.32439C11.2681 8.06876 11.234 7.82424 11.1659 7.59085C11.1432 7.49082 11.1092 7.4019 11.0638 7.31299H12.5731V7.82425V11.3475H12.5618Z"
+                    fill="var(--adaptive-white-to-black)"
+                  />
+                </svg>
+              </Link>
               <svg
                 className="rounded-[100%]"
                 width="40"

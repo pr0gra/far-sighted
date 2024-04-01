@@ -1,5 +1,6 @@
 .container {
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .card:hover {
