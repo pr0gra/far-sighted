@@ -221,10 +221,10 @@ export default function Home() {
   return (
     <main className=" text-white font-[bakemonoStereoBold]">
       <section
-        className="h-[100vh] flex flex-col  justify-between px-16 bg-cover "
-        style={{ backgroundImage: `url(${currentHero?.img?.src})` }}
+        className="h-[100vh] flex flex-col  justify-between px-16 max-lg:px-5 bg-cover "
+        style={{ backgroundImage: `url(${currentHero?.img?.src})`, backgroundPosition: 'center' }}
       >
-        <header className="pt-11 flex justify-between items-center">
+        <header className="pt-11 flex justify-between max-lg:flex-col max-lg:gap-[30px] items-center">
           <div className="flex gap-[29px] items-center font-[bakemonoTextLight]">
             <svg
               width="24"
@@ -394,19 +394,19 @@ export default function Home() {
           className={`grid grid-cols-[auto_744px] pb-11 items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
         >
           <div className="row-span-2 self-end font-bakemonoTextExtralight">
-            <p className="text-[24px] ">{currentHero.name}</p>
+            <p className="text-[24px] max-lg:text-[12px]">{currentHero.name}</p>
           </div>
-          <div className="flex border-t-2 text-[20px]  border-white font-[plexSansLight]  justify-between mb-6">
+          <div className="flex gap-[20px] border-t-2 text-[20px] max-lg:text-[15px]  border-white font-[plexSansLight]  justify-between mb-6">
             <div className="flex gap-2">
               <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
               <p className="font-bakemonoTextExtralight">
-                {getCurrentDate().currentDay}
+                {getCurrentDate().currentDay} 
               </p>
             </div>
             <p>дизайн-агентство инициатив</p>
           </div>
           <div className="w-[640px] my-0 mr-0 ml-[auto]">
-            <p className="text-right text-[27px] leading-[32px] font-bakemonoStereoRegular">
+            <p className="text-right text-[27px] max-lg:text-[20px] leading-[32px] max-lg:leading-[18px] font-bakemonoStereoRegular">
               {currentHero.text}
             </p>
           </div>
@@ -437,13 +437,13 @@ export default function Home() {
           </svg>
         </div>
         <section className="flex justify-center  bg-[var(--adaptive-white-to-black)] ">
-          <div className="w-[1440px]">
+          <div className="max-w-[1440px]">
             <div className="h-[600px] flex items-start">
               {" "}
               <Carousel />
             </div>
             <p
-              className={`pl-[50px] text-[24px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-25"]}`}
+              className={`pl-[50px]  max-lg:pl-0 text-[24px] max-lg:text-[12px] text-left font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-h-mobile-125"]}`}
             >
               Мы подбираем под каждый проект самую дальновидную <br /> команду
               из профессионалов в своих направлениях, чтобы <br /> прийти к
@@ -452,7 +452,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative  w-[1440px] mx-auto my-0">
+        <section className="relative  max-w-[1440px] mx-auto my-0">
           <video
             muted
             autoPlay
@@ -462,8 +462,8 @@ export default function Home() {
             src={require("../public/girlWalking.mp4")}
           />
 
-          <div className="absolute index-2 bottom-[440px] right-[220px]">
-            <p className="font-[bakemonoStereoRegular] leading-[35px] text-[28px]">
+          <div className="absolute index-2 bottom-[440px] max-lg:bottom-[265px] max-lg:right-[15px] right-[220px]">
+            <p className="font-[bakemonoStereoRegular] leading-[35px]   max-lg:leading-[18px] text-[28px] max-lg:text-[14px]">
               Дальновидный человек — <br /> это тот, которого издалека <br />{" "}
               видно.
             </p>
@@ -500,8 +500,8 @@ export default function Home() {
           </svg>
         </div>
         <section className="flex h-[100vh]  justify-center relative">
-          <div className="w-[1440px] flex ">
-            <div className="w-[324px] ml-[77px] ">
+          <div className="max-w-[1440px]  flex max-lg:flex-col ">
+            <div className="w-[324px] ml-[77px] max-lg:ml-5 ">
               <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
                 <p className="font-[bakemonoStereoMedium] text-[40px]">
                   Модель работы поэтапно
@@ -558,7 +558,7 @@ export default function Home() {
                 </svg>
               </div>
             </div>{" "}
-            <div ref={spheresVideoRef} className="w-[750px] relative">
+            <div ref={spheresVideoRef} className="max-w-[750px] relative">
               {spheresVideoInIntersection && (
                 <video
                   muted
@@ -630,7 +630,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-[1440px] mx-[auto] pb-[227px] pt-[100px]">
+        <section className="max-w-[1440px] mx-[auto] pb-[227px] pt-[100px]">
           <p
             className={`text-[34px] pl-[215px] font-bakemonoStereoRegular text-[var(--adaptive-black-to-white)] ${styles["padding-left-50-mobile"]}`}
           >
@@ -769,7 +769,7 @@ export default function Home() {
       <FormSection />
 
       <footer
-        className={`bg-[var(--adaptive-white-to-black)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-25"]} ${styles["padding-v-mobile-25"]}`}
+        className={`bg-[var(--adaptive-white-to-black)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-125"]} ${styles["padding-v-mobile-125"]}`}
       >
         <div
           className={`flex items-center gap-[50px] mb-[32px] ${styles["hero__text-block--wrap-mobile"]} ${styles["gap-20-mobile"]}`}

@@ -31,6 +31,19 @@ export function Carousel() {
   const musicContainer = useRef(null);
   const groundRef = useRef(null);
   const [inIntersection, setInIntersection] = useState(false);
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
 
   useEffect(() => {
     if (!dragContainer) {
@@ -51,11 +64,11 @@ export function Carousel() {
       return;
     }
     // You can change global variables here:
-    var radius = 440; // how big of the radius
+    var radius = isMobile ? 180 : 440; // how big of the radius
     var autoRotate = true; // auto rotate or not
     var rotateSpeed = -60; // unit: seconds/360 degrees
-    var imgWidth = 250; // width of images (unit: px)
-    var imgHeight = 180; // height of images (unit: px)
+    var imgWidth = isMobile ? 110 : 250; // width of images (unit: px)
+    var imgHeight = isMobile ? 60 : 180; // height of images (unit: px)
 
     var bgMusicURL =
       "https://api.soundcloud.com/tracks/143041228/stream?client_id=587aa2d384f7333a886010d5f52f302a";

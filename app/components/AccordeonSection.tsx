@@ -41,8 +41,8 @@ export function AccordeonSection() {
 
   return (
     <section className="text-black li   text-[28px] leading-[32px] bg-white pt-[232px] ">
-      <div className="w-[1225px] my-0 mx-auto">
-        <div className="w-[900px] my-0 ml-auto mr-0">
+      <div className="max-w-[1440px] my-0 mx-auto">
+        <div className="max-w-[900px] my-0 ml-auto mr-0">
           <div className=" border-black border-t-[3px] relative">
             <button
               onClick={() => {
@@ -76,7 +76,7 @@ export function AccordeonSection() {
               className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
             >
               <Image
-                className="mr-[127px] mb-[83px] float-right"
+                className="mr-[127px] max-lg:mr-[0] mb-[83px] float-right"
                 src={BrandStrategy}
                 alt="image"
               />
@@ -141,7 +141,7 @@ export function AccordeonSection() {
                 className={`${styles.marquee} font-[bakemonoStereoBold] font-[48]`}
               ></div>
               <Image
-                className="mr-[127px] mb-[83px] float-right"
+                className="mr-[127px] max-lg:mr-[0] mb-[83px] float-right"
                 src={VerbalIdentification}
                 alt="image"
               />
@@ -202,7 +202,7 @@ export function AccordeonSection() {
               className={`${styles.accordeonBody} font-[bakemonoStereoRegular]`}
             >
               <Image
-                className="mr-[127px] mb-[83px] float-right"
+                className="mr-[127px] max-lg:mr-[0] mb-[83px] float-right"
                 src={VisualIdentification}
                 alt="image"
               />
@@ -266,7 +266,7 @@ export function AccordeonSection() {
               className={`${styles.accordeonBody} font-[bakemonoStereoRegular] border-b-[3px] border-black`}
             >
               <Image
-                className="mr-[127px] mb-[83px] float-right"
+                className="mr-[127px] max-lg:mr-[0] mb-[83px] float-right"
                 src={EvlolutionAndSupport}
                 alt="image"
               />

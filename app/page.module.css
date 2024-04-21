@@ -59,7 +59,7 @@
     opacity: 0;
   }
 }
-@media (max-width: 1440px) {
+@media (max-width: 1024px) {
   .hero__text-block--margin-right-mobile {
     margin-right: 10px;
   }
@@ -94,13 +94,13 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .padding-h-mobile-25 {
-    padding-left: 25px;
-    padding-right: 25px;
+  .padding-h-mobile-125 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-  .padding-v-mobile-25 {
-    padding-bottom: 25px;
-    padding-top: 25px;
+  .padding-v-mobile-125 {
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
   }
   .mobile-form {
     display: flex !important;

@@ -21,32 +21,6 @@ export function FormSection() {
       .required("Это обязательное поле"),
     phoneNumber: yup.string().required("Это обязательное поле"),
   });
-  function handleSubmitForm(e: any) {
-    e.preventDefault();
-    const serviceId = "service_gvxf5xq";
-    const templateId = "template_5lx2vn6";
-    const publicKey = "m1AHA8wE_ngCDOw9q";
-
-    const templateParams = {
-      name,
-      theme,
-      phoneNumber,
-      email,
-      text,
-    };
-
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("ok", response);
-        setName("");
-        setTheme("");
-        setPhoneNumber("");
-        setEmail("");
-        setText("");
-      })
-      .catch((e) => console.log(e));
-  }
 
   const { values, errors, touched, isSubmitting, handleChange } = useFormik({
     initialValues: {
@@ -62,6 +36,29 @@ export function FormSection() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setShowErrors(true);
+    const serviceId = "service_1z4900u";
+    const templateId = "template_mtdsl4s";
+    const publicKey = "MJAYn6Xq_-g_Kh5UC";
+
+    const templateParams = {
+      name: values.name,
+      theme: values.theme,
+      phoneNumber: values.phoneNumber,
+      email: values.email,
+      text: values.text,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log("ok", response);
+        setName("");
+        setTheme("");
+        setPhoneNumber("");
+        setEmail("");
+        setText("");
+      })
+      .catch((e) => console.log(e));
   };
   // console.log(values, errors, showErrors);
   const [name, setName] = useState("");
@@ -71,8 +68,8 @@ export function FormSection() {
   const [text, setText] = useState("");
   return (
     <section className="pb-[100px] font-[bakemonoStereoRegular]  pt-[200px] text-black bg-white flex">
-      <div className="w-[1440px] my-0 mx-auto ">
-        <div className="grid grid-cols-[auto_745px]">
+      <div className="max-w-[1440px] my-0 mx-auto  ">
+        <div className="grid grid-cols-[auto_745px] max-lg:flex max-lg:flex-col">
           <div id="email">
             <p
               className={`text-[45px] font-[600] ${styles["text-align-center-mobile"]} text-[var(--adaptive-white-to-black)]`}
@@ -80,7 +77,7 @@ export function FormSection() {
               Обсудить с нами{" "}
             </p>{" "}
             <div
-              className={`flex mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
+              className={`flex max-lg:mb-[0] mb-[140px] gap-[27px] ${styles["justify-center-mobile"]} ${styles["margin-0-mobile"]}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +135,7 @@ export function FormSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className={`flex flex-col text-[28px] gap-[64px]`}
+              className={`flex flex-col font-[plexSansLight] text-[28px]`}
               action=""
             >
               <div>
@@ -150,7 +147,7 @@ export function FormSection() {
                   id="name"
                   value={values.name}
                 />
-                <div className="text-[#C62068]">
+                <div className="h-[64px] text-[#C62068]">
                   <p>{showErrors && errors.name}</p>
                 </div>
               </div>
@@ -163,7 +160,7 @@ export function FormSection() {
                   id="theme"
                   value={values.theme}
                 />
-                <div className="text-[#C62068]">
+                <div className="h-[64px] text-[#C62068]">
                   <p>{showErrors && errors.theme}</p>
                 </div>
               </div>
@@ -176,7 +173,7 @@ export function FormSection() {
                   id="phoneNumber"
                   value={values.phoneNumber}
                 />
-                <div className="text-[#C62068]">
+                <div className="h-[64px] text-[#C62068]">
                   <p>{showErrors && errors.phoneNumber}</p>
                 </div>
               </div>
@@ -188,7 +185,7 @@ export function FormSection() {
                   type="text"
                   id="email"
                 />
-                <div className="text-[#C62068]">
+                <div className="h-[64px] text-[#C62068]">
                   <p>{showErrors && errors.email}</p>
                 </div>
               </div>
@@ -200,7 +197,7 @@ export function FormSection() {
                   typeof="text"
                   onChange={handleChange}
                 ></textarea>
-                <div className="text-[#C62068]">
+                <div className="h-[64px] text-[#C62068]">
                   <p>{showErrors && errors.text}</p>
                 </div>
               </div>
