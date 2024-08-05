@@ -112,35 +112,36 @@ export default function Home() {
   });
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     const operatingSystemThemeDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     );
-    if (typeof window !== "undefined") {
-      const storedTheme = window.localStorage.getItem("prefered-theme") || "";
+    const storedTheme = window.localStorage.getItem("prefered-theme") || "";
 
-      if (document.querySelector("html")?.classList.value === "") {
-        if (operatingSystemThemeDark.matches) {
-          document.querySelector("html")?.classList.add("dark");
-          window.localStorage.setItem("prefered-theme", "dark");
-          document.querySelector("html")?.classList.remove("light");
-          document.querySelector("html")?.classList.add("dark");
-        } else {
-          document.querySelector("html")?.classList.remove("dark");
-          document.querySelector("html")?.classList.add("light");
-          window.localStorage.setItem("prefered-theme", "light");
-        }
-      }
-
-      if (storedTheme === "") {
+    if (document.querySelector("html")?.classList.value === "") {
+      if (operatingSystemThemeDark.matches) {
+        document.querySelector("html")?.classList.add("dark");
+        window.localStorage.setItem("prefered-theme", "dark");
+        document.querySelector("html")?.classList.remove("light");
+        document.querySelector("html")?.classList.add("dark");
+      } else {
+        document.querySelector("html")?.classList.remove("dark");
+        document.querySelector("html")?.classList.add("light");
         window.localStorage.setItem("prefered-theme", "light");
-        setIsLight(true);
       }
-      if (storedTheme === "light") {
-        setIsLight(true);
-      }
-      if (storedTheme === "dark") {
-        setIsLight(false);
-      }
+    }
+
+    if (storedTheme === "") {
+      window.localStorage.setItem("prefered-theme", "light");
+      setIsLight(true);
+    }
+    if (storedTheme === "light") {
+      setIsLight(true);
+    }
+    if (storedTheme === "dark") {
+      setIsLight(false);
     }
   }, []);
 
@@ -222,7 +223,10 @@ export default function Home() {
     <main className=" text-white font-[bakemonoStereoBold]">
       <section
         className="h-[100vh] flex flex-col  justify-between px-16 max-lg:px-5 bg-cover "
-        style={{ backgroundImage: `url(${currentHero?.img?.src})`, backgroundPosition: 'center' }}
+        style={{
+          backgroundImage: `url(${currentHero?.img?.src})`,
+          backgroundPosition: "center",
+        }}
       >
         <header className="pt-11 flex justify-between max-lg:flex-col max-lg:gap-[30px] items-center">
           <div className="flex gap-[29px] items-center font-[bakemonoTextLight]">
@@ -400,7 +404,7 @@ export default function Home() {
             <div className="flex gap-2">
               <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
               <p className="font-bakemonoTextExtralight">
-                {getCurrentDate().currentDay} 
+                {getCurrentDate().currentDay}
               </p>
             </div>
             <p>дизайн-агентство инициатив</p>

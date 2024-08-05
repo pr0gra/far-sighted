@@ -31,12 +31,15 @@ export function Carousel() {
   const musicContainer = useRef(null);
   const groundRef = useRef(null);
   const [inIntersection, setInIntersection] = useState(false);
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
   useEffect(() => {
+    if (typeof window === undefined) return;
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
@@ -145,9 +148,10 @@ export function Carousel() {
     }
     // setup events
     dragContainer.current.onpointerdown = function (e: any) {
-      if (odrag === null) {
+      if (odrag === null || typeof window === "undefined") {
         return;
       }
+
       clearInterval(odrag.timer);
       e = e || window.event;
       var sX = e.clientX,
