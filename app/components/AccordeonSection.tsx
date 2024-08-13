@@ -42,7 +42,7 @@ export function AccordeonSection() {
   return (
     <section className="text-black li   text-[28px] leading-[32px] bg-white pt-[232px] ">
       <div className="max-w-[1440px] my-0 mx-auto">
-        <div className="max-w-[900px] my-0 ml-auto mr-0">
+        <div className=" my-0 ml-auto mr-0">
           <div className=" border-black border-t-[3px] relative">
             <button
               onClick={() => {

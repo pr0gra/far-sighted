@@ -65,3 +65,7 @@
   --adaptive-white-to-black: black;
   --adaptive-black-to-white: white;
 }
+
+html {
+  scroll-behavior: smooth;
+}

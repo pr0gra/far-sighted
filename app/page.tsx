@@ -102,6 +102,7 @@ export default function Home() {
   const [showSphere1, setShowSphere1] = useState(false);
 
   const [currentHero, setCurrentHero] = useState({
+    id: 1,
     img: Hero1,
     name: (
       <>
@@ -161,48 +162,52 @@ export default function Home() {
 
     observer.observe(spheresVideoRef.current);
   }, [spheresVideoRef]);
+  const backgroundsList = [
+    {
+      id: 1,
+      img: Hero1,
+      name: (
+        <>
+          Дарья <br /> менеджер проекта
+        </>
+      ),
+      text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
+    },
+    {
+      id: 2,
+      img: Hero2,
+      name: (
+        <>
+          Анна <br /> старший дизайнер
+        </>
+      ),
+      text: "// Концепция — Привлекая внимание общественности и выявляя актуальные проектные проблемы, предлагать заказчикам готовые системы работы/дизайн-концепции",
+    },
 
+    {
+      id: 3,
+      img: Hero3,
+      name: (
+        <>
+          Анастасия <br /> дизайн-разведчик
+        </>
+      ),
+      text: "// К нам можно обращаться за креативными идеями решения проблемы, где уже кажется нет способов что-то придумать",
+    },
+    {
+      id: 4,
+      img: Hero4,
+      name: (
+        <>
+          Мария <br /> дизайнер
+        </>
+      ),
+      text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
+    },
+  ];
   useEffect(() => {
     let count = 1;
-    const backgroundsList = [
-      {
-        img: Hero1,
-        name: (
-          <>
-            Дарья <br /> менеджер проекта
-          </>
-        ),
-        text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
-      },
-      {
-        img: Hero2,
-        name: (
-          <>
-            Анна <br /> старший дизайнер
-          </>
-        ),
-        text: "// Концепция — Привлекая внимание общественности и выявляя актуальные проектные проблемы, предлагать заказчикам готовые системы работы/дизайн-концепции",
-      },
 
-      {
-        img: Hero3,
-        name: (
-          <>
-            Анастасия <br /> дизайн-разведчик
-          </>
-        ),
-        text: "// К нам можно обращаться за креативными идеями решения проблемы, где уже кажется нет способов что-то придумать",
-      },
-      {
-        img: Hero4,
-        name: (
-          <>
-            Мария <br /> дизайнер
-          </>
-        ),
-        text: "// Миссия — инициировать уникальные дизайн-проекты с проактивной позицией положительного социального воздействия",
-      },
-    ];
     setInterval(() => {
       if (count >= 4) {
         count = 0;
@@ -220,204 +225,236 @@ export default function Home() {
   };
 
   return (
-    <main className=" text-white font-[bakemonoStereoBold]">
-      <section
-        className="h-[100vh] flex flex-col  justify-between px-16 max-lg:px-5 bg-cover "
-        style={{
-          backgroundImage: `url(${currentHero?.img?.src})`,
-          backgroundPosition: "center",
-        }}
-      >
-        <header className="pt-11 flex justify-between max-lg:flex-col max-lg:gap-[30px] items-center">
-          <div className="flex gap-[29px] items-center font-[bakemonoTextLight]">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.56 18.5526C10.6822 18.9641 9.84516 19.1493 9.04897 19.1493C7.88531 19.1493 6.94622 18.7789 6.25211 18.0588C5.55799 17.3388 5.21094 16.2895 5.21094 14.9316C5.21094 13.4503 5.59882 12.1747 6.3746 11.0843C7.43618 10.9403 8.80399 10.858 10.478 10.858C11.5804 10.858 12.6216 10.8786 13.622 10.9403V10.4259C13.622 9.52068 13.479 8.88288 13.1728 8.49198C12.8666 8.10108 12.3154 7.89534 11.4988 7.89534C10.8863 7.89534 10.131 7.97764 9.21229 8.14223C8.29361 8.30682 7.41577 8.53313 6.57875 8.86231L5.90505 5.89967C8.15071 5.03557 10.1922 4.60352 11.9887 4.60352C13.1524 4.60352 14.1323 4.74753 14.8673 5.03557C15.6226 5.3236 16.2147 5.83795 16.623 6.57861C17.0517 7.31927 17.2558 8.36854 17.2558 9.72641V15.5283L18.7257 15.3637C18.7666 16.0838 18.787 16.6392 18.787 17.0507C18.787 17.4416 18.7666 17.9971 18.7257 18.7172C17.9908 18.8201 17.1538 18.8818 16.2351 18.8818C15.4593 18.8818 14.7652 18.8406 14.1936 18.7789L13.7853 17.0919C13.1932 17.6679 12.4379 18.1411 11.56 18.5526ZM10.2943 16.2072C10.8047 16.2072 11.3559 16.1249 11.9479 15.9397C12.5604 15.7546 13.1116 15.5077 13.6015 15.1991V13.2034C12.642 13.1417 11.7438 13.1211 10.9476 13.1211C10.2535 13.1211 9.60018 13.1417 8.98773 13.2034C8.76316 13.5532 8.66109 14.0469 8.66109 14.6436C8.6815 15.6723 9.23271 16.2072 10.2943 16.2072Z"
-                fill="white"
-              />
-              <rect
-                x="15.2725"
-                y="15.3926"
-                width="8.00016"
-                height="3.39401"
-                fill="white"
-              />
-              <rect width="23.2732" height="3.39401" fill="white" />
-              <rect y="20.6074" width="12.6063" height="3.39401" fill="white" />
-              <rect x="20.2422" width="3.03036" height="18.667" fill="white" />
-              <rect width="3.03036" height="23.152" fill="white" />
-            </svg>
-            <p>DALNOVIDNO@GMAIL.COM</p>
-          </div>
-          <nav>
-            <ul className="list-none gap-9 flex justify-end">
-              <li>
+    <main
+      style={{ scrollBehavior: "smooth" }}
+      className=" text-white font-[bakemonoStereoBold]"
+    >
+      {backgroundsList.map((element: any, index: number) => {
+        return (
+          <section
+            key={index}
+            className="h-[100vh] flex flex-col  justify-between px-16 max-lg:px-5 bg-cover "
+            style={{
+              display: currentHero.id === index + 1 ? "flex" : "none",
+              backgroundImage: `url(${element?.img?.src})`,
+              backgroundPosition: "center",
+            }}
+          >
+            <header className="pt-11 flex justify-between max-lg:flex-col max-lg:gap-[30px] items-center">
+              <div className="flex gap-[29px] items-center font-[bakemonoTextLight]">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="55"
-                  height="26"
-                  viewBox="0 0 55 26"
-                  fill="none"
-                >
-                  <path
-                    d="M0 0.162109H9.34744V3.22854H3.5701V20.8865H9.34744V23.9529H0V0.162109Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M11.2441 23.5834L23.7765 0L26.7837 1.45174L14.2661 25.0351L11.2441 23.5834Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M28.1318 23.5834L40.6642 0L43.6714 1.45174L31.139 25.0351L28.1318 23.5834Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M45.4629 23.9677V20.9013H51.2402V3.24336H45.4629V0.162109H54.8103V23.9677H45.4629Z"
-                    fill="white"
-                  />
-                </svg>
-              </li>
-              <li>
-                <svg
-                  width="30"
+                  width="24"
                   height="24"
-                  viewBox="0 0 30 24"
+                  viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
+                    d="M11.56 18.5526C10.6822 18.9641 9.84516 19.1493 9.04897 19.1493C7.88531 19.1493 6.94622 18.7789 6.25211 18.0588C5.55799 17.3388 5.21094 16.2895 5.21094 14.9316C5.21094 13.4503 5.59882 12.1747 6.3746 11.0843C7.43618 10.9403 8.80399 10.858 10.478 10.858C11.5804 10.858 12.6216 10.8786 13.622 10.9403V10.4259C13.622 9.52068 13.479 8.88288 13.1728 8.49198C12.8666 8.10108 12.3154 7.89534 11.4988 7.89534C10.8863 7.89534 10.131 7.97764 9.21229 8.14223C8.29361 8.30682 7.41577 8.53313 6.57875 8.86231L5.90505 5.89967C8.15071 5.03557 10.1922 4.60352 11.9887 4.60352C13.1524 4.60352 14.1323 4.74753 14.8673 5.03557C15.6226 5.3236 16.2147 5.83795 16.623 6.57861C17.0517 7.31927 17.2558 8.36854 17.2558 9.72641V15.5283L18.7257 15.3637C18.7666 16.0838 18.787 16.6392 18.787 17.0507C18.787 17.4416 18.7666 17.9971 18.7257 18.7172C17.9908 18.8201 17.1538 18.8818 16.2351 18.8818C15.4593 18.8818 14.7652 18.8406 14.1936 18.7789L13.7853 17.0919C13.1932 17.6679 12.4379 18.1411 11.56 18.5526ZM10.2943 16.2072C10.8047 16.2072 11.3559 16.1249 11.9479 15.9397C12.5604 15.7546 13.1116 15.5077 13.6015 15.1991V13.2034C12.642 13.1417 11.7438 13.1211 10.9476 13.1211C10.2535 13.1211 9.60018 13.1417 8.98773 13.2034C8.76316 13.5532 8.66109 14.0469 8.66109 14.6436C8.6815 15.6723 9.23271 16.2072 10.2943 16.2072Z"
                     fill="white"
                   />
-                  <path
-                    d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
+                  <rect
+                    x="15.2725"
+                    y="15.3926"
+                    width="8.00016"
+                    height="3.39401"
                     fill="white"
                   />
-                  <path
-                    d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
+                  <rect width="23.2732" height="3.39401" fill="white" />
+                  <rect
+                    y="20.6074"
+                    width="12.6063"
+                    height="3.39401"
                     fill="white"
                   />
+                  <rect
+                    x="20.2422"
+                    width="3.03036"
+                    height="18.667"
+                    fill="white"
+                  />
+                  <rect width="3.03036" height="23.152" fill="white" />
                 </svg>
-              </li>
-              <li>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="31"
-                  height="24"
-                  viewBox="0 0 31 24"
-                  fill="none"
-                >
-                  <path
-                    d="M6.13995 21.05L5.5019 21.7965L5.12534 22.2389L4.75924 22.6629L4.36177 23.1237L4.01659 23.52L3.76555 23.8149L3.5982 23.9992H0.721734H0L0.44978 23.4831L0.700813 23.1882C0.89955 22.9486 0.972773 22.8748 0.972773 22.8748L1.16105 22.6536L1.34933 22.4324L1.61082 22.1283L2.10244 21.5661L2.26979 21.3634L3.47268 19.9717L3.68188 19.7321L5.62742 17.4648H9.24653"
-                    fill="white"
-                  />
-                  <path
-                    d="M30.8217 13.8789H0.0136719V17.704H30.8217V13.8789Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M30.8217 0H0.0136719V3.82511H30.8217V0Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M30.8228 7.08398H12.1943V10.9091H30.8228V7.08398Z"
-                    fill="white"
-                  />
-                </svg>
-              </li>
-              <li>
-                <svg
-                  width="11"
-                  height="25"
-                  viewBox="0 0 11 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.86324 8.54313C5.59922 7.87931 5.97442 7.17219 5.97442 6.42178C5.97442 5.61365 5.4982 4.96425 4.56019 4.44474C3.60774 3.92522 2.09249 3.66547 0 3.6366L0.173172 0C3.27583 0.014431 5.71466 0.562808 7.48967 1.6307C9.26468 2.69859 10.1594 4.18498 10.1594 6.1043C10.1594 7.3165 9.76977 8.39882 8.97606 9.35127C8.18236 10.3037 7.30207 11.083 6.30633 11.6747C5.32503 12.2663 4.12726 12.9013 2.72745 13.5507L1.50082 10.7944C3.00164 9.95737 4.11283 9.20696 4.86324 8.54313ZM1.83273 20.3044C2.2368 19.9003 2.82847 19.6983 3.57888 19.6983C4.286 19.6983 4.84881 19.9003 5.2673 20.3044C5.67137 20.7084 5.88784 21.2568 5.88784 21.9495C5.88784 22.6278 5.6858 23.1617 5.2673 23.5658C4.84881 23.9698 4.30043 24.1719 3.57888 24.1719C2.8429 24.1719 2.28009 23.9698 1.84716 23.5658C1.42867 23.1617 1.2122 22.6278 1.2122 21.9495C1.22663 21.2568 1.42867 20.7084 1.83273 20.3044Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M6.89809 13.248H2.72754V16.394H6.89809V13.248Z"
-                    fill="white"
-                  />
-                </svg>
-              </li>
-              <li
-                className="cursor-pointer"
-                onClick={() => {
-                  if (
-                    window.localStorage.getItem("prefered-theme") === "light"
-                  ) {
-                    window.localStorage.setItem("prefered-theme", "dark");
-                    document.querySelector("html")?.classList.remove("light");
-                    document.querySelector("html")?.classList.add("dark");
-                    setIsLight(false);
-                  } else {
-                    window.localStorage.setItem("prefered-theme", "light");
-                    document.querySelector("html")?.classList.remove("dark");
-                    document.querySelector("html")?.classList.add("light");
-                    setIsLight(true);
-                  }
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="24"
-                  viewBox="0 0 26 24"
-                  fill="none"
-                >
-                  <path
-                    d="M20.7558 0L14.8837 0.0434783L0 17.0725H5.84302L20.7558 0Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M26 6.92773L20.1279 6.95672L5.24414 24.0002H11.0872L26 6.92773Z"
-                    fill="white"
-                  />
-                </svg>
-              </li>
-            </ul>
-          </nav>
-        </header>
+                <p>DALNOVIDNO@GMAIL.COM</p>
+              </div>
+              <nav>
+                <ul className="list-none gap-9 flex justify-end">
+                  <li>
+                    <Link href="#examples">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="55"
+                        height="26"
+                        viewBox="0 0 55 26"
+                        fill="none"
+                      >
+                        <path
+                          d="M0 0.162109H9.34744V3.22854H3.5701V20.8865H9.34744V23.9529H0V0.162109Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M11.2441 23.5834L23.7765 0L26.7837 1.45174L14.2661 25.0351L11.2441 23.5834Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M28.1318 23.5834L40.6642 0L43.6714 1.45174L31.139 25.0351L28.1318 23.5834Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M45.4629 23.9677V20.9013H51.2402V3.24336H45.4629V0.162109H54.8103V23.9677H45.4629Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#about">
+                      <svg
+                        width="30"
+                        height="24"
+                        viewBox="0 0 30 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M29.7872 24H24.3241L25.0336 8.84211H29.0777L29.7872 24ZM30 2.5985C30 3.39248 29.7399 4.01805 29.2196 4.47519C28.6756 4.95639 27.9425 5.19699 27.0202 5.19699C26.1215 5.19699 25.412 4.95639 24.8917 4.47519C24.3714 4.01805 24.1113 3.39248 24.1113 2.5985C24.1113 1.80451 24.3714 1.16692 24.8917 0.685715C25.412 0.228573 26.1215 0 27.0202 0C27.9425 0 28.6756 0.228573 29.2196 0.685715C29.7399 1.16692 30 1.80451 30 2.5985Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M17.7315 24H12.2685L12.978 8.84211H17.022L17.7315 24ZM17.9444 2.5985C17.9444 3.39248 17.6842 4.01805 17.1639 4.47519C16.62 4.95639 15.8869 5.19699 14.9645 5.19699C14.0658 5.19699 13.3564 4.95639 12.8361 4.47519C12.3158 4.01805 12.0557 3.39248 12.0557 2.5985C12.0557 1.80451 12.3158 1.16692 12.8361 0.685715C13.3564 0.228573 14.0658 0 14.9645 0C15.8869 0 16.62 0.228573 17.1639 0.685715C17.6842 1.16692 17.9444 1.80451 17.9444 2.5985Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M5.67586 24H0.212845L0.922327 8.84211H4.96637L5.67586 24ZM5.8887 2.5985C5.8887 3.39248 5.62856 4.01805 5.10827 4.47519C4.56433 4.95639 3.8312 5.19699 2.90888 5.19699C2.0102 5.19699 1.30072 4.95639 0.780432 4.47519C0.260143 4.01805 0 3.39248 0 2.5985C0 1.80451 0.260143 1.16692 0.780432 0.685715C1.30072 0.228573 2.0102 0 2.90888 0C3.8312 0 4.56433 0.228573 5.10827 0.685715C5.62856 1.16692 5.8887 1.80451 5.8887 2.5985Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#form">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="31"
+                        height="24"
+                        viewBox="0 0 31 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.13995 21.05L5.5019 21.7965L5.12534 22.2389L4.75924 22.6629L4.36177 23.1237L4.01659 23.52L3.76555 23.8149L3.5982 23.9992H0.721734H0L0.44978 23.4831L0.700813 23.1882C0.89955 22.9486 0.972773 22.8748 0.972773 22.8748L1.16105 22.6536L1.34933 22.4324L1.61082 22.1283L2.10244 21.5661L2.26979 21.3634L3.47268 19.9717L3.68188 19.7321L5.62742 17.4648H9.24653"
+                          fill="white"
+                        />
+                        <path
+                          d="M30.8217 13.8789H0.0136719V17.704H30.8217V13.8789Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M30.8217 0H0.0136719V3.82511H30.8217V0Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M30.8228 7.08398H12.1943V10.9091H30.8228V7.08398Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/inDevelopPage" className={styles.link}>
+                      <svg
+                        width="11"
+                        height="25"
+                        viewBox="0 0 11 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.86324 8.54313C5.59922 7.87931 5.97442 7.17219 5.97442 6.42178C5.97442 5.61365 5.4982 4.96425 4.56019 4.44474C3.60774 3.92522 2.09249 3.66547 0 3.6366L0.173172 0C3.27583 0.014431 5.71466 0.562808 7.48967 1.6307C9.26468 2.69859 10.1594 4.18498 10.1594 6.1043C10.1594 7.3165 9.76977 8.39882 8.97606 9.35127C8.18236 10.3037 7.30207 11.083 6.30633 11.6747C5.32503 12.2663 4.12726 12.9013 2.72745 13.5507L1.50082 10.7944C3.00164 9.95737 4.11283 9.20696 4.86324 8.54313ZM1.83273 20.3044C2.2368 19.9003 2.82847 19.6983 3.57888 19.6983C4.286 19.6983 4.84881 19.9003 5.2673 20.3044C5.67137 20.7084 5.88784 21.2568 5.88784 21.9495C5.88784 22.6278 5.6858 23.1617 5.2673 23.5658C4.84881 23.9698 4.30043 24.1719 3.57888 24.1719C2.8429 24.1719 2.28009 23.9698 1.84716 23.5658C1.42867 23.1617 1.2122 22.6278 1.2122 21.9495C1.22663 21.2568 1.42867 20.7084 1.83273 20.3044Z"
+                          fill="white"
+                        />
+                        <path
+                          d="M6.89809 13.248H2.72754V16.394H6.89809V13.248Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li
+                    className="cursor-pointer"
+                    onClick={() => {
+                      if (
+                        window.localStorage.getItem("prefered-theme") ===
+                        "light"
+                      ) {
+                        window.localStorage.setItem("prefered-theme", "dark");
+                        document
+                          .querySelector("html")
+                          ?.classList.remove("light");
+                        document.querySelector("html")?.classList.add("dark");
+                        setIsLight(false);
+                      } else {
+                        window.localStorage.setItem("prefered-theme", "light");
+                        document
+                          .querySelector("html")
+                          ?.classList.remove("dark");
+                        document.querySelector("html")?.classList.add("light");
+                        setIsLight(true);
+                      }
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="26"
+                      height="24"
+                      viewBox="0 0 26 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M20.7558 0L14.8837 0.0434783L0 17.0725H5.84302L20.7558 0Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M26 6.92773L20.1279 6.95672L5.24414 24.0002H11.0872L26 6.92773Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </li>
+                </ul>
+              </nav>
+            </header>
 
-        <Image
-          className="my-0 mx-[auto]"
-          width={700}
-          src={HeroAnimatedLogo}
-          alt="Дальновидно"
-        />
-        <div
-          className={`grid grid-cols-[auto_744px] pb-11 items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
-        >
-          <div className="row-span-2 self-end font-bakemonoTextExtralight">
-            <p className="text-[24px] max-lg:text-[12px]">{currentHero.name}</p>
-          </div>
-          <div className="flex gap-[20px] border-t-2 text-[20px] max-lg:text-[15px]  border-white font-[plexSansLight]  justify-between mb-6">
-            <div className="flex gap-2">
-              <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
-              <p className="font-bakemonoTextExtralight">
-                {getCurrentDate().currentDay}
-              </p>
+            <Image
+              className="my-0 mx-[auto]"
+              width={700}
+              src={HeroAnimatedLogo}
+              alt="Дальновидно"
+            />
+            <div
+              className={`grid grid-cols-[auto_744px] pb-11 items-center justify-between ${styles["hero__text-block--wrap-mobile"]}`}
+            >
+              <div className="row-span-2 self-end font-[plexSansLight] max-lg:hidden">
+                <p className="text-[24px] max-lg:text-[12px]">{element.name}</p>
+              </div>
+              <div className="flex gap-[20px] border-t-2 text-[20px] max-lg:text-[15px]  border-white font-[plexSansLight]  justify-between mb-6">
+                <div className="flex gap-2">
+                  <p>{getCurrentDate().currentDate.replaceAll(".", "/")}</p>
+                  <p className="font-bakemonoTextExtralight">
+                    {getCurrentDate().currentDay}
+                  </p>
+                </div>
+                <p>дизайн-агентство инициатив</p>
+              </div>
+              <div className="w-[640px] my-0 mr-0 ml-[auto]">
+                <p className="text-right text-[27px] max-lg:text-[20px] leading-[32px] max-lg:leading-[18px] font-bakemonoStereoRegular">
+                  {element.text}
+                </p>
+              </div>
             </div>
-            <p>дизайн-агентство инициатив</p>
-          </div>
-          <div className="w-[640px] my-0 mr-0 ml-[auto]">
-            <p className="text-right text-[27px] max-lg:text-[20px] leading-[32px] max-lg:leading-[18px] font-bakemonoStereoRegular">
-              {currentHero.text}
-            </p>
-          </div>
-        </div>
-      </section>
+          </section>
+        );
+      })}
       <div className="bg-[var(--adaptive-white-to-black)] pt-[100px]">
-        <div className="sticky  w-[95px] mt-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
+        <div className="sticky z-[2]  w-[88px] mt-[100px] ml-[auto] mr-[100px] top-[94px]  rounded-[100%] p-[28px] bg-[var(--adaptive-black-to-white)]">
           <svg
             className="h-[30px] mx-[auto] my-0 "
             width="30"
@@ -440,7 +477,10 @@ export default function Home() {
             />
           </svg>
         </div>
-        <section className="flex justify-center  bg-[var(--adaptive-white-to-black)] ">
+        <section
+          id="about"
+          className="flex justify-center  bg-[var(--adaptive-white-to-black)] "
+        >
           <div className="max-w-[1440px]">
             <div className="h-[600px] flex items-start">
               {" "}
@@ -466,7 +506,7 @@ export default function Home() {
             src={require("../public/girlWalking.mp4")}
           />
 
-          <div className="absolute index-2 bottom-[440px] max-lg:bottom-[265px] max-lg:right-[15px] right-[220px]">
+          <div className="absolute z-[2] bottom-[440px] max-lg:bottom-[265px] max-lg:right-[15px] right-[220px]">
             <p className="font-[bakemonoStereoRegular] leading-[35px]   max-lg:leading-[18px] text-[28px] max-lg:text-[14px]">
               Дальновидный человек — <br /> это тот, которого издалека <br />{" "}
               видно.
@@ -476,10 +516,10 @@ export default function Home() {
       </div>
 
       <div className="bg-black">
-        <div className="bg-white sticky index-[2]  w-[95px] mb-[100px] ml-[auto] mr-[100px]  top-[100px] py-[34px] px-[20px] rounded-[100%] ">
+        <div className="bg-white sticky z-[2]  w-[88px] mb-[100px] ml-[auto] mr-[100px]  top-[100px] py-[30px] px-[20px] rounded-[100%] ">
           <svg
             className="  "
-            width="55"
+            width="48"
             height="26"
             viewBox="0 0 55 26"
             fill="none"
@@ -503,7 +543,10 @@ export default function Home() {
             />
           </svg>
         </div>
-        <section className="flex h-[100vh]  justify-center relative">
+        <section
+          id="examples"
+          className="flex h-[100vh]  justify-center relative"
+        >
           <div className="max-w-[1440px]  flex max-lg:flex-col ">
             <div className="w-[324px] ml-[77px] max-lg:ml-5 ">
               <div className="pb-[20px] mb-[30px]  border-white border-b-[2px] leading-[45px]">
@@ -770,7 +813,9 @@ export default function Home() {
 
       <AccordeonSection />
 
-      <FormSection />
+      <div>
+        <FormSection />
+      </div>
 
       <footer
         className={`bg-[var(--adaptive-white-to-black)] py-[107px] font-[bakemonoStereoRegular] px-[86px] ${styles["padding-h-mobile-125"]} ${styles["padding-v-mobile-125"]}`}
@@ -828,20 +873,25 @@ export default function Home() {
           <div
             className={`flex gap-[30px] ${styles["block-flex-wrap-mobile"]}`}
           >
-            <Link href="" className="text-[var(--adaptive-black-to-white)]">
+            <Link
+              href="/files/policy.pdf"
+              className="text-[var(--adaptive-black-to-white)]"
+            >
               ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
             </Link>
             <p className="text-[var(--adaptive-black-to-white)]">{`//`}</p>{" "}
-            <Link href="" className="text-[var(--adaptive-black-to-white)]">
+            <Link
+              href="#form"
+              className="text-[var(--adaptive-black-to-white)]"
+            >
               ХОЧУ В КОМАНДУ
             </Link>{" "}
-            <p className="text-[var(--adaptive-black-to-white)]">{`//`}</p>{" "}
-            <Link href="" className="text-[var(--adaptive-black-to-white)]">
-              ОДНОВРЕМЕННО ВЕЗДЕ
-            </Link>
           </div>
           <div className="flex items-center gap-[91px]">
-            <p className="text-[var(--adaptive-black-to-white)]">Следить</p>{" "}
+            <p className="text-[var(--adaptive-black-to-white)]">
+              {" "}
+              ОДНОВРЕМЕННО ВЕЗДЕ
+            </p>{" "}
             <div className="flex gap-[20px] items-center">
               <Link href="https://ru.pinterest.com/dalnovidno/">
                 <svg

@@ -68,7 +68,7 @@ export function FormSection() {
   const [text, setText] = useState("");
   return (
     <section className="pb-[100px] font-[bakemonoStereoRegular]  pt-[200px] text-black bg-white flex">
-      <div className="max-w-[1440px] my-0 mx-auto  ">
+      <div id="form" className="max-w-[1440px] my-0 mx-auto  ">
         <div className="grid grid-cols-[auto_745px] max-lg:flex max-lg:flex-col">
           <div id="email">
             <p
